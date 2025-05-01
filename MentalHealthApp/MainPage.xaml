@@ -35,7 +35,7 @@
     </ContentPage.Resources>
     <ScrollView>
         <!--Основной стек элементов-->
-            <VerticalStackLayout Spacing="32" Margin="0,24,8,0">
+        <VerticalStackLayout Spacing="32" Margin="0,24,8,32" HeightRequest="804">
 
                 <!-- Расслабление и профилактика -->
                 <VerticalStackLayout Margin="8,0,0,0">
@@ -98,43 +98,45 @@
                 </VerticalStackLayout>
 
                 <!-- Самоконтроль -->
-                <VerticalStackLayout Margin="8,0,0,0">
-                    <Label
+            <VerticalStackLayout Margin="8,0,0,0">
+                <Label
                     Text="Самоконтроль"
                     Style="{StaticResource HomescreenHeadlinesStyle}"/>
-                    <!-- Сетка элементов самоконтроля -->
-                    <Grid Style="{StaticResource GridTechnicsStyle}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="110"/>
-                            <RowDefinition Height="110"/>
-                            <RowDefinition Height="110"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="110"/>
-                        </Grid.ColumnDefinitions>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15">
-                            <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                <!-- Сетка элементов самоконтроля -->
+                <Grid Style="{StaticResource GridTechnicsStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="110"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+                    <Border StrokeShape="RoundRectangle 15,15,15,15">
+                        <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                    VerticalOptions="End" Margin="8,0,0,8"/>
-                        </Border>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
-                            <Label Text="Оценка сна" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
+                        <Label Text="Оценка сна" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                     VerticalOptions="End" Margin="8,0,0,8"/>
-                        </Border>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
-                            <Label Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
+                        <Label Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                     VerticalOptions="End" Margin="8,0,0,8"/>
-                        </Border>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
-                            <Label Text="Подключить умные часы" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
+                        <Label Text="Подключить умные часы" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                     VerticalOptions="End" Margin="8,0,0,8"/>
-                        </Border>
-                    </Grid>
-                </VerticalStackLayout>
-
+                    </Border>
+                </Grid>
+                
             </VerticalStackLayout>
-        </ScrollView>
+                
+        </VerticalStackLayout>
+        
+    </ScrollView>
 
 
 

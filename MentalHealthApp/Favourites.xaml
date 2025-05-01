@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Favourites"
+             Title="Favourites"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль названия категории -->
+            <Style x:Key="CategoriesStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+            
+            <!-- Стиль количества записей -->
+            <Style x:Key="NubmerOfCategoriesStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
+
+            <!-- Стиль сетки для вкладок -->
+            <Style x:Key="InnerGridStyle" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="12"/>
+                <Setter Property="Margin" Value="8,4,8,0"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <!--Отображение элементов-->
+    <VerticalStackLayout Margin="8,24,8,0" Spacing="16">
+        
+        <Label
+            Text="Избранные практики и материалы"
+            FontFamily="Roboto"
+            FontSize="20" 
+            HorizontalOptions="Center" />
+        
+        <!--Сетка категорий-->
+        <Grid RowSpacing="12">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="58"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="396"/>
+            </Grid.ColumnDefinitions>
+            <!--Медитации-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Медитации" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+                
+            </Border>
+            <!--Дыхательные техники-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Дыхательные техники" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1" />
+                </Grid>
+            </Border>
+            <!--Расслабляющие аудио-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="2">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Расслабляющие аудио" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <!--Расслабляющие видео-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="3">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Расслабляющие видео" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <!--Советы и цитаты-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="4">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Советы и цитаты" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <!--Полезная информация-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="5">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Полезная информация" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <!--Позитивное мышление-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="6">
+                <Grid Style="{StaticResource InnerGridStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="18"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Позитивное мышление" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                    <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+            
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

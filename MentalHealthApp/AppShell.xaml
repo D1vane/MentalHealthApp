@@ -7,9 +7,17 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MentalHealthApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Здоровье">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        
+        <Tab Title="Избранное">
+            <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>
+        </Tab>
+
+        
+        
+    </TabBar>
 
 </Shell>
