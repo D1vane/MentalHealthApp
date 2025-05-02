@@ -8,16 +8,19 @@
     Title="MentalHealthApp">
 
     <TabBar>
-        <Tab Title="Здоровье">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
-        </Tab>
-        
+
         <Tab Title="Избранное">
             <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>
         </Tab>
+        
+        <Tab Title="Календарь">
+            <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
+        </Tab>
+        
+        <Tab Title="Здоровье">
+            <ShellContent x:Name="HealthPage" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
 
-        
-        
     </TabBar>
 
 </Shell>

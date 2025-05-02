@@ -33,9 +33,9 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <ScrollView>
+    <ScrollView Margin="0,24,8,32">
         <!--Основной стек элементов-->
-        <VerticalStackLayout Spacing="32" Margin="0,24,8,32" HeightRequest="804">
+        <VerticalStackLayout Spacing="32" HeightRequest="804">
 
                 <!-- Расслабление и профилактика -->
                 <VerticalStackLayout Margin="8,0,0,0">

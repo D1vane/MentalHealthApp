@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Calendar"
+             Title="Calendar"
+             Shell.NavBarIsVisible="False">
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль дней недели-->
+            <Style x:Key="DaysStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="8,0,0,0"/>
+            </Style>
+
+            <!-- Стиль чисел календаря-->
+            <Style x:Key="NumbersStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="4,0,0,0"/>
+            </Style>
+
+            <!-- Стиль счетчиков событий-->
+            <Style x:Key="EventsCountersStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <VerticalStackLayout Margin="8,24,8,32">
+        
+        <!--Месяц и год-->
+        <Label Text="04/2025" Style="{StaticResource DaysStyle}" Margin="8,0,0,0"/>
+        
+        <!--Дни недели-->
+        <Grid Padding="0,12,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="Пн" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="0" Margin="8,0,0,0"/>
+            <Label Text="Вт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0"/>
+            <Label Text="Ср" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="2" Margin="8,0,0,0"/>
+            <Label Text="Чт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="3" Margin="8,0,0,0"/>
+            <Label Text="Пт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="4" Margin="8,0,0,0"/>
+            <Label Text="Сб" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="5" Margin="8,0,0,0"/>
+            <Label Text="Вс" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="6" Margin="8,0,0,0"/>
+        </Grid>
+        
+        <!--Календарь-->
+        <Grid Margin="0,8,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="66"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+                <ColumnDefinition Width="56.57"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Граница календаря-->
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="6"/>
+            
+            <!--Первая строка-->
+            <Border StrokeShape="RoundRectangle 15,0,0,0" Grid.Row="0" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 0,15,0,0" Grid.Row="0" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="1" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+
+            <!--Вторая строка-->
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="2" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="3" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="4" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="5" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="6" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="7" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="1" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="8" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+
+            <!--Третья строка-->
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="9" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="10" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="11" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="12" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="13" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="14" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="2" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="15" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+
+            <!--Четвертая строка-->
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="16" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="17" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="18" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="19" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="20" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="21" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="3" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="22" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+
+            <!--Пятая строка-->
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="23" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="24" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="25" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="26" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="27" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="28" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="4" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="29" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+
+            <!--Шестая строка-->
+            <Border StrokeShape="RoundRectangle 0,0,15,0" Grid.Row="5" Grid.Column="0" StrokeThickness="0.3">
+                <Label Text="30" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="5" Grid.Column="1" StrokeThickness="0.3">
+                <Label Text="31" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="5" Grid.Column="2" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="5" Grid.Column="3" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="5" Grid.Column="4" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="Rectangle" Grid.Row="5" Grid.Column="5" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 0,0,0,15" Grid.Row="5" Grid.Column="6" StrokeThickness="0.3">
+                <Label Text="" Style="{StaticResource NumbersStyle}"/>
+            </Border>
+            
+        </Grid>
+        <VerticalStackLayout Spacing="12" Margin="0,32,0,0">
+            <Label Text="Событий на сегодня 7/7" Style="{StaticResource EventsCountersStyle}" />
+            <Label Text="Событий на этой неделе 7/12" Style="{StaticResource EventsCountersStyle}"/>
+            <Label Text="Событий на текущий месяц 16/18" Style="{StaticResource EventsCountersStyle}"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
