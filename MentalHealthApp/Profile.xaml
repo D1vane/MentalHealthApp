@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Profile"
+             Title="Profile"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль количества событий и функций-->
+            <Style x:Key="EventsAndFunctionsStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <!-- Стиль для линий между элементами меню-->
+            <Style x:Key="LinesStyle" TargetType="Border">
+                <Setter Property="Stroke" Value="Black"/>
+                <Setter Property="StrokeThickness" Value="0.5"/>
+                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="WidthRequest" Value="396"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Margin="8,24,8,0">
+        
+        <!--Редактирование профиля-->
+        <Ellipse WidthRequest="188" HeightRequest="188" Stroke="Gray" StrokeThickness="3" HorizontalOptions="Center"/>
+        <Label Text="Имя пользователя" FontFamily="Roboto" FontSize="20" Margin="0,24,0,0" HorizontalOptions="Center"/>
+        
+        <!--Количество событий-->
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="48" Margin="0,24,0,0">
+            <HorizontalStackLayout>
+                <Image Source="calendar_icon.png"/>
+                <Label Text="16/25" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Image Source="favourites_icon.png"/>
+                <Label Text="8" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            
+        </HorizontalStackLayout>
+        
+        <!--Цитата-->
+        <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="396" HeightRequest="96" Margin="0,32,0,0" BackgroundColor="#E5E5E5">
+            <VerticalStackLayout Margin="20,8,8,8">
+                <Label Text="&quot;Стоит только поверить, что вы можете, - и вы уже на полпути к цели&quot; " 
+                       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" WidthRequest="348" LineHeight="1.5"/>
+                <Label Text="Теодор Рузвельт" Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" HorizontalOptions="End"
+                       Margin="0,12,24,0"/>
+            </VerticalStackLayout>
+        </Border>
+        
+        <!--Меню-->
+        <VerticalStackLayout Margin="0,96,0,0" Spacing="8">
+            <!--Ежедневный совет-->
+            <HorizontalStackLayout>
+                <Image Source="advice_icon.png"/>
+                <Label Text="Получить ежедневный совет" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            
+            <Border Style="{StaticResource LinesStyle}"/>
+            
+            <!--История советов-->
+            <HorizontalStackLayout>
+                <Image Source="clock_icon.png"/>
+                <Label Text="История советов" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            
+            <Border Style="{StaticResource LinesStyle}"/>
+            
+            <!--Настройка уведомлений-->
+            <HorizontalStackLayout>
+                <Image Source="notification_icon.png"/>
+                <Label Text="Настройка уведомлений" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            
+            <Border Style="{StaticResource LinesStyle}"/>
+            
+            <!--Настройка темы приложения-->
+            <HorizontalStackLayout>
+                <Image Source="sun_icon.png"/>
+                <Label Text="Настройка темы приложения" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+            </HorizontalStackLayout>
+            
+            
+        </VerticalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

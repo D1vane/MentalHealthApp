@@ -35,7 +35,7 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <VerticalStackLayout Margin="8,24,8,32">
+    <VerticalStackLayout Margin="8,24,8,0">
         
         <!--Месяц и год-->
         <Label Text="04/2025" Style="{StaticResource DaysStyle}" Margin="8,0,0,0"/>
