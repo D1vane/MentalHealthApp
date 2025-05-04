@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Maui.TouchEffect.Hosting;
 namespace MentalHealthApp
 {
     public static class MauiProgram
@@ -10,6 +11,7 @@ namespace MentalHealthApp
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseMauiTouchEffect()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

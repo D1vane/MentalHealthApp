@@ -123,7 +123,10 @@
                     VerticalOptions="End" Margin="8,0,0,8"/>
                     </Border>
                     <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
-                        <Label Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PlannerHomePage_Clicked"/>
+                        </Border.GestureRecognizers>
+                        <Label x:Name="LabelPlanner" Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                     VerticalOptions="End" Margin="8,0,0,8"/>
                     </Border>
                     <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">

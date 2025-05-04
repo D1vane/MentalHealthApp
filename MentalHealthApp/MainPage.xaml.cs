@@ -7,6 +7,11 @@
         {
             InitializeComponent();
         }
+
+        private void PlannerHomePage_Clicked(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync("Planner");
+        }
     }
 
 }

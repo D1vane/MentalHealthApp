@@ -10,21 +10,27 @@
     <TabBar Shell.TabBarUnselectedColor="Gray" Shell.TabBarTitleColor="Black" Shell.TabBarForegroundColor="Black">
 
         <Tab Title="Избранное" Icon="favourites_icon.png" >
-            <ShellContent ContentTemplate="{DataTemplate local:Favourites}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>
         </Tab>
 
         <Tab Title="Календарь" Icon="calendar_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Calendar}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
         </Tab>
 
         <Tab Title="Здоровье" Icon="health_icon.png">
-            <ShellContent x:Name="HealthPage" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent x:Name="HealthPage" ContentTemplate="{DataTemplate local:MainPage}">
+                
+            </ShellContent>
         </Tab>
 
         <Tab Title="Профиль" Icon="profile_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
+            <ShellContent ContentTemplate="{DataTemplate local:Profile}"/>
         </Tab>
 
     </TabBar>
+
+    <ShellContent Title="Список задач" ContentTemplate="{DataTemplate local:Planner}" />
+
+
 
 </Shell>

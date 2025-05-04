@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Planner"
+             Title="Planner"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="TasksAndMenuStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Margin="8,24,8,0" Spacing="24" >
+        
+        <Label x:Name="TasksLabel" Text="Список задач" Style="{StaticResource TasksAndMenuStyle}" FontSize="32"/>
+        
+        <!--Дата и опции-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="PlannerDateLabel" Text="09/04/2025" Style="{StaticResource TasksAndMenuStyle}" FontSize="24" Grid.Column="0"/>
+            <Image Source="threedots_icon.png" HorizontalOptions="End" Margin="0,2,0,0" Grid.Column="1"/>
+        </Grid>
+
+        <Label Text="Выполнено задач 0/3" Style="{StaticResource TasksAndMenuStyle}" HorizontalOptions="End"/>
+
+        <!--Список задач-->
+        <ListView>
+            
+        </ListView>
+        
+        <VerticalStackLayout x:Name="TasksStackLayout" Spacing="24">
+            <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="58">
+                <Grid Margin="16,4,12,4" ColumnSpacing="12" x:Name="TaskGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="242"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition Width="24"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
+                    <Label Text="Почитать Преступление и Наказание" Style="{StaticResource TasksAndMenuStyle}" Grid.Column="1" LineBreakMode="TailTruncation"
+   Margin="0,2,0,0"/>
+                    <Image Source="cross_icon.png" Grid.Column="2" Scale="1"/>
+                    <Image Source="threedots_icon.png" Grid.Column="3"/>
+                    <CheckBox Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24"/>
+                    <Label x:Name="EventTimeLabel" Text="18:30" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+        <!--Добавление задачи-->
+        <Image Source="add_icon.png" HorizontalOptions="End" Margin="0,8,6,0" Opacity="0.7">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AddNewTask_Clicked"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+    </VerticalStackLayout>
+</ContentPage>

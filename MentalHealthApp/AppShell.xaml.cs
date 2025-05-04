@@ -6,6 +6,7 @@
         {
             InitializeComponent();
             CurrentItem = HealthPage;
+            Routing.RegisterRoute("Planner", typeof(Planner));
         }
     }
 }
