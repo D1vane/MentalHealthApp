@@ -28,6 +28,8 @@
                 <Setter Property="ColumnSpacing" Value="16"/>
                 <Setter Property="RowSpacing" Value="16"/>
                 <Setter Property="Margin" Value="0,16,0,0"/>
+                <Setter Property="RowDefinitions" Value="1*,1*"/>
+                <Setter Property="ColumnDefinitions" Value="1*,1*,1*"/>
             </Style>
 
         </ResourceDictionary>
@@ -35,24 +37,15 @@
     </ContentPage.Resources>
     <ScrollView Margin="0,24,8,0">
         <!--Основной стек элементов-->
-        <VerticalStackLayout Spacing="32" HeightRequest="804">
+        <VerticalStackLayout Spacing="32">
 
                 <!-- Расслабление и профилактика -->
-                <VerticalStackLayout Margin="8,0,0,0">
+                <VerticalStackLayout Margin="8,0,0,0" >
                     <Label
                     Text="Расслабление и профилактика"
                     Style="{StaticResource HomescreenHeadlinesStyle}"/>
                     <!-- Сетка элементов расслабления и профилактики -->
                     <Grid Style="{StaticResource GridTechnicsStyle}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="110"/>
-                            <RowDefinition Height="110"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="110"/>
-                        </Grid.ColumnDefinitions>
                         <Border StrokeShape="RoundRectangle 15,15,15,15">
                             <Label Text="Медитации" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                                VerticalOptions="End" Margin="8,0,0,8"/>
@@ -78,15 +71,8 @@
                     Text="Полезная информация"
                     Style="{StaticResource HomescreenHeadlinesStyle}"/>
                     <!-- Сетка элементов полезной информации -->
-                    <Grid Style="{StaticResource GridTechnicsStyle}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="110"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="110"/>
-                        </Grid.ColumnDefinitions>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15">
+                <Grid Style="{StaticResource GridTechnicsStyle}">
+                    <Border StrokeShape="RoundRectangle 15,15,15,15">
                             <Label Text="Для чтения" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                    VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
@@ -104,16 +90,6 @@
                     Style="{StaticResource HomescreenHeadlinesStyle}"/>
                 <!-- Сетка элементов самоконтроля -->
                 <Grid Style="{StaticResource GridTechnicsStyle}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="110"/>
-                        <RowDefinition Height="110"/>
-                        <RowDefinition Height="110"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"/>
-                        <ColumnDefinition Width="110"/>
-                        <ColumnDefinition Width="110"/>
-                    </Grid.ColumnDefinitions>
                     <Border StrokeShape="RoundRectangle 15,15,15,15">
                         <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
                    VerticalOptions="End" Margin="8,0,0,8"/>

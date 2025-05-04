@@ -28,7 +28,8 @@
             <!-- Стиль сетки для вкладок -->
             <Style x:Key="InnerGridStyle" TargetType="Grid">
                 <Setter Property="RowSpacing" Value="12"/>
-                <Setter Property="Margin" Value="8,4,8,0"/>
+                <Setter Property="Margin" Value="8,8,8,8"/>
+                <Setter Property="RowDefinitions" Value="1*,1*"/>
             </Style>
 
         </ResourceDictionary>
@@ -44,28 +45,11 @@
             HorizontalOptions="Center" />
         
         <!--Сетка категорий-->
-        <Grid RowSpacing="12">
+        <Grid RowDefinitions="1*,1*,1*,1*,1*,1*,1*" ColumnDefinitions="*" RowSpacing="12">
             
-            <Grid.RowDefinitions>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="58"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="396"/>
-            </Grid.ColumnDefinitions>
             <!--Медитации-->
             <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0">
-                <Grid Style="{StaticResource InnerGridStyle}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="18"/>
-                        <RowDefinition Height="18"/>
-                    </Grid.RowDefinitions>
+                <Grid  Style="{StaticResource InnerGridStyle}" >
                     <Label Text="Медитации" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
                     <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
                 </Grid>

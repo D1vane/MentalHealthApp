@@ -37,37 +37,35 @@
             <Image Source="threedots_icon.png" HorizontalOptions="End" Margin="0,2,0,0" Grid.Column="1"/>
         </Grid>
 
-        <Label Text="Выполнено задач 0/3" Style="{StaticResource TasksAndMenuStyle}" HorizontalOptions="End"/>
+        <Label x:Name="CountOfTasks" Text="Выполнено задач 0/3" Style="{StaticResource TasksAndMenuStyle}" HorizontalOptions="End"/>
 
         <!--Список задач-->
-        <ListView>
+        <ListView ItemsSource="{Binding tasks}" HasUnevenRows="True" x:Name="listOfTasks" BackgroundColor="Transparent" 
+                   SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <VerticalStackLayout Padding="12">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
+                                    <Grid Margin="16,4,12,4" ColumnSpacing="12" RowDefinitions="1*,1*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
+                                        <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding TextTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Column="1" 
+            LineBreakMode="TailTruncation" Margin="0,2,0,0"/>
+                                        <Image Source="cross_icon.png" Grid.Column="2" WidthRequest="12" HeightRequest="12"/>
+                                        <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>
+                                        <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                                        <Label Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
             
         </ListView>
-        
-        <VerticalStackLayout x:Name="TasksStackLayout" Spacing="24">
-            <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="58">
-                <Grid Margin="16,4,12,4" ColumnSpacing="12" x:Name="TaskGrid">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="12"/>
-                        <ColumnDefinition Width="242"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="24"/>
-                    </Grid.ColumnDefinitions>
-                    <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
-                    <Label Text="Почитать Преступление и Наказание" Style="{StaticResource TasksAndMenuStyle}" Grid.Column="1" LineBreakMode="TailTruncation"
-   Margin="0,2,0,0"/>
-                    <Image Source="cross_icon.png" Grid.Column="2" Scale="1"/>
-                    <Image Source="threedots_icon.png" Grid.Column="3"/>
-                    <CheckBox Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24"/>
-                    <Label x:Name="EventTimeLabel" Text="18:30" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>
-                </Grid>
-            </Border>
-        </VerticalStackLayout>
+
         <!--Добавление задачи-->
         <Image Source="add_icon.png" HorizontalOptions="End" Margin="0,8,6,0" Opacity="0.7">
             <Image.GestureRecognizers>

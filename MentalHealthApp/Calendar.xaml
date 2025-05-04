@@ -21,8 +21,8 @@
             <Style x:Key="NumbersStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="VerticalOptions" Value="Start"/>
-                <Setter Property="Margin" Value="4,0,0,0"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Margin" Value="2,0,0,48"/>
             </Style>
 
             <!-- Стиль счетчиков событий-->
@@ -41,19 +41,7 @@
         <Label Text="04/2025" Style="{StaticResource DaysStyle}" Margin="8,0,0,0"/>
         
         <!--Дни недели-->
-        <Grid Padding="0,12,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="27"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-            </Grid.ColumnDefinitions>
+        <Grid RowDefinitions="1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*" Padding="0,12,0,0">
             
             <Label Text="Пн" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="0" Margin="8,0,0,0"/>
             <Label Text="Вт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0"/>
@@ -65,24 +53,7 @@
         </Grid>
         
         <!--Календарь-->
-        <Grid Margin="0,8,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="66"/>
-                <RowDefinition Height="66"/>
-                <RowDefinition Height="66"/>
-                <RowDefinition Height="66"/>
-                <RowDefinition Height="66"/>
-                <RowDefinition Height="66"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-                <ColumnDefinition Width="56.57"/>
-            </Grid.ColumnDefinitions>
+        <Grid Margin="0,8,0,0" RowDefinitions="1*,1*,1*,1*,1*,1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*">
             
             <!--Граница календаря-->
             <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="6"/>
@@ -90,6 +61,7 @@
             <!--Первая строка-->
             <Border StrokeShape="RoundRectangle 15,0,0,0" Grid.Row="0" Grid.Column="0" StrokeThickness="0.3">
                 <Label Text="" Style="{StaticResource NumbersStyle}"/>
+                
             </Border>
             <Border StrokeShape="Rectangle" Grid.Row="0" Grid.Column="1" StrokeThickness="0.3">
                 <Label Text="" Style="{StaticResource NumbersStyle}"/>

@@ -21,7 +21,6 @@
                 <Setter Property="Stroke" Value="Black"/>
                 <Setter Property="StrokeThickness" Value="0.5"/>
                 <Setter Property="Opacity" Value="0.6"/>
-                <Setter Property="WidthRequest" Value="396"/>
             </Style>
 
         </ResourceDictionary>
@@ -48,13 +47,15 @@
         </HorizontalStackLayout>
         
         <!--Цитата-->
-        <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="396" HeightRequest="96" Margin="0,32,0,0" BackgroundColor="#E5E5E5">
-            <VerticalStackLayout Margin="20,8,8,8">
+        <Border StrokeShape="RoundRectangle 15,15,15,15"  Margin="0,32,0,0" BackgroundColor="#E5E5E5">
+            <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="0.9*,0.1*" Margin="20,12,8,8">
                 <Label Text="&quot;Стоит только поверить, что вы можете, - и вы уже на полпути к цели&quot; " 
-                       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" WidthRequest="348" LineHeight="1.5"/>
+       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14"  Grid.RowSpan="2"/>
                 <Label Text="Теодор Рузвельт" Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" HorizontalOptions="End"
-                       Margin="0,12,24,0"/>
-            </VerticalStackLayout>
+       Margin="0,12,24,0" Grid.Row="2" />
+                <Image Source="favourites_icon.png" HorizontalOptions="End" Grid.Column="1" 
+                       Margin="0,0,8,0" WidthRequest="24" HeightRequest="24"/>
+            </Grid>
         </Border>
         
         <!--Меню-->
@@ -65,10 +66,10 @@
                 <Label Text="Получить ежедневный совет" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
-            <Border Style="{StaticResource LinesStyle}"/>
+
             
             <!--История советов-->
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,8,0,0">
                 <Image Source="clock_icon.png"/>
                 <Label Text="История советов" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
@@ -81,10 +82,9 @@
                 <Label Text="Настройка уведомлений" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
-            <Border Style="{StaticResource LinesStyle}"/>
             
             <!--Настройка темы приложения-->
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,8,0,0">
                 <Image Source="sun_icon.png"/>
                 <Label Text="Настройка темы приложения" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
