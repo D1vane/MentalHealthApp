@@ -22,7 +22,7 @@
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="Margin" Value="2,0,0,48"/>
+                <Setter Property="Margin" Value="4,0,0,48"/>
             </Style>
 
             <!-- Стиль счетчиков событий-->

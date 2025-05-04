@@ -35,87 +35,129 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <ScrollView Margin="0,24,8,0">
+    <ListView Margin="8,24,8,0" BackgroundColor="Transparent" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <VerticalStackLayout Padding="24">
+                            <Label Text="Медитации" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+    VerticalOptions="End" Margin="8,0,0,8"/>
+                        </VerticalStackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
         <!--Основной стек элементов-->
-        <VerticalStackLayout Spacing="32">
+        <!--<VerticalStackLayout Spacing="24">
+            <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="*" RowSpacing="12">
+                -->
+        <!-- Расслабление и профилактика -->
 
-                <!-- Расслабление и профилактика -->
-                <VerticalStackLayout Margin="8,0,0,0" >
-                    <Label
-                    Text="Расслабление и профилактика"
-                    Style="{StaticResource HomescreenHeadlinesStyle}"/>
-                    <!-- Сетка элементов расслабления и профилактики -->
-                    <Grid Style="{StaticResource GridTechnicsStyle}">
+        <!--<Grid  Style="{StaticResource GridTechnicsStyle}">
+            <Border StrokeShape="RoundRectangle 15,15,15,15">
+                <Label Text="Медитации" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="8,0,0,8"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
+                <Label Text="Дыхательные техники" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+ VerticalOptions="End" Margin="8,0,0,8"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
+                <Label Text="Видеозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+ VerticalOptions="End" Margin="8,0,0,8"/>
+            </Border>
+            <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
+                <Label Text="Аудиозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+ VerticalOptions="End" Margin="8,0,0,8"/>
+            </Border>
+        </Grid>-->
+        <!--<VerticalStackLayout >
+                    <Label Text="Расслабление и профилактика" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                    -->
+        <!-- Сетка элементов расслабления и профилактики -->
+        <!--
+                    <Grid  Style="{StaticResource GridTechnicsStyle}">
                         <Border StrokeShape="RoundRectangle 15,15,15,15">
                             <Label Text="Медитации" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                               VerticalOptions="End" Margin="8,0,0,8"/>
+                   VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                         <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
                             <Label Text="Дыхательные техники" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                                VerticalOptions="End" Margin="8,0,0,8"/>
+                    VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                         <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
                             <Label Text="Видеозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                                VerticalOptions="End" Margin="8,0,0,8"/>
+                    VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                         <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
                             <Label Text="Аудиозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                                VerticalOptions="End" Margin="8,0,0,8"/>
+                    VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                     </Grid>
                 </VerticalStackLayout>
 
-                <!-- Полезная информация -->
-                <VerticalStackLayout Margin="8,0,0,0">
+                -->
+        <!-- Полезная информация -->
+        <!--
+                <VerticalStackLayout Grid.Row="1">
                     <Label
-                    Text="Полезная информация"
-                    Style="{StaticResource HomescreenHeadlinesStyle}"/>
-                    <!-- Сетка элементов полезной информации -->
-                <Grid Style="{StaticResource GridTechnicsStyle}">
-                    <Border StrokeShape="RoundRectangle 15,15,15,15">
+        Text="Полезная информация"
+        Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                    -->
+        <!-- Сетка элементов полезной информации -->
+        <!--
+                    <Grid Style="{StaticResource GridTechnicsStyle}">
+                        <Border StrokeShape="RoundRectangle 15,15,15,15">
                             <Label Text="Для чтения" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                   VerticalOptions="End" Margin="8,0,0,8"/>
+       VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                         <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
                             <Label Text="Позитивное мышление" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                    VerticalOptions="End" Margin="8,0,0,8"/>
+        VerticalOptions="End" Margin="8,0,0,8"/>
                         </Border>
                     </Grid>
                 </VerticalStackLayout>
 
-                <!-- Самоконтроль -->
-            <VerticalStackLayout Margin="8,0,0,0">
-                <Label
-                    Text="Самоконтроль"
-                    Style="{StaticResource HomescreenHeadlinesStyle}"/>
-                <!-- Сетка элементов самоконтроля -->
-                <Grid Style="{StaticResource GridTechnicsStyle}">
-                    <Border StrokeShape="RoundRectangle 15,15,15,15">
-                        <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                   VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
-                        <Label Text="Оценка сна" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                    VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="PlannerHomePage_Clicked"/>
-                        </Border.GestureRecognizers>
-                        <Label x:Name="LabelPlanner" Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                    VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
-                        <Label Text="Подключить умные часы" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-                    VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                </Grid>
-                
-            </VerticalStackLayout>
-                
-        </VerticalStackLayout>
-        
-    </ScrollView>
+                -->
+        <!-- Самоконтроль -->
+        <!--
+                <VerticalStackLayout  Grid.Row="2">
+                    <Label
+        Text="Самоконтроль"
+        Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                    -->
+        <!-- Сетка элементов самоконтроля -->
+        <!--
+                    <Grid Style="{StaticResource GridTechnicsStyle}">
+                        <Border StrokeShape="RoundRectangle 15,15,15,15">
+                            <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+       VerticalOptions="End" Margin="8,0,0,8"/>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="1">
+                            <Label Text="Оценка сна" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+        VerticalOptions="End" Margin="8,0,0,8"/>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Column="2">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PlannerHomePage_Clicked"/>
+                            </Border.GestureRecognizers>
+                            <Label x:Name="LabelPlanner" Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+        VerticalOptions="End" Margin="8,0,0,8"/>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
+                            <Label Text="Подключить умные часы" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+        VerticalOptions="End" Margin="8,0,0,8"/>
+                        </Border>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Grid>
+
+
+        </VerticalStackLayout>-->
+
+    </ListView>
 
 
 
