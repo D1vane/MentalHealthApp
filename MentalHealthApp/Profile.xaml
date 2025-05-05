@@ -48,9 +48,9 @@
         
         <!--Цитата-->
         <Border StrokeShape="RoundRectangle 15,15,15,15"  Margin="0,32,0,0" BackgroundColor="#E5E5E5">
-            <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="0.9*,0.1*" Margin="20,12,8,8">
+            <Grid RowDefinitions="1*,1*" ColumnDefinitions="0.9*,0.1*" Margin="20,12,8,8" RowSpacing="12">
                 <Label Text="&quot;Стоит только поверить, что вы можете, - и вы уже на полпути к цели&quot; " 
-       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14"  Grid.RowSpan="2"/>
+       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14"  Grid.RowSpan="2" LineBreakMode="WordWrap" LineHeight="1.2"/>
                 <Label Text="Теодор Рузвельт" Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" HorizontalOptions="End"
        Margin="0,12,24,0" Grid.Row="2" />
                 <Image Source="favourites_icon.png" HorizontalOptions="End" Grid.Column="1" 

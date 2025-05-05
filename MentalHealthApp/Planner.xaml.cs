@@ -4,19 +4,19 @@ namespace MentalHealthApp;
 
 public partial class Planner : ContentPage
 {
-    List<Task> tasks = new List<Task>();
+    List<Task> tasks = [];
     public Planner()
     {
         InitializeComponent();
-        tasks = new List<Task>()
-        {
+        tasks =
+        [
             new Task {
             TextTask = "Прочитать преступление и Наказание",
             TimeOfTask = "18:30"},
             new Task {
             TextTask = "Заехать в магазин за продуктами",
             TimeOfTask = ""},
-        };
+        ];
 
         listOfTasks.ItemsSource = tasks;
         BindingContext = this;
