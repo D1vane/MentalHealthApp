@@ -9,29 +9,35 @@ namespace MentalHealthApp.ViewModels
     {
         [ObservableProperty]
         private ObservableCollection<PlannerTask> tasks = new();
+        [ObservableProperty]
+        private ObservableCollection<PlannerTask> completedTasks = new();
 
         [ObservableProperty]
         private PlannerTask selectedItem;
 
         [ObservableProperty]
         private PlannerTask task;
-
+       
         [RelayCommand]
         private void AddTask()
         {
-            Tasks.Add(new PlannerTask
-            {
-                TextTask = "Погулять с собакой",
-                TimeOfTask = "19:30"
-            });
-            
+            if (Tasks.Count > 0)
+                foreach (var temptask in Tasks)
+                    temptask.IsNew = false;
+            Tasks.Add(new PlannerTask { TextTask = "", TimeOfTask = "19:30",IsNew = true });
         }
+
         [RelayCommand]
         private void RemoveTask()
         {
+            Tasks.RemoveAt(0);
+        }
 
-            if (Tasks.Contains(SelectedItem))
-                Tasks.Remove(SelectedItem);
+        [RelayCommand]
+        private void CompletedTask()
+        {
+            CompletedTasks.Add(Tasks[0]);
+            Tasks.RemoveAt(0);
         }
     }
 }

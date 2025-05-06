@@ -1,7 +1,10 @@
-﻿namespace MentalHealthApp.Models
+﻿using System.ComponentModel;
+
+namespace MentalHealthApp.Models
 {
     public class PlannerTask
     {
+        public bool IsNew { get; set; }
         public string TextTask { get; set; }
 
         public string TimeOfTask { get; set; }

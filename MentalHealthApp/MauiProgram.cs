@@ -12,6 +12,14 @@ namespace MentalHealthApp
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .UseMauiTouchEffect()
+                .ConfigureMauiHandlers(handlers =>
+                {
+            #if ANDROID
+                        handlers.AddHandler(typeof(Entry), typeof (MentalHealthApp.Platforms.Android.MyEntryHandler));
+            #endif
+
+                }
+                )
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -21,6 +29,7 @@ namespace MentalHealthApp
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
 
             return builder.Build();
         }
