@@ -1,4 +1,6 @@
-﻿namespace MentalHealthApp
+﻿using MentalHealthApp.Views;
+
+namespace MentalHealthApp
 {
     public partial class AppShell : Shell
     {
@@ -7,6 +9,7 @@
             InitializeComponent();
             CurrentItem = HealthPage;
             Routing.RegisterRoute("Planner", typeof(Planner));
+            Routing.RegisterRoute("PositiveThinking", typeof(PositiveThinking));
         }
     }
 }

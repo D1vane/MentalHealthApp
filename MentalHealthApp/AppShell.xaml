@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MentalHealthApp"
+    xmlns:views="clr-namespace:MentalHealthApp.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="MentalHealthApp">
 
@@ -30,6 +31,7 @@
     </TabBar>
 
     <ShellContent Title="Список задач" ContentTemplate="{DataTemplate local:Planner}" />
+    <ShellContent Title="Позитивное мышление" ContentTemplate="{DataTemplate views:PositiveThinking}"/>
 
 
 

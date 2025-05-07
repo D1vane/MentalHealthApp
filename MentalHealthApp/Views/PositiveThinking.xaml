@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.PositiveThinking"
+             Title="PositiveThinking"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="CatsStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
+        
+        <Label Text="Позитивное мышление" Style="{StaticResource CatsStyle}" FontSize="32"/>
+        
+        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+            <Label Text="Проверить себя" Style="{StaticResource CatsStyle}" FontSize="14"/>
+            <Image Source="cards_icon.png"/>
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout Spacing="4">
+            <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
+            <Label Text="Количество разделов: 12" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7"/>
+            <CollectionView ItemsLayout="HorizontalGrid">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Hey</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 15,15,15,15" Margin="0,0,0,0">
+                            <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="0.7*,0.3*"  RowSpacing="24" >
+                                <Label Text="12" HorizontalOptions="End" Grid.Row="0" Margin="0,0,8,4" Grid.Column="1"/>
+                            <Label Text="Название подтемы" Grid.Row="1" Grid.RowSpan="2" Margin="8,0,0,4" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

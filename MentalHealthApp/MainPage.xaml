@@ -71,6 +71,9 @@ VerticalOptions="End" Margin="8,0,0,8"/>
        VerticalOptions="End" Margin="8,0,0,8"/>
                 </Border>
                 <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="1">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PositiveThinkingHomePage_Clicked"/>
+                    </Border.GestureRecognizers>
                     <Label Text="Позитивное мышление" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
         VerticalOptions="End" Margin="8,0,0,8"/>
                 </Border>

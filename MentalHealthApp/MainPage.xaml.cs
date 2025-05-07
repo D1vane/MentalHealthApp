@@ -11,6 +11,11 @@
         {
             Shell.Current.GoToAsync("Planner");
         }
+
+        private void PositiveThinkingHomePage_Clicked(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync("PositiveThinking");
+        }
     }
 
 }

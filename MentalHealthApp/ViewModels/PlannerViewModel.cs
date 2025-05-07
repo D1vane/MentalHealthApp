@@ -52,7 +52,7 @@ namespace MentalHealthApp.ViewModels
         private void UnCompletedTask()
         {
             Tasks.Add(CompletedTasks[0]);
-            CompletedTasks.RemoveAt(0);
+            CompletedTasks.RemoveAt(0); 
         }
     }
 }
