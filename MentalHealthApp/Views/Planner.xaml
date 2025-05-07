@@ -49,7 +49,6 @@
                                             <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
                                                 <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
-                                                <Label Text="{Binding TextTask}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation"/>
                                                 <Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
                                                        FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text"/>
                                                 <Image Source="cross_icon.png" Grid.Column="2" WidthRequest="12" HeightRequest="12" >
@@ -57,7 +56,16 @@
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>
+                                                <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End">
+                                                    <FlyoutBase.ContextFlyout>
+                                                        <MenuFlyout>
+                                                            <MenuFlyoutItem Text="Перенести"/>
+                                                            <MenuFlyoutItem Text="Напоминание"/>
+                                                            <MenuFlyoutItem Text="Повторить в этот день"/>
+                                                            <MenuFlyoutItem Text="Повторить в другой день"/>
+                                                        </MenuFlyout>
+                                                    </FlyoutBase.ContextFlyout>
+                                                </Image>
                                                 <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
                                                     <CheckBox.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"/>
@@ -74,14 +82,15 @@
                 </ListView>
 
                 <!--Добавление задачи-->
-                <Image Source="add_icon.png" HorizontalOptions="End" Margin="0,8,6,0" Opacity="0.7" >
+                <Image Source="add_icon.png" HorizontalOptions="End" Margin="0,8,20,0" Opacity="0.7" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AddTaskCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
 
+                <!--Выполеннные задачи-->
                 <ListView ItemsSource="{Binding CompletedTasks}" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" 
-HorizontalScrollBarVisibility="Never" SelectionMode="None">
+HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:PlannerTask}">
                             <ViewCell>
@@ -98,7 +107,11 @@ HorizontalScrollBarVisibility="Never" SelectionMode="None">
                                                     </Image.GestureRecognizers>
                                                 </Image>
                                                 <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>
-                                                <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                                                <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
+                                                    <CheckBox.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"/>
+                                                    </CheckBox.GestureRecognizers>
+                                                </CheckBox>
                                                 <Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1" TextDecorations="Strikethrough"/>
                                             </Grid>
                                         </Border>
