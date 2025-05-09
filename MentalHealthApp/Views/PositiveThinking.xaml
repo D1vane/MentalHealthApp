@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MentalHealthApp.Views.PositiveThinking"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              Title="PositiveThinking"
              Shell.NavBarIsVisible="False">
 
@@ -19,7 +21,7 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    
+    <ScrollView>
     <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
         
         <Label Text="Позитивное мышление" Style="{StaticResource CatsStyle}" FontSize="32"/>
@@ -28,27 +30,89 @@
             <Label Text="Проверить себя" Style="{StaticResource CatsStyle}" FontSize="14"/>
             <Image Source="cards_icon.png"/>
         </HorizontalStackLayout>
-
-        <VerticalStackLayout Spacing="4">
-            <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
-            <Label Text="Количество разделов: 12" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7"/>
-            <CollectionView ItemsLayout="HorizontalGrid">
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Hey</x:String>
-                    </x:Array>
-                </CollectionView.ItemsSource>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border StrokeShape="RoundRectangle 15,15,15,15" Margin="0,0,0,0">
-                            <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="0.7*,0.3*"  RowSpacing="24" >
-                                <Label Text="12" HorizontalOptions="End" Grid.Row="0" Margin="0,0,8,4" Grid.Column="1"/>
-                            <Label Text="Название подтемы" Grid.Row="1" Grid.RowSpan="2" Margin="8,0,0,4" LineBreakMode="WordWrap"/>
+        <!--Работа-->
+            <Grid RowDefinitions="24,24,136" ColumnDefinitions="*" RowSpacing="4" AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+                <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
+                                        ItemsSource="{Binding Work}"  
+                                        Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:SubTopic}">
+                            <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
+                                <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
+Grid.Column="1" Margin="0,4,8,0"/>
                             </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <!--Учеба-->
+            <Grid RowDefinitions="24,24,136" ColumnDefinitions="*" RowSpacing="4" AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Учеба" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+                <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
+                                        ItemsSource="{Binding Study}"  
+                                        Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:SubTopic}">
+                            <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
+                                <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
+Grid.Column="1" Margin="0,4,8,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <!--Здоровье-->
+            <Grid RowDefinitions="24,24,136" ColumnDefinitions="*" RowSpacing="4" AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Здоровье" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+                <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
+                                        ItemsSource="{Binding Health}"  
+                                        Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:SubTopic}">
+                            <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
+                                <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
+Grid.Column="1" Margin="0,4,8,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <!--Быт-->
+            <Grid RowDefinitions="24,24,136" ColumnDefinitions="*" RowSpacing="4" AbsoluteLayout.LayoutFlags="All">
+                <Label Text="Быт" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+                <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
+                                        ItemsSource="{Binding Life}"  
+                                        Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:SubTopic}">
+                            <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
+                                <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
+Grid.Column="1" Margin="0,4,8,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

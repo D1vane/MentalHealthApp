@@ -27,7 +27,7 @@ namespace MentalHealthApp.ViewModels
             if (Tasks.Count > 0)
                 foreach (var temptask in Tasks)
                     temptask.IsNew = false;
-            Tasks.Add(new PlannerTask { TextTask = "", TimeOfTask = "19:30",IsNew = true });
+            Tasks.Add(new PlannerTask { TextTask = "Прогулка с собакой", TimeOfTask = "19:30",IsNew = true });
         }
         /// <summary>
         /// Удаление задачи из списка

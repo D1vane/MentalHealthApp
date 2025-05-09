@@ -4,7 +4,7 @@
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models ="clr-namespace:MentalHealthApp.Models"
              xmlns:triggers ="clr-namespace:MentalHealthApp.Triggers"
-             x:DataType="vm:PlannerViewModel"
+             
              x:Class="MentalHealthApp.Planner"
              Title="Planner"
              Shell.NavBarIsVisible="False">
