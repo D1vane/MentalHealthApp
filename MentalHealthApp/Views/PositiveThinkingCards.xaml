@@ -23,9 +23,9 @@
     </ContentPage.Resources>
     <ScrollView>
     <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="32"/>
-        <Label Text="Название подтемы" Style="{StaticResource CatsStyle}" FontSize="24"/>
-        <Label Text="Мыслей: 12" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
+        <Label Text="{Binding ThCards[0].NameOfCategory}" Style="{StaticResource CatsStyle}" FontSize="32"/>
+        <Label Text="{Binding STName}" Style="{StaticResource CatsStyle}" FontSize="24"/>
+        <Label Text="{Binding ThCards.Count, StringFormat='Мыслей: {0}'}" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
         <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:PosThCards}">

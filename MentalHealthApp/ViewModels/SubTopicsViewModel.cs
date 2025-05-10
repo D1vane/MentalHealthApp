@@ -1,7 +1,9 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MentalHealthApp.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace MentalHealthApp.ViewModels
 {
@@ -16,7 +18,7 @@ namespace MentalHealthApp.ViewModels
             new() {NameOfCategory = "Быт"}
 
         };
-        
+
         [ObservableProperty]
         private ObservableCollection<SubTopic> work = new()
         {
@@ -52,11 +54,16 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         private ObservableCollection<PosThCards> thCards = new()
         {
-            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
-            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
-            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
-            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
-            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший", NameOfCategory = "Работа"},
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},
         };
+        [RelayCommand]
+        private void GetSubTopicName(object parametr)
+        {
+            Shell.Current.GoToAsync($"PositiveThinkingCards?subTopicName={parametr.ToString()}");
+        }
     }
 }

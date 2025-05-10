@@ -11,6 +11,6 @@ public partial class PositiveThinking : ContentPage
 
     private void GoToWorkCard_Tapped(object sender, TappedEventArgs e)
     {
-        Shell.Current.GoToAsync("PositiveThinkingCards");
+        
     }
 }

@@ -42,10 +42,13 @@
                             <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GoToWorkCard_Tapped"/>
+                                        <TapGestureRecognizer Tapped="GoToWorkCard_Tapped" 
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}"
+                                                              CommandParameter="{Binding Source={x:Reference subTopicLabel}, Path=Text}"
+                                                              />
                                     </Border.GestureRecognizers>
                                 </Border>
-                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
