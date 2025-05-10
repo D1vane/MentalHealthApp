@@ -32,6 +32,7 @@
 
     <ShellContent Title="Список задач" ContentTemplate="{DataTemplate local:Planner}" />
     <ShellContent Title="Позитивное мышление" ContentTemplate="{DataTemplate views:PositiveThinking}"/>
+    <ShellContent Title="Мысли" ContentTemplate="{DataTemplate views:PositiveThinkingCards}"/>
 
 
 

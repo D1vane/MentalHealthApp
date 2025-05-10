@@ -10,6 +10,7 @@ namespace MentalHealthApp
             CurrentItem = HealthPage;
             Routing.RegisterRoute("Planner", typeof(Planner));
             Routing.RegisterRoute("PositiveThinking", typeof(PositiveThinking));
+            Routing.RegisterRoute("PositiveThinkingCards", typeof(PositiveThinkingCards));
         }
     }
 }

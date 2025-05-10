@@ -49,5 +49,14 @@ namespace MentalHealthApp.ViewModels
                 new() {SubTopicName = "Домашние животные" },
                 new () {SubTopicName = "Внимание ребенку" }
         };
+        [ObservableProperty]
+        private ObservableCollection<PosThCards> thCards = new()
+        {
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+            new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший" },
+        };
     }
 }

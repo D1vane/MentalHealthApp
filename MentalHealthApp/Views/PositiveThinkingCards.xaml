@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.PositiveThinkingCards"
+             xmlns:models ="clr-namespace:MentalHealthApp.Models"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             Title="PositiveThinkingCards"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="CatsStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ScrollView>
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
+        <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="32"/>
+        <Label Text="Название подтемы" Style="{StaticResource CatsStyle}" FontSize="24"/>
+        <Label Text="Мыслей: 12" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
+        <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:PosThCards}">
+                    <Grid RowDefinitions="1*,1*,1*,1*" ColumnDefinitions="0.7*,0.3*" Margin="8,24,8,0" 
+                              HeightRequest="236" AbsoluteLayout.LayoutFlags="All">
+                        
+                        <!--Негативная мысль-->
+                        <Border Stroke="Black" StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                        <Label Text="{Binding NegThink}" Style="{StaticResource CatsStyle}" Grid.Row="0"
+                               Margin="8,4,0,0"/>
+                        <Image Source="cross_icon.png" WidthRequest="14" HeightRequest="14" Grid.Row="1"
+                                   Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0" />
+                        
+                        <!--Позитивная мысль-->
+                        <Border Stroke="Black" Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,15,15" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                        <Label Text="{Binding PosThink}" Style="{StaticResource CatsStyle}" Grid.Row="2" Margin="8,4,0,0"/>
+                        <Image Source="check_icon.png" WidthRequest="18" HeightRequest="18" Grid.Row="3"
+       Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

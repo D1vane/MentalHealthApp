@@ -8,4 +8,9 @@ public partial class PositiveThinking : ContentPage
 		InitializeComponent();
 		BindingContext = new SubTopicsViewModel();
 	}
+
+    private void GoToWorkCard_Tapped(object sender, TappedEventArgs e)
+    {
+        Shell.Current.GoToAsync("PositiveThinkingCards");
+    }
 }
