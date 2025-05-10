@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="MentalHealthApp.MainPage"
+             xmlns:models ="clr-namespace:MentalHealthApp.Models"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              Shell.NavBarIsVisible="False">
     <!-- Цвет для верхной строки (брови) приложения -->
     <ContentPage.Behaviors>
@@ -23,15 +25,6 @@
                 <Setter Property="FontSize" Value="24"/>
             </Style>
 
-            <!-- Стиль сетки для вкладок -->
-            <Style x:Key="GridTechnicsStyle" TargetType="Grid">
-                <Setter Property="ColumnSpacing" Value="16"/>
-                <Setter Property="RowSpacing" Value="16"/>
-                <Setter Property="Margin" Value="0,16,0,0"/>
-                <Setter Property="RowDefinitions" Value="0.27*,1*,1*"/>
-                <Setter Property="ColumnDefinitions" Value="1*,1*,1*"/>
-            </Style>
-
         </ResourceDictionary>
 
     </ContentPage.Resources>
@@ -39,69 +32,77 @@
     <!--Основной стек элементов-->
 
     <ScrollView>
-
-        <Grid RowDefinitions="1*,0.58*,1*" ColumnDefinitions="*"  RowSpacing="8" Margin="8,24,8,0">
+        
+        <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="*"  RowSpacing="24" Margin="8,24,8,12">
 
             <!--Расслабление и профилактика-->
-            <Grid  Style="{StaticResource GridTechnicsStyle}">
-                <Label Text="Расслабление и профилактика" Style="{StaticResource HomescreenHeadlinesStyle}" Grid.Row="0" Grid.ColumnSpan="3"/>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
-                    <Label Text="Медитации" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+            <VerticalStackLayout>
+                <Label Text="Расслабление и профилактика" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <CollectionView ItemsSource="{Binding Relax}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:MainPage}">
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
+                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
+                                                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path = Text}"/>
+                                </Border.GestureRecognizers>
+                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
 VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="1">
-                    <Label Text="Дыхательные техники" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
- VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="2">
-                    <Label Text="Видеозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
- VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="2">
-                    <Label Text="Аудиозаписи" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
- VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-            </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
             <!--Полезная информация-->
-            <Grid Style="{StaticResource GridTechnicsStyle}" Grid.Row="1" RowDefinitions="0.2*,0.8*">
-                <Label Text="Полезная информация" Style="{StaticResource HomescreenHeadlinesStyle}" Grid.ColumnSpan="3"/>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
-                    <Label Text="Для чтения" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-       VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="1">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="PositiveThinkingHomePage_Clicked"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="Позитивное мышление" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-        VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-            </Grid>
+            <VerticalStackLayout Grid.Row="1">
+                <Label Text="Полезная информация" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <CollectionView ItemsSource="{Binding UsefulInfo}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:MainPage}">
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
+                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
+                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>
+                                </Border.GestureRecognizers>
+                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="8,0,0,8"/>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
             <!--Самоконтроль-->
-                <Grid Style="{StaticResource GridTechnicsStyle}" Grid.Row="2">
-                    <Label Text="Самоконтроль" Style="{StaticResource HomescreenHeadlinesStyle}" Grid.ColumnSpan="3"/>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1">
-                    <Label Text="Оценка самочувствия" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-       VerticalOptions="End" Margin="8,0,0,8"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="1">
-                        <Label Text="Оценка сна" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-        VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="1" Grid.Column="2">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="PlannerHomePage_Clicked"/>
-                        </Border.GestureRecognizers>
-                        <Label x:Name="LabelPlanner" Text="Список задач" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-        VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="2">
-                        <Label Text="Подключить умные часы" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-        VerticalOptions="End" Margin="8,0,0,8"/>
-                    </Border>
-                </Grid>
+            <VerticalStackLayout Spacing="12" Grid.Row="2">
+                <Label Text="Самоконтроль" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <CollectionView ItemsSource="{Binding SelfControl}" VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:MainPage}">
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
+                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
+                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>
+                                </Border.GestureRecognizers>
+                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="8,0,0,8"/>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
         </Grid>
 
