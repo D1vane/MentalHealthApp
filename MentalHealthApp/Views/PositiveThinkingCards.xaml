@@ -23,7 +23,7 @@
     </ContentPage.Resources>
     <ScrollView>
     <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        <Label Text="{Binding ThCards[0].NameOfCategory}" Style="{StaticResource CatsStyle}" FontSize="32"/>
+        <Label Text="{Binding TName}" Style="{StaticResource CatsStyle}" FontSize="32"/>
         <Label Text="{Binding STName}" Style="{StaticResource CatsStyle}" FontSize="24"/>
         <Label Text="{Binding ThCards.Count, StringFormat='Мыслей: {0}'}" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
         <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">

@@ -63,7 +63,12 @@ namespace MentalHealthApp.ViewModels
         [RelayCommand]
         private void GetSubTopicName(object parametr)
         {
-            Shell.Current.GoToAsync($"PositiveThinkingCards?subTopicName={parametr.ToString()}");
+            var param = parametr as object[];
+            var subTpc = param[0];
+            var tPc = param[1];
+            Shell.Current.GoToAsync($"PositiveThinkingCards", new Dictionary<string, object>
+            {["topicName"] = tPc,
+                ["subTopicName"] = subTpc});
         }
     }
 }

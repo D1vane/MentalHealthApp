@@ -9,8 +9,4 @@ public partial class PositiveThinking : ContentPage
 		BindingContext = new SubTopicsViewModel();
 	}
 
-    private void GoToWorkCard_Tapped(object sender, TappedEventArgs e)
-    {
-        
-    }
 }

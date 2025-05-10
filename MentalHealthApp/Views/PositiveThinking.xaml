@@ -4,12 +4,15 @@
              x:Class="MentalHealthApp.Views.PositiveThinking"
              xmlns:models="clr-namespace:MentalHealthApp.Models"
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:conv ="clr-namespace:MentalHealthApp.Converters"
              Title="PositiveThinking"
              Shell.NavBarIsVisible="False">
 
     <!-- Ресурсы для элементов -->
     <ContentPage.Resources>
 
+        <conv:PosThinkingConverter x:Key="PosThinkingConverter"/>
+        
         <ResourceDictionary>
 
             <!-- Стиль текста на странице-->
@@ -32,7 +35,7 @@
         </HorizontalStackLayout>
         <!--Работа-->
             <Grid RowDefinitions="24,24,136" ColumnDefinitions="*" RowSpacing="4" AbsoluteLayout.LayoutFlags="All">
-                <Label Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label x:Name="topicLabel" Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
                 <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Work}"  
@@ -42,10 +45,15 @@
                             <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="GoToWorkCard_Tapped" 
-                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}"
-                                                              CommandParameter="{Binding Source={x:Reference subTopicLabel}, Path=Text}"
-                                                              />
+                                        <TapGestureRecognizer  
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            <TapGestureRecognizer.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                    <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
+                                                    <Binding StringFormat="Работа"/>
+                                                </MultiBinding>
+                                            </TapGestureRecognizer.CommandParameter>
+                                        </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
                                 <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
@@ -68,8 +76,20 @@ Grid.Column="1" Margin="0,4,8,0"/>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:SubTopic}">
                             <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
-                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer  
+        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            <TapGestureRecognizer.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                    <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
+                                                    <Binding StringFormat="Учеба"/>
+                                                </MultiBinding>
+                                            </TapGestureRecognizer.CommandParameter>
+                                        </TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                </Border>
+                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
@@ -89,8 +109,20 @@ Grid.Column="1" Margin="0,4,8,0"/>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:SubTopic}">
                             <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
-                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer  
+        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            <TapGestureRecognizer.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                    <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
+                                                    <Binding StringFormat="Здоровье"/>
+                                                </MultiBinding>
+                                            </TapGestureRecognizer.CommandParameter>
+                                        </TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                </Border>
+                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
@@ -110,8 +142,20 @@ Grid.Column="1" Margin="0,4,8,0"/>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:SubTopic}">
                             <Grid RowDefinitions="24,112" ColumnDefinitions="110,26" Margin="-12,0,0,0" Padding="12" AbsoluteLayout.LayoutFlags="All">
-                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                                <Label Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer  
+        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            <TapGestureRecognizer.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                    <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
+                                                    <Binding StringFormat="Быт"/>
+                                                </MultiBinding>
+                                            </TapGestureRecognizer.CommandParameter>
+                                        </TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                </Border>
+                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Text="12" Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
