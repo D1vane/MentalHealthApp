@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Favourites"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models ="clr-namespace:MentalHealthApp.Models"
+             Title="Favourites"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль названия категории -->
+            <Style x:Key="CategoriesStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+            <!-- Стиль количества записей -->
+            <Style x:Key="NubmerOfCategoriesStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
+
+            <!-- Стиль сетки для вкладок -->
+            <Style x:Key="InnerGridStyle" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="12"/>
+                <Setter Property="Margin" Value="8,8,8,8"/>
+                <Setter Property="RowDefinitions" Value="1*,1*"/>
+                <Setter Property="ColumnDefinitions" Value="1*"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <!--Отображение элементов-->
+    <VerticalStackLayout Margin="8,24,8,0" Spacing="16">
+
+        <Label Text="Избранные практики и материалы" Style="{StaticResource CategoriesStyle}" FontSize="20" HorizontalOptions="Center" />
+
+        <CollectionView ItemsSource="{Binding Favs}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:FavouriteModel}">
+                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Margin="8">
+                        <Grid  Style="{StaticResource InnerGridStyle}" >
+                            <Label Text="{Binding NameOfFav}" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                            <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

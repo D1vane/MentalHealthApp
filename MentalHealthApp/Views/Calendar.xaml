@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Calendar"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             Title="Calendar"
+             Shell.NavBarIsVisible="False">
+    <!-- Ресурсы для элементов -->
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль дней недели-->
+            <Style x:Key="DaysStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="8,0,0,0"/>
+            </Style>
+
+            <!-- Стиль чисел календаря-->
+            <Style x:Key="NumbersStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="4,0,0,0"/>
+            </Style>
+
+            <!-- Стиль счетчиков событий-->
+            <Style x:Key="EventsCountersStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+            <!--Стиль для выделенных дней-->
+            <Style TargetType="Border">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="StrokeThickness" Value="0"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="Stroke"
+                                        Value="Blue" />
+                                    <Setter Property="StrokeThickness" Value="0.5"/>
+                                    <Setter Property="StrokeShape" Value="RoundRectangle 5,5,5,5"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <VerticalStackLayout Margin="8,24,8,0" Spacing="12">
+
+        <!--Месяц и год-->
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Image Source="arrowleft_icon.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheLeftCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Binding StartDate.Month}" Style="{StaticResource DaysStyle}" FontSize="24" Margin="8,0,0,0"/>
+            <Label Text="/" Style="{StaticResource DaysStyle}" FontSize="24"/>
+            <Label Text="{Binding StartDate.Year}" Style="{StaticResource DaysStyle}" FontSize="24"/>
+            <Image Source="arrowright_icon.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheRightCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </HorizontalStackLayout>
+
+
+        <!--Дни недели-->
+        <Grid RowDefinitions="1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*" Padding="0,12,0,0" AbsoluteLayout.LayoutFlags="All">
+
+            <Label Text="Пн" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="0" Margin="8,0,0,0"/>
+            <Label Text="Вт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="1" Margin="8,0,0,0"/>
+            <Label Text="Ср" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="2" Margin="8,0,0,0"/>
+            <Label Text="Чт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="3" Margin="8,0,0,0"/>
+            <Label Text="Пт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="4" Margin="8,0,0,0"/>
+            <Label Text="Сб" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="5" Margin="8,0,0,0"/>
+            <Label Text="Вс" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="6" Margin="8,0,0,0"/>
+        </Grid>
+        <CollectionView ItemsSource="{Binding FullMonth}" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="7"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:CalendarModel}">
+                        <Border WidthRequest="57" HeightRequest="67" AbsoluteLayout.LayoutFlags="All">
+                            <Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>
+                        </Border>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        
+        
+
+
+        <VerticalStackLayout Spacing="12" Margin="0,32,0,0">
+            <Label Text="Событий на сегодня 7/7" Style="{StaticResource EventsCountersStyle}" />
+            <Label Text="Событий на этой неделе 7/12" Style="{StaticResource EventsCountersStyle}"/>
+            <Label Text="Событий на текущий месяц 16/18" Style="{StaticResource EventsCountersStyle}"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

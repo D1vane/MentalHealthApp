@@ -8,15 +8,15 @@ namespace MentalHealthApp.ViewModels
     public partial class PlannerViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<PlannerTask> tasks = new();
+        private ObservableCollection<PlannerTaskModel> tasks = new();
         [ObservableProperty]
-        private ObservableCollection<PlannerTask> completedTasks = new();
+        private ObservableCollection<PlannerTaskModel> completedTasks = new();
 
         [ObservableProperty]
-        private PlannerTask selectedItem;
+        private PlannerTaskModel selectedItem;
 
         [ObservableProperty]
-        private PlannerTask task;
+        private PlannerTaskModel task;
        
         /// <summary>
         /// Добавление новой задачи в список
@@ -27,7 +27,7 @@ namespace MentalHealthApp.ViewModels
             if (Tasks.Count > 0)
                 foreach (var temptask in Tasks)
                     temptask.IsNew = false;
-            Tasks.Add(new PlannerTask { TextTask = "Прогулка с собакой", TimeOfTask = "19:30",IsNew = true });
+            Tasks.Add(new PlannerTaskModel { TextTask = "Прогулка с собакой", TimeOfTask = "19:30",IsNew = true });
         }
         /// <summary>
         /// Удаление задачи из списка

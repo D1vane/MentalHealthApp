@@ -24,6 +24,15 @@
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontSize" Value="24"/>
             </Style>
+            
+            <!--Стиль бордера отображений-->
+            <Style x:Key="BorderStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 15,15,15,15"/>
+                <Setter Property="WidthRequest" Value="136"/>
+                <Setter Property="HeightRequest" Value="136"/>
+                <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
+                <Setter Property="Margin" Value="-16,12,0,0"/>
+            </Style>
 
         </ResourceDictionary>
 
@@ -38,14 +47,13 @@
             <!--Расслабление и профилактика-->
             <VerticalStackLayout>
                 <Label Text="Расслабление и профилактика" Style="{StaticResource HomescreenHeadlinesStyle}"/>
-                <CollectionView ItemsSource="{Binding Relax}">
+                <CollectionView ItemsSource="{Binding Relax}" HorizontalOptions="Start">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:MainPage}">
-                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
-                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                        <DataTemplate x:DataType="{x:Type models:MainPageModel}">
+                            <Border Style="{StaticResource BorderStyle}">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
                                                           CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path = Text}"/>
@@ -66,9 +74,8 @@ VerticalOptions="End" Margin="8,0,0,8"/>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:MainPage}">
-                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
-                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                        <DataTemplate x:DataType="{x:Type models:MainPageModel}">
+                            <Border Style="{StaticResource BorderStyle}">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
                           CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>
@@ -89,9 +96,8 @@ VerticalOptions="End" Margin="8,0,0,8"/>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:MainPage}">
-                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="110" HeightRequest="110" 
-                                    AbsoluteLayout.LayoutFlags="All" Margin="-32,12,0,0">
+                        <DataTemplate x:DataType="{x:Type models:MainPageModel}">
+                            <Border Style="{StaticResource BorderStyle}">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
                           CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>

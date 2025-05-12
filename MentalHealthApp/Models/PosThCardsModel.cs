@@ -1,7 +1,7 @@
 ﻿
 namespace MentalHealthApp.Models
 {
-    public class PosThCards
+    public class PosThCardsModel
     {
         public int ThinkID { get; set; }
         public string NegThink { get; set; }

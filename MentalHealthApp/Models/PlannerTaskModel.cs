@@ -2,7 +2,7 @@
 
 namespace MentalHealthApp.Models
 {
-    public class PlannerTask
+    public class PlannerTaskModel
     {
         public bool IsNew { get; set; }
         public string TextTask { get; set; }

@@ -10,7 +10,7 @@ namespace MentalHealthApp.ViewModels
     public partial class SubTopicsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Categories> cats = new()
+        private ObservableCollection<CategoryModel> cats = new()
         {
             new() {NameOfCategory = "Работа"},
             new() {NameOfCategory = "Учеба"},
@@ -20,7 +20,7 @@ namespace MentalHealthApp.ViewModels
         };
 
         [ObservableProperty]
-        private ObservableCollection<SubTopic> work = new()
+        private ObservableCollection<PosThModel> work = new()
         {
             new () {SubTopicName = "Отношения с начальником" } ,
                 new () {SubTopicName = "Отношения с коллегами" },
@@ -28,7 +28,7 @@ namespace MentalHealthApp.ViewModels
                 new () {SubTopicName = "Производительность"}
         };
         [ObservableProperty]
-        private ObservableCollection<SubTopic> study = new()
+        private ObservableCollection<PosThModel> study = new()
         {
             new () {SubTopicName = "Отношения с учителем"},
                 new () {SubTopicName = "Отношения с одноклассниками"},
@@ -36,7 +36,7 @@ namespace MentalHealthApp.ViewModels
                 new () {SubTopicName = "Успеваемость"}
         };
         [ObservableProperty]
-        private ObservableCollection<SubTopic> health = new()
+        private ObservableCollection<PosThModel> health = new()
         {
             new () {SubTopicName = "Тревожное состояние" },
                 new () {SubTopicName = "Личная гигиена"},
@@ -44,7 +44,7 @@ namespace MentalHealthApp.ViewModels
                 new () {SubTopicName = "Мысли о старости"}
         };
         [ObservableProperty]
-        private ObservableCollection<SubTopic> life = new()
+        private ObservableCollection<PosThModel> life = new()
         {
             new () {SubTopicName = "Отношения с семьей"} ,
                 new () {SubTopicName = "Личные обязанности"},
@@ -52,7 +52,7 @@ namespace MentalHealthApp.ViewModels
                 new () {SubTopicName = "Внимание ребенку" }
         };
         [ObservableProperty]
-        private ObservableCollection<PosThCards> thCards = new()
+        private ObservableCollection<PosThCardsModel> thCards = new()
         {
             new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший", NameOfCategory = "Работа"},
             new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},

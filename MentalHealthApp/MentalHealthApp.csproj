@@ -66,10 +66,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Calendar.xaml">
+	  <MauiXaml Update="Views\Calendar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Favourites.xaml">
+	  <MauiXaml Update="Views\Favourites.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Planner.xaml">

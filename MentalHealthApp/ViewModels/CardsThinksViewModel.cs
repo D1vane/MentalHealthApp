@@ -17,7 +17,7 @@ namespace MentalHealthApp.ViewModels
         private string tName;
 
         [ObservableProperty]
-        private ObservableCollection<PosThCards> thCards = new()
+        private ObservableCollection<PosThCardsModel> thCards = new()
         {
             new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший", NameOfCategory = "Работа"},
             new () {NegThink = "Все плохо обо мне думают", PosThink = "Я хороший",NameOfCategory = "Работа"},
