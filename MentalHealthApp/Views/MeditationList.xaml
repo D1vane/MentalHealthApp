@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.MeditationList"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+             Title="MeditationList"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="AllText" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <ScrollView>
+
+        <VerticalStackLayout Margin="8,24,8,8" AbsoluteLayout.LayoutFlags="All" Spacing="12">
+
+            <Label Text="Медитации" Style="{StaticResource AllText}" FontSize="32"/>
+
+            <Label Text="Медитаций: 12" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
+
+            <CollectionView ItemsSource="{Binding MList}">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="{x:Type models:MeditationListModel}">
+
+                        <Grid RowDefinitions="24,130,130,24" ColumnDefinitions="138,*" ColumnSpacing="16" >
+
+                            <!--Изображение-->
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="138" HeightRequest="138" Grid.RowSpan="2"
+                                    HorizontalOptions="Start" VerticalOptions="Start">
+
+                                <Grid RowDefinitions="*" ColumnDefinitions="69,69">
+                                    <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
+                                           WidthRequest="20" HeightRequest="20"/>
+                                    <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
+                                           WidthRequest="20" HeightRequest="20"/>
+                                </Grid>
+
+                            </Border>
+
+                            <!--Описание медитации-->
+                                <Label Text="{Binding MeditationName}" Style="{StaticResource AllText}" Grid.Column="1" HorizontalOptions="Start"/>
+
+                                <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="12" HorizontalOptions="Start"  Margin="0,8,0,0">
+
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="{Binding MeditationTime, StringFormat='Время выполнения: {0} минут'}" Style="{StaticResource AllText}"/>
+                                    <Image Source="clock_icon.png"/>
+                                </HorizontalStackLayout>
+                                
+
+                                <Image Source="{Binding Level, StringFormat='level{0}_icon.png'}" HorizontalOptions="Start"/>
+
+                                <HorizontalStackLayout Spacing="12" Margin="0,12,0,0">
+
+                                    <Label Text="Перейти к медитации" Style="{StaticResource AllText}"/>
+                                    <Image Source="brokenarrow_icon.png"/>
+
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                            <Label Text="{Binding Content, StringFormat='Краткое описание. {0}'}" Grid.Row="2" LineBreakMode="CharacterWrap" Grid.ColumnSpan="2" 
+                                   HorizontalOptions="Start" Style="{StaticResource AllText}" FontSize="16" MaxLines="6"/>
+
+                            <Border Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Start"/>
+
+
+
+
+
+                        </Grid>
+
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+
+
+    </ScrollView>
+</ContentPage>

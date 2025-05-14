@@ -78,6 +78,9 @@
 	  <MauiXaml Update="Views\ForReadingSelected.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\MeditationList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Planner.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
