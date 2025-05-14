@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MentalHealthApp.Models;
 using System.Collections.ObjectModel;
-
+using static System.Convert;
 
 namespace MentalHealthApp.ViewModels
 {
@@ -12,16 +12,25 @@ namespace MentalHealthApp.ViewModels
 
 
         [ObservableProperty]
-        private DateTime startDate = new DateTime(Convert.ToInt32(DateTime.Today.Year), Convert.ToInt32(DateTime.Today.Month), 1);
+        private DateTime startDate = new DateTime(ToInt32(DateTime.Today.Year), ToInt32(DateTime.Today.Month), 1);
 
         [ObservableProperty]
-        private DateTime endDate = new DateTime(Convert.ToInt32(DateTime.Today.Year), Convert.ToInt32(DateTime.Today.Month)+1, 1);
+        private DateTime endDate = new DateTime(ToInt32(DateTime.Today.Year), ToInt32(DateTime.Today.Month)+1, 1);
         [ObservableProperty]
-        int numOfDayWeek = (int)(new DateTime(Convert.ToInt32(DateTime.Today.Year), Convert.ToInt32(DateTime.Today.Month), 1).DayOfWeek + 6) % 7;
+        int numOfDayWeek = (int)(new DateTime(ToInt32(DateTime.Today.Year), ToInt32(DateTime.Today.Month), 1).DayOfWeek + 6) % 7;
 
+        [ObservableProperty]
+        ObservableCollection<FavouriteModel> cats =
+            [
+            new () {NameOfFav = "Задачи на день"},
+            new () {NameOfFav = "Медитации"},
+            new () {NameOfFav = "Дыхательные техники"}
+            ];
 
         [ObservableProperty]
         private ObservableCollection<CalendarModel> fullMonth = new();
+        [ObservableProperty]
+        private CalendarModel calendarModel;
 
         [RelayCommand]
         private void SwipeToTheLeft ()
@@ -45,13 +54,17 @@ namespace MentalHealthApp.ViewModels
         public void FIllTheList()
         {
             FullMonth.Clear();
+            bool haveTask = false;
             switch (NumOfDayWeek)
             {
                 case 0:
                     {
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : ""});
+                            haveTask = false;
                         }
                         break;
                     }
@@ -60,7 +73,10 @@ namespace MentalHealthApp.ViewModels
                         FullMonth.Add(new());
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+                            haveTask = false;
                         }
                         break;
                     }
@@ -70,7 +86,10 @@ namespace MentalHealthApp.ViewModels
                         FullMonth.Add(new());
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+                            haveTask = false;
                         }
                         break;
                     }
@@ -82,7 +101,10 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+                            haveTask = false;
                         }
                         break;
                     }
@@ -94,7 +116,10 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+                            haveTask = false;
                         }
                         break;
                     }
@@ -106,7 +131,10 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? "5/5" : "" });
+                            haveTask = false;
                         }
                         break;
                     }
@@ -119,102 +147,23 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
+                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                                haveTask = true;
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? "5/5" : "" });
+                            haveTask = false;
                         }
                         break;
                     }
                 default:
                     break;
             }
+            if (StartDate.Month == DateTime.Today.Month)
+            CalendarModel = FullMonth[NumOfDayWeek + DateTime.Today.Day - 1];
+            
 
         }
 
-        public void FIllTheList(DateTime startDate, DateTime endDate)
-        {
-            FullMonth.Clear();
-            switch (NumOfDayWeek)
-            {
-                case 0:
-                    {
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                case 1:
-                    {
-                        FullMonth.Add(new());
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        FullMonth.Add(new());
-                        FullMonth.Add(new());
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        for (int i = 0; i < numOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                case 4:
-                    {
-                        for (int i = 0; i < numOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                case 5:
-                    {
-                        for (int i = 0; i < numOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-
-                case 6:
-                    {
-                        for (int i = 0; i < numOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = startDate; i < endDate; i = i.AddDays(1))
-                        {
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString() });
-                        }
-                        break;
-                    }
-                default:
-                    break;
-            }
-
-        }
+        
 
     }
 }

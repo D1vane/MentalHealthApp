@@ -38,6 +38,11 @@ namespace MentalHealthApp.ViewModels
         {
             Tasks.RemoveAt(0);
         }
+        [RelayCommand]
+        private void RemoveCompletedTask()
+        {
+            CompletedTasks.RemoveAt(0);
+        }
         /// <summary>
         /// Отметка выполненной задачи
         /// </summary>

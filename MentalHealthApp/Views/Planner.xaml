@@ -51,21 +51,12 @@
                                                          HorizontalOptions="Start"/>
                                                 <Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
                                                        FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text"/>
-                                                <Image Source="cross_icon.png" Grid.Column="2" WidthRequest="12" HeightRequest="12" >
+                                                <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End">
-                                                    <FlyoutBase.ContextFlyout>
-                                                        <MenuFlyout>
-                                                            <MenuFlyoutItem Text="Перенести"/>
-                                                            <MenuFlyoutItem Text="Напоминание"/>
-                                                            <MenuFlyoutItem Text="Повторить в этот день"/>
-                                                            <MenuFlyoutItem Text="Повторить в другой день"/>
-                                                        </MenuFlyout>
-                                                    </FlyoutBase.ContextFlyout>
-                                                </Image>
+                                                <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
                                                 <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
                                                     <CheckBox.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"/>
@@ -101,12 +92,12 @@ HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
                                                 <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                   HorizontalOptions="Start"/>
                                                 <Label Margin="0,0,0,8" Text="{Binding TextTask}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>
-                                                <Image Source="cross_icon.png" Grid.Column="2" WidthRequest="12" HeightRequest="12" >
+                                                <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveCompletedTaskCommand}"/>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>
+                                                <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
                                                 <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
                                                     <CheckBox.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"/>
