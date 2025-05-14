@@ -72,6 +72,12 @@
 	  <MauiXaml Update="Views\Favourites.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ForReading.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ForReadingSelected.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Planner.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

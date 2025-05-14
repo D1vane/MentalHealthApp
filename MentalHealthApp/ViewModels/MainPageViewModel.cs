@@ -37,6 +37,8 @@ namespace MentalHealthApp.ViewModels
                 Shell.Current.GoToAsync("PositiveThinking");
             else if (param.ToString() == "Список задач")
                 Shell.Current.GoToAsync("Planner");
+            else if (param.ToString() == "Для чтения")
+                Shell.Current.GoToAsync("ForReading");
         }
     }
 }

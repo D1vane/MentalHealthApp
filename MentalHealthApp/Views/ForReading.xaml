@@ -1,25 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MentalHealthApp.Views.PositiveThinking"
-             xmlns:models="clr-namespace:MentalHealthApp.Models"
-             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             x:Class="MentalHealthApp.Views.ForReading"
              xmlns:conv ="clr-namespace:MentalHealthApp.Converters"
-             Title="PositiveThinking"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models ="clr-namespace:MentalHealthApp.Models"
+             Title="ForReading"
              Shell.NavBarIsVisible="False">
 
-    <!-- Ресурсы для элементов -->
     <ContentPage.Resources>
 
-        <conv:PosThinkingConverter x:Key="PosThinkingConverter"/>
-        
+        <conv:ForReadingConverter x:Key="ForReadingConverter"/>
+
         <ResourceDictionary>
 
             <!-- Стиль текста на странице-->
-            <Style x:Key="CatsStyle" TargetType="Label">
+            <Style x:Key="SubtopicsStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Text" Value="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=ThCards.Count}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <!-- Стиль подтем-->
+            <Style x:Key="SubTopics" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Text" Value="{Binding SubTopicName}"/>
+                <Setter Property="LineBreakMode" Value="WordWrap"/>
+                <Setter Property="Grid.Row" Value="1"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Margin" Value="8,0,0,12"/>
+            </Style>
+
+            <!--Стиль для количества минут на чтение-->
+            <Style x:Key="MinutesStack" TargetType="HorizontalStackLayout">
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="Margin" Value="0,4,8,0"/>
+                <Setter Property="Spacing" Value="8"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
+            
+            <!--Стиль для количества минут на чтение-->
+            <Style x:Key="Minutes" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Text" Value="{Binding TimeForReading, StringFormat='{0} минут'}"/>
             </Style>
 
             <!--Стиль сетки для отображение категории-->
@@ -42,38 +67,45 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
+
     <ScrollView>
-    <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        
-        <Label Text="Позитивное мышление" Style="{StaticResource CatsStyle}" FontSize="32"/>
-        
-        <!--Работа-->
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
+
+            <Label Text="Для чтения" Style="{StaticResource SubtopicsStyle}" FontSize="32"/>
+
+            <!--Работа-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label x:Name="topicLabel" Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
-                <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+
+                <Label Text="Работа" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                       Opacity="0.7" Grid.Row="1"/>
+
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Work}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
                                             <TapGestureRecognizer.CommandParameter>
-                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                <MultiBinding Converter="{StaticResource ForReadingConverter}">
                                                     <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
                                                     <Binding StringFormat="Работа"/>
+                                                    <Binding Path="Text" Source="{x:Reference minutesLabel}"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
-FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
-                                <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
-Grid.Column="1" Margin="0,4,8,0"/>
+                                <Label x:Name="subTopicLabel" Style="{StaticResource SubTopics}"/>
+                                <HorizontalStackLayout Style="{StaticResource MinutesStack}">
+                                    <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
+                                    <Image Source="bookopen_icon.png" Margin="0,2,0,0"/>
+                                </HorizontalStackLayout>
+                                
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -82,31 +114,36 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Учеба-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Учеба" Style="{StaticResource CatsStyle}" FontSize="20"/>
-                <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+
+                <Label  Text="Учеба" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                       Opacity="0.7" Grid.Row="1"/>
+
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Study}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
-        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
                                             <TapGestureRecognizer.CommandParameter>
-                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                <MultiBinding Converter="{StaticResource ForReadingConverter}">
                                                     <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
                                                     <Binding StringFormat="Учеба"/>
+                                                    <Binding Path="Text" Source="{x:Reference minutesLabel}"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
-FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
-                                <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
-Grid.Column="1" Margin="0,4,8,0"/>
+                                <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
+                                <HorizontalStackLayout Style="{StaticResource MinutesStack}">
+                                    <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
+                                    <Image Source="bookopen_icon.png"/>
+                                </HorizontalStackLayout>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -115,31 +152,36 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Здоровье-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Здоровье" Style="{StaticResource CatsStyle}" FontSize="20"/>
-                <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+
+                <Label  Text="Здоровье" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                       Opacity="0.7" Grid.Row="1"/>
+
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Health}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
-        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
                                             <TapGestureRecognizer.CommandParameter>
-                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                <MultiBinding Converter="{StaticResource ForReadingConverter}">
                                                     <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
                                                     <Binding StringFormat="Здоровье"/>
+                                                    <Binding Path="Text" Source="{x:Reference minutesLabel}"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
-FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
-                                <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
-Grid.Column="1" Margin="0,4,8,0"/>
+                                <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
+                                <HorizontalStackLayout Style="{StaticResource MinutesStack}">
+                                    <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
+                                    <Image Source="bookopen_icon.png"/>
+                                </HorizontalStackLayout>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -148,36 +190,45 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Быт-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Быт" Style="{StaticResource CatsStyle}" FontSize="20"/>
-                <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
+
+                <Label  Text="Быт" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                       Opacity="0.7" Grid.Row="1"/>
+
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Life}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
-        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=GetSubTopicNameCommand}">
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
                                             <TapGestureRecognizer.CommandParameter>
-                                                <MultiBinding Converter="{StaticResource PosThinkingConverter}">
+                                                <MultiBinding Converter="{StaticResource ForReadingConverter}">
                                                     <Binding Path="Text" Source="{x:Reference subTopicLabel}"/>
                                                     <Binding StringFormat="Быт"/>
+                                                    <Binding Path="Text" Source="{x:Reference minutesLabel}"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
-FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
-                                <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
-Grid.Column="1" Margin="0,4,8,0"/>
+                                <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
+                                <HorizontalStackLayout Style="{StaticResource MinutesStack}">
+                                    <Label Style="{StaticResource Minutes}" />
+                                    <Image Source="bookopen_icon.png"/>
+                                </HorizontalStackLayout>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Grid>
+
+
+
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>
