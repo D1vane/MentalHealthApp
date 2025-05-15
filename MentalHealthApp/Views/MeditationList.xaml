@@ -31,7 +31,7 @@
 
             <Label Text="Медитации" Style="{StaticResource AllText}" FontSize="32"/>
 
-            <Label Text="Медитаций: 12" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
+            <Label Text="{Binding MList.Count, StringFormat='Медиитаций: {0}'}" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
 
             <CollectionView ItemsSource="{Binding MList}">
 
@@ -39,7 +39,7 @@
 
                     <DataTemplate x:DataType="{x:Type models:MeditationListModel}">
 
-                        <Grid RowDefinitions="24,130,130,24" ColumnDefinitions="138,*" ColumnSpacing="16" >
+                        <Grid RowDefinitions="24,130,130,48" ColumnDefinitions="138,*" ColumnSpacing="16" >
 
                             <!--Изображение-->
                             <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="138" HeightRequest="138" Grid.RowSpan="2"
@@ -94,7 +94,7 @@
                             <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" Grid.Row="2" LineBreakMode="CharacterWrap" Grid.ColumnSpan="2" 
                                    HorizontalOptions="Start" Style="{StaticResource AllText}" FontSize="16" MaxLines="6"/>
 
-                            <Border Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Start"/>
+                            <Border Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center"/>
 
 
 

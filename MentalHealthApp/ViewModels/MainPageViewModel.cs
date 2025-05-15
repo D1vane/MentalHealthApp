@@ -41,6 +41,9 @@ namespace MentalHealthApp.ViewModels
                 Shell.Current.GoToAsync("ForReading");
             else if (param.ToString() == "Медитации")
                 Shell.Current.GoToAsync("MeditationList");
+            else if (param.ToString() == "Дыхательные техники")
+                Shell.Current.GoToAsync("BreatheList");
+
         }
     }
 }

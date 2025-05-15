@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.BreatheList"
+             xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:justifyLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
+             Title="BreatheList"
+             Shell.NavBarIsVisible="False">
+    
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ScrollView>
+
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="12" AbsoluteLayout.LayoutFlags="All">
+            
+            <Label Text="Дыхательные техники" Style="{StaticResource ContentStyle}" FontSize="32"/>
+            
+            <Label Text="{Binding Breathes.Count,StringFormat='Техник: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="End" Opacity="0.7" FontSize="14"/>
+
+            <CollectionView ItemsSource="{Binding Breathes}">
+                
+                <CollectionView.ItemTemplate>
+                    
+                    <DataTemplate x:DataType="{x:Type models:BreatheListModel}">
+                        <Grid RowDefinitions="24,24,116,24,48" ColumnDefinitions="188, *" ColumnSpacing="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,48">
+
+                            <!--Изображение-->
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" Grid.RowSpan="2"
+        HorizontalOptions="Start" VerticalOptions="Start">
+
+                                <Grid RowDefinitions="*" ColumnDefinitions="94,94">
+                                    <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
+               WidthRequest="20" HeightRequest="20"/>
+                                    <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
+               WidthRequest="20" HeightRequest="20"/>
+                                </Grid>
+
+                            </Border>
+
+
+                                
+                            
+                            <Label Text="{Binding NameOfBreathe}" Style="{StaticResource ContentStyle}" Grid.Column="1" FontSize="16" 
+                                   FontAttributes="Bold"/>
+                            
+                            <Label Text="{Binding TimeOfLoop,StringFormat='Длительность цикла: {0} с'}" Style="{StaticResource ContentStyle}" 
+                                   Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
+
+                            <Label justifyLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}" 
+                                   Grid.Row="2" Grid.Column="1" MaxLines="5"/>
+
+                            <Label Text="Перейти к технике" Style="{StaticResource ContentStyle}" Grid.Row="3" Grid.Column="1"/>
+
+                            <Image Source="brokenarrow_icon.png" HorizontalOptions="End" Grid.Row="3" Grid.Column="1"/>
+
+                            <Border HeightRequest="1" Grid.ColumnSpan="2" Grid.Row="4" VerticalOptions="End"/>
+                        </Grid>
+                        
+                    </DataTemplate>
+                    
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+            
+            
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -43,7 +43,7 @@
                 <CollectionView ItemsSource="{Binding STContent}" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
+                            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding .}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
                                    Margin="0,8,0,0" TextColor="CornflowerBlue"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
