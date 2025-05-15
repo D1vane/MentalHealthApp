@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.Meditation"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:justifiedLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
+             Title="Meditation"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="12" AbsoluteLayout.LayoutFlags="All">
+
+            <!--Верхняя часть-->
+            <Grid RowDefinitions="188, 24" ColumnDefinitions="188,*" ColumnSpacing="20" RowSpacing="20" >
+
+                <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" 
+                        VerticalOptions="Start" HorizontalOptions="Start"/>
+
+
+
+                    
+                    
+                    <HorizontalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Start" VerticalOptions="Start" >
+                        <Label Text="{Binding MTime, StringFormat='{0} минут'}" Style="{StaticResource ContentStyle}"/>
+                        <Image Source="clock_icon.png" Margin="0,0,0,4" />
+                    </HorizontalStackLayout>
+
+                <Label Text="{Binding MName}" Style="{StaticResource ContentStyle}" Grid.Column="1" Margin="0,32,0,0"/>
+
+                <Image Source="{Binding MLevel,StringFormat='level{0}_icon.png'}" VerticalOptions="End" Margin="0,0,0,8" 
+       HorizontalOptions="Start" Grid.Column="1" WidthRequest="240"/>
+                                    
+                    <HorizontalStackLayout Spacing="16" Grid.Row="1">
+                        <Label Text="Добавить в избранное" Style="{StaticResource ContentStyle}"/>
+                        <Image Source="favourites_icon.png" Margin="0,0,0,2"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="16" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
+                        <Label Text="Запланировать сеанс" Style="{StaticResource ContentStyle}"/>
+                    <Image Source="calendar_icon.png" Margin="0,0,0,2"/>
+                    </HorizontalStackLayout>
+
+
+
+            </Grid>
+
+            <!--Содержимое-->
+            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}" Margin="0,24,0,0" LineHeight="1.5" />
+
+            <!--Руководство к выполнению-->
+            <Border HeightRequest="1" Margin="0,12,0,0"/>
+            <Label Text="Руководство к выполнению:" Style="{StaticResource ContentStyle}" HorizontalOptions="Center" FontSize="18" Margin="0,0,0,12"/>
+            
+            <CollectionView ItemsSource="{Binding Guide}" HorizontalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
+                   Margin="64,0,64,12" HorizontalOptions="Center"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -17,6 +17,7 @@ namespace MentalHealthApp
             Routing.RegisterRoute("ForReadingSelected", typeof(ForReadingSelected));
 
             Routing.RegisterRoute("MeditationList", typeof(MeditationList));
+            Routing.RegisterRoute("Meditation", typeof(Meditation));
         }
     }
 }

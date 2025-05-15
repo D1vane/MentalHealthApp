@@ -4,6 +4,7 @@
              x:Class="MentalHealthApp.Views.ForReadingSelected"
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models ="clr-namespace:MentalHealthApp.Models"
+             xmlns:justifiedLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
              Title="ForReadingSelected"
              Shell.NavBarIsVisible="False">
 
@@ -51,7 +52,8 @@
             </Grid>
 
             <!--Содержимое-->
-            <Label Text="{Binding Content}" Style="{StaticResource ContentStyle}"  LineBreakMode="CharacterWrap" LineHeight="1.5"/>
+            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}"  LineBreakMode="CharacterWrap" 
+                                           LineHeight="1.5"/>
 
         </VerticalStackLayout>
     </ScrollView>

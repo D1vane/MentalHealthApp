@@ -4,10 +4,14 @@
              x:Class="MentalHealthApp.Views.MeditationList"
              xmlns:models="clr-namespace:MentalHealthApp.Models"
              xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:conv="clr-namespace:MentalHealthApp.Converters"
+             xmlns:justifiedLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
              Title="MeditationList"
              Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
+
+        <conv:MeditationListConverter x:Key="MeditationListConverter"/>
 
         <ResourceDictionary>
 
@@ -51,28 +55,43 @@
                             </Border>
 
                             <!--Описание медитации-->
-                                <Label Text="{Binding MeditationName}" Style="{StaticResource AllText}" Grid.Column="1" HorizontalOptions="Start"/>
+                                <Label x:Name="meditationNameLabel" Text="{Binding MeditationName}" Style="{StaticResource AllText}" Grid.Column="1" HorizontalOptions="Start"/>
 
                                 <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="12" HorizontalOptions="Start"  Margin="0,8,0,0">
 
                                 <HorizontalStackLayout Spacing="8">
-                                    <Label Text="{Binding MeditationTime, StringFormat='Время выполнения: {0} минут'}" Style="{StaticResource AllText}"/>
+                                    <Label x:Name="meditationTimeLabel" Text="{Binding MeditationTime, StringFormat='Время выполнения: {0} минут'}" Style="{StaticResource AllText}"/>
                                     <Image Source="clock_icon.png"/>
                                 </HorizontalStackLayout>
                                 
 
-                                <Image Source="{Binding Level, StringFormat='level{0}_icon.png'}" HorizontalOptions="Start"/>
+                                <Image x:Name="levelImage" Source="{Binding Level, StringFormat='level{0}_icon.png'}" HorizontalOptions="Start"/>
 
                                 <HorizontalStackLayout Spacing="12" Margin="0,12,0,0">
 
+
                                     <Label Text="Перейти к медитации" Style="{StaticResource AllText}"/>
+
                                     <Image Source="brokenarrow_icon.png"/>
+
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeditationListViewModel}}, Path=GetMeditationNameCommand}">
+                                            <TapGestureRecognizer.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource MeditationListConverter}">
+                                                    <Binding Path="MeditationName"/>
+                                                    <Binding Path="MeditationTime"/>
+                                                    <Binding Path="Level"/>
+                                                </MultiBinding>
+                                            </TapGestureRecognizer.CommandParameter>
+                                        </TapGestureRecognizer>
+
+                                    </HorizontalStackLayout.GestureRecognizers>
 
                                 </HorizontalStackLayout>
 
                             </VerticalStackLayout>
 
-                            <Label Text="{Binding Content, StringFormat='Краткое описание. {0}'}" Grid.Row="2" LineBreakMode="CharacterWrap" Grid.ColumnSpan="2" 
+                            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" Grid.Row="2" LineBreakMode="CharacterWrap" Grid.ColumnSpan="2" 
                                    HorizontalOptions="Start" Style="{StaticResource AllText}" FontSize="16" MaxLines="6"/>
 
                             <Border Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Start"/>

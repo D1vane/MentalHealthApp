@@ -14,19 +14,21 @@
             <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>
         </Tab>
 
-        <Tab Title="Календарь" Icon="calendar_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
-        </Tab>
-
         <Tab Title="Здоровье" Icon="health_icon.png">
             <ShellContent x:Name="HealthPage" ContentTemplate="{DataTemplate local:MainPage}">
 
             </ShellContent>
         </Tab>
-
-        <Tab Title="Профиль" Icon="profile_icon.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Profile}"/>
+        
+        <Tab Title="Календарь" Icon="calendar_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
         </Tab>
+
+        
+
+        <!--<Tab Title="Профиль" Icon="profile_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Profile}"/>
+        </Tab>-->
 
     </TabBar>
 
