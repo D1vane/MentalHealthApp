@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Popups.GuidePopup"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+            xmlns:models="clr-namespace:MentalHealthApp.Models"
+                CanBeDismissedByTappingOutsideOfPopup="False">
+
+
+    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All">
+
+        <Label Text="Руководство к выполнению:" HorizontalOptions="Center" VerticalOptions="End" FontFamily="Roboto" FontSize="20" Margin="24" 
+            Grid.Row="0" TextColor="Black" />
+
+        <Label Text="{Binding Guide}" FontSize="18" FontFamily="Roboto" HorizontalOptions="Center" Grid.Row="1" LineHeight="2"/>
+
+
+        <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Center" HeightRequest="40"
+     WidthRequest="188" CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Grid.Row="2"
+                Clicked="Button_Clicked"/>
+
+
+
+    </Grid>
+</mct:Popup>

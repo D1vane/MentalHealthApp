@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Popups.LoopNumbersPopup"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+           xmlns:models="clr-namespace:MentalHealthApp.Models"
+           CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <mct:Popup.Resources>
+        
+        <ResourceDictionary>
+
+            <!--Стиль для выделенных дней-->
+            <Style TargetType="Label">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="Gray"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="Black"/>
+                                    <Setter Property="FontSize" Value="64"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+        
+    </mct:Popup.Resources>
+    
+    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All">
+
+        <Label Text="Количество циклов" HorizontalOptions="Center" VerticalOptions="End" FontFamily="Roboto" FontSize="24" Margin="24" 
+               Grid.Row="0" TextColor="Black" />
+        
+        <CollectionView x:Name="numbersCollView" Grid.Row="1" Scrolled="CollectionView_Scrolled"
+                        Loaded="numbersCollView_Loaded" SelectionMode="Single" VerticalOptions="End">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                    <x:Int32>4</x:Int32>
+                    <x:Int32>5</x:Int32>
+                    <x:Int32>6</x:Int32>
+                    <x:Int32>7</x:Int32>
+                    <x:Int32>8</x:Int32>
+                    <x:Int32>9</x:Int32>
+                    <x:Int32>10</x:Int32>
+                    <x:Int32>11</x:Int32>
+                    <x:Int32>12</x:Int32>
+                    <x:Int32>13</x:Int32>
+                    <x:Int32>14</x:Int32>
+                    <x:Int32>15</x:Int32>
+                    <x:Int32>16</x:Int32>
+                    <x:Int32>17</x:Int32>
+                    <x:Int32>18</x:Int32>
+                    <x:Int32>19</x:Int32>
+                    <x:Int32>20</x:Int32>
+                    <x:Int32>21</x:Int32>
+                    <x:Int32>22</x:Int32>
+                    <x:Int32>23</x:Int32>
+                    <x:Int32>24</x:Int32>
+                    <x:Int32>25</x:Int32>
+                    <x:Int32>26</x:Int32>
+                    <x:Int32>27</x:Int32>
+                    <x:Int32>28</x:Int32>
+                    <x:Int32>29</x:Int32>
+                    <x:Int32>30</x:Int32>
+                    <x:Int32>31</x:Int32>
+                    <x:Int32>32</x:Int32>
+                    <x:Int32>33</x:Int32>
+                    <x:Int32>34</x:Int32>
+                    <x:Int32>35</x:Int32>
+                    <x:Int32>36</x:Int32>
+                    <x:Int32>37</x:Int32>
+                    <x:Int32>38</x:Int32>
+                    <x:Int32>39</x:Int32>
+                    <x:Int32>40</x:Int32>
+                    <x:Int32>41</x:Int32>
+                    <x:Int32>42</x:Int32>
+                    <x:Int32>43</x:Int32>
+                    <x:Int32>44</x:Int32>
+                    <x:Int32>45</x:Int32>
+                    <x:Int32>46</x:Int32>
+                    <x:Int32>47</x:Int32>
+                    <x:Int32>48</x:Int32>
+                    <x:Int32>49</x:Int32>
+                    <x:Int32>50</x:Int32>
+                    <x:Int32>51</x:Int32>
+                    <x:Int32>52</x:Int32>
+                    <x:Int32>53</x:Int32>
+                    <x:Int32>54</x:Int32>
+                    <x:Int32>55</x:Int32>
+                    <x:Int32>56</x:Int32>
+                    <x:Int32>57</x:Int32>
+                    <x:Int32>58</x:Int32>
+                    <x:Int32>59</x:Int32>
+                    <x:Int32>60</x:Int32>
+                    <x:Int32>61</x:Int32>
+                    <x:Int32>62</x:Int32>
+                    <x:Int32>63</x:Int32>
+                    <x:Int32>64</x:Int32>
+                    <x:Int32>65</x:Int32>
+                    <x:Int32>66</x:Int32>
+                    <x:Int32>67</x:Int32>
+                    <x:Int32>68</x:Int32>
+                    <x:Int32>69</x:Int32>
+                    <x:Int32>70</x:Int32>
+                    <x:Int32>71</x:Int32>
+                    <x:Int32>72</x:Int32>
+                    <x:Int32>73</x:Int32>
+                    <x:Int32>74</x:Int32>
+                    <x:Int32>75</x:Int32>
+                    <x:Int32>76</x:Int32>
+                    <x:Int32>77</x:Int32>
+                    <x:Int32>78</x:Int32>
+                    <x:Int32>79</x:Int32>
+                    <x:Int32>80</x:Int32>
+                    <x:Int32>81</x:Int32>
+                    <x:Int32>82</x:Int32>
+                    <x:Int32>83</x:Int32>
+                    <x:Int32>84</x:Int32>
+                    <x:Int32>85</x:Int32>
+                    <x:Int32>86</x:Int32>
+                    <x:Int32>87</x:Int32>
+                    <x:Int32>88</x:Int32>
+                    <x:Int32>89</x:Int32>
+                    <x:Int32>90</x:Int32>
+                    <x:Int32>91</x:Int32>
+                    <x:Int32>92</x:Int32>
+                    <x:Int32>93</x:Int32>
+                    <x:Int32>94</x:Int32>
+                    <x:Int32>95</x:Int32>
+                    <x:Int32>96</x:Int32>
+                    <x:Int32>97</x:Int32>
+                    <x:Int32>98</x:Int32>
+                    <x:Int32>99</x:Int32>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" FontSize="48" FontFamily="Roboto" HorizontalOptions="Center"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid RowDefinitions="*" ColumnDefinitions="*,*" Grid.Row="2" ColumnSpacing="24" Margin="12">
+            
+            <Button Text="Отмена" FontFamily="Roboto" FontSize="14"  HorizontalOptions="Fill" HeightRequest="40"
+        CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Cancel_Clicked"/>
+
+            <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Fill" HeightRequest="40"
+        CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Button_Clicked"/>
+
+
+        </Grid>
+    </Grid>
+</mct:Popup>

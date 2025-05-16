@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:justifiedLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
+             xmlns:conv="clr-namespace:MentalHealthApp.Converters"
+             x:Class="MentalHealthApp.Views.Breathe"
+             Title="Breathe"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+
+        <conv:BreatheListConverter x:Key="BreatheListConverter"/>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="24" AbsoluteLayout.LayoutFlags="All">
+        
+        <Label  Text="{Binding Name}" Style="{StaticResource ContentStyle}" FontSize="32"/>
+
+        <Image Source="info_icon.png" HorizontalOptions="End">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GuideTapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Border WidthRequest="240" HeightRequest="240" HorizontalOptions="Center" Margin="0,24,0,0" Stroke="Black"/>
+
+        <Label Text="{Binding LoopNumbers,StringFormat='Количество циклов: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="LoopNumberTapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <HorizontalStackLayout Margin="0,-16,0,0" HorizontalOptions="Center">
+            <Label Text="{Binding Minutes,StringFormat='Общая длительность: {0} мин'}" Style="{StaticResource ContentStyle}" />
+            <Label Text="{Binding Seconds,StringFormat=' {0} с'}" Style="{StaticResource ContentStyle}" />
+        </HorizontalStackLayout>
+
+
+        <Button Text="Запустить технику" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
+                CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1">
+            <Button.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BreatheViewModel}},Path=StartBreatheCommand}">
+                    <TapGestureRecognizer.CommandParameter>
+                        <MultiBinding Converter="{StaticResource BreatheListConverter}">
+                            <Binding Path="Minutes"/>
+                            <Binding Path="Seconds"/>
+                            <Binding Path="LoopNumbers"/>
+                            <Binding Path="Name"/>
+                        </MultiBinding>
+                    </TapGestureRecognizer.CommandParameter>
+                </TapGestureRecognizer>
+            </Button.GestureRecognizers>
+        </Button>
+
+        <HorizontalStackLayout Spacing="12" Margin="132,0,0,0">
+            
+            <Label Text="Добавить в избранное" Style="{StaticResource ContentStyle}"/>
+            <Image Source="favourites_icon.png"  WidthRequest="20" HeightRequest="20"/>
+            
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer/>
+            </HorizontalStackLayout.GestureRecognizers>
+            
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="19"  Margin="132,-12,0,0">
+            
+            <Label Text="Запланировать сеанс" Style="{StaticResource ContentStyle}"/>
+            <Image Source="calendar_icon.png" WidthRequest="20" HeightRequest="20"/>
+            
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer/>
+            </HorizontalStackLayout.GestureRecognizers>
+            
+        </HorizontalStackLayout>
+
+
+    </VerticalStackLayout>
+    
+</ContentPage>

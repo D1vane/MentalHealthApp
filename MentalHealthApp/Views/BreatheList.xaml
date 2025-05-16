@@ -4,12 +4,14 @@
              x:Class="MentalHealthApp.Views.BreatheList"
              xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:conv="clr-namespace:MentalHealthApp.Converters"
              xmlns:justifyLabel="clr-namespace:JustifyLabel;assembly=JustifyLabel"
              Title="BreatheList"
              Shell.NavBarIsVisible="False">
-    
+
     <ContentPage.Resources>
 
+        <conv:BreatheListConverter x:Key="BreatheListConverter"/>
         <ResourceDictionary>
 
             <!-- Стиль текста на странице-->
@@ -24,15 +26,15 @@
     <ScrollView>
 
         <VerticalStackLayout Margin="8,24,8,8" Spacing="12" AbsoluteLayout.LayoutFlags="All">
-            
+
             <Label Text="Дыхательные техники" Style="{StaticResource ContentStyle}" FontSize="32"/>
-            
+
             <Label Text="{Binding Breathes.Count,StringFormat='Техник: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="End" Opacity="0.7" FontSize="14"/>
 
             <CollectionView ItemsSource="{Binding Breathes}">
-                
+
                 <CollectionView.ItemTemplate>
-                    
+
                     <DataTemplate x:DataType="{x:Type models:BreatheListModel}">
                         <Grid RowDefinitions="24,24,116,24,48" ColumnDefinitions="188, *" ColumnSpacing="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,48">
 
@@ -50,32 +52,48 @@
                             </Border>
 
 
-                                
-                            
+
+
                             <Label Text="{Binding NameOfBreathe}" Style="{StaticResource ContentStyle}" Grid.Column="1" FontSize="16" 
                                    FontAttributes="Bold"/>
-                            
+
                             <Label Text="{Binding TimeOfLoop,StringFormat='Длительность цикла: {0} с'}" Style="{StaticResource ContentStyle}" 
                                    Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
 
                             <Label justifyLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}" 
                                    Grid.Row="2" Grid.Column="1" MaxLines="5"/>
 
-                            <Label Text="Перейти к технике" Style="{StaticResource ContentStyle}" Grid.Row="3" Grid.Column="1"/>
+                            <Grid RowDefinitions="*" ColumnDefinitions="*" Grid.Row="3" Grid.Column="1">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BreatheListViewModel}},Path=GoToBreatheCommand}">
+                                        <TapGestureRecognizer.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource BreatheListConverter}">
+                                                <Binding Path="NameOfBreathe"/>
+                                                <Binding Path="TimeOfLoop"/>
+                                                <Binding Path="Guide"/>
+                                            </MultiBinding>
+                                        </TapGestureRecognizer.CommandParameter>
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Label Text="Перейти к технике" Style="{StaticResource ContentStyle}"/>
 
-                            <Image Source="brokenarrow_icon.png" HorizontalOptions="End" Grid.Row="3" Grid.Column="1"/>
+                                <Image Source="brokenarrow_icon.png" HorizontalOptions="End" WidthRequest="32" HeightRequest="32"/>
+                            </Grid>
+
+
+
 
                             <Border HeightRequest="1" Grid.ColumnSpan="2" Grid.Row="4" VerticalOptions="End"/>
                         </Grid>
-                        
+
                     </DataTemplate>
-                    
+
                 </CollectionView.ItemTemplate>
-                
+
             </CollectionView>
-            
-            
-            
+
+
+
         </VerticalStackLayout>
 
     </ScrollView>
