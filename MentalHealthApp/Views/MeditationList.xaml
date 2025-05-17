@@ -31,7 +31,7 @@
 
             <Label Text="Медитации" Style="{StaticResource AllText}" FontSize="32"/>
 
-            <Label Text="{Binding MList.Count, StringFormat='Медиитаций: {0}'}" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
+            <Label Text="{Binding MList.Count, StringFormat='Медитаций: {0}'}" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
 
             <CollectionView ItemsSource="{Binding MList}">
 
@@ -43,9 +43,10 @@
 
                             <!--Изображение-->
                             <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="138" HeightRequest="138" Grid.RowSpan="2"
-                                    HorizontalOptions="Start" VerticalOptions="Start">
+                                    HorizontalOptions="Start" VerticalOptions="Start" Stroke="Black">
 
                                 <Grid RowDefinitions="*" ColumnDefinitions="69,69">
+                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="120" HeightRequest="120"/>
                                     <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
                                            WidthRequest="20" HeightRequest="20"/>
                                     <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
@@ -81,6 +82,9 @@
                                                     <Binding Path="MeditationName"/>
                                                     <Binding Path="MeditationTime"/>
                                                     <Binding Path="Level"/>
+                                                    <Binding Path="ImagePath"/>
+                                                    <Binding Path="Content"/>
+                                                    <Binding Path="Guide"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>

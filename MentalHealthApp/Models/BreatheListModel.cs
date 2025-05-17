@@ -13,6 +13,7 @@ namespace MentalHealthApp.Models
         public int TimeOfLoop { get; set; }
         public string Content { get; set; }
 
+        public string ImagePath { get; set; }
         public string Guide { get; set; }
     }
 }

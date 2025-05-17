@@ -12,21 +12,21 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         private ObservableCollection<Models.MainPageModel> relax =
         [
-            new () {NameOfPage = "Медитации"},
-            new () {NameOfPage = "Дыхательные техники"},
+            new () {NameOfPage = "Медитации", ImagePath = "meditations_mainpage.jpg"},
+            new () {NameOfPage = "Дыхательные техники", ImagePath = "breathes_mainpage.jpg"},
         ];
         [ObservableProperty]
         private ObservableCollection<Models.MainPageModel> usefulInfo =
         [
-            new () {NameOfPage = "Для чтения"},
-            new () {NameOfPage = "Позитивное мышление"},
+            new () {NameOfPage = "Для чтения", ImagePath = "reading_mainpage.jpg"},
+            new () {NameOfPage = "Позитивное мышление", ImagePath = "thinking_mainpage.jpg"},
         ];
         [ObservableProperty]
         private ObservableCollection<Models.MainPageModel> selfControl =
         [
-            new () {NameOfPage = "Оценка самочувствия"},
-            new () {NameOfPage = "Оценка сна"},
-            new () {NameOfPage = "Список задач"},
+            new () {NameOfPage = "Оценка самочувствия", ImagePath = "feeling_mainpage.jpg"},
+            new () {NameOfPage = "Оценка сна", ImagePath = "sleep_mainpage.jpg"},
+            new () {NameOfPage = "Список задач", ImagePath = "planner_mainpage.jpg"},
         ];
         [RelayCommand]
         private void GoToNextPage (object param)

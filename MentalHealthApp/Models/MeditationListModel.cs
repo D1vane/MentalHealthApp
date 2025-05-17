@@ -12,6 +12,8 @@ namespace MentalHealthApp.Models
         public int MeditationTime { get; set; }
         public int Level { get; set; }
         public string Content { get; set; }
+        public string ImagePath { get; set; }
+        public string Guide { get; set; }
 
     }
 }

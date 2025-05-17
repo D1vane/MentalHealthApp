@@ -29,18 +29,21 @@
             <Grid RowDefinitions="188, 24" ColumnDefinitions="188,*" ColumnSpacing="20" RowSpacing="20" >
 
                 <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" 
-                        VerticalOptions="Start" HorizontalOptions="Start"/>
+                        VerticalOptions="Start" HorizontalOptions="Start" Stroke="Black">
+                    <Image Source="{Binding ImagePath}" WidthRequest="160" HeightRequest="160"/>
+                </Border>
 
 
 
-                    
-                    
-                    <HorizontalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Start" VerticalOptions="Start" >
+
+
+                <HorizontalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Start" VerticalOptions="Start" >
                         <Label Text="{Binding MTime, StringFormat='{0} минут'}" Style="{StaticResource ContentStyle}"/>
                         <Image Source="clock_icon.png" Margin="0,0,0,4" />
                     </HorizontalStackLayout>
 
-                <Label Text="{Binding MName}" Style="{StaticResource ContentStyle}" Grid.Column="1" Margin="0,32,0,0"/>
+                <Label Text="{Binding MName}" Style="{StaticResource ContentStyle}" Grid.Column="1" Margin="0,32,0,0"
+                       FontAttributes="Italic"/>
 
                 <Image Source="{Binding MLevel,StringFormat='level{0}_icon.png'}" VerticalOptions="End" Margin="0,0,0,8" 
        HorizontalOptions="Start" Grid.Column="1" WidthRequest="240"/>
@@ -65,16 +68,10 @@
             <!--Руководство к выполнению-->
             <Border HeightRequest="1" Margin="0,12,0,0"/>
             <Label Text="Руководство к выполнению:" Style="{StaticResource ContentStyle}" HorizontalOptions="Center" FontSize="18" Margin="0,0,0,12"/>
-            
-            <CollectionView ItemsSource="{Binding Guide}" HorizontalOptions="Center">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding .}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
-                   Margin="64,0,64,12" HorizontalOptions="Center"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            
+
+            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Guide}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
+Margin="64,0,64,12" HorizontalOptions="Center" LineHeight="1.5"/>
+
         </VerticalStackLayout>
 
     </ScrollView>

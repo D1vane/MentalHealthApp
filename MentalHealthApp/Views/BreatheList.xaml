@@ -40,9 +40,11 @@
 
                             <!--Изображение-->
                             <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" Grid.RowSpan="2"
-        HorizontalOptions="Start" VerticalOptions="Start">
+        HorizontalOptions="Start" VerticalOptions="Start" Stroke="Black">
 
                                 <Grid RowDefinitions="*" ColumnDefinitions="94,94">
+                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="160" HeightRequest="160"
+                                           VerticalOptions="Center"/>
                                     <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
                WidthRequest="20" HeightRequest="20"/>
                                     <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"

@@ -42,7 +42,7 @@
 
     <ScrollView>
         
-        <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="*"  RowSpacing="24" Margin="8,24,8,12">
+        <Grid RowDefinitions="1*,1*,1*" ColumnDefinitions="*"  RowSpacing="0" Margin="8,24,8,12">
 
             <!--Расслабление и профилактика-->
             <VerticalStackLayout>
@@ -53,13 +53,18 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:MainPageModel}">
-                            <Border Style="{StaticResource BorderStyle}">
+                            <Border Style="{StaticResource BorderStyle}" Stroke="Black">
+                                <Grid RowDefinitions="80,56" Margin="8,8,8,8">
+                                    <Image Source="{Binding ImagePath}" 
+                                           VerticalOptions="Start"/>
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
+                                </Grid>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
                                                           CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path = Text}"/>
                                 </Border.GestureRecognizers>
-                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-VerticalOptions="End" Margin="8,0,0,8"/>
+
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -75,13 +80,18 @@ VerticalOptions="End" Margin="8,0,0,8"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:MainPageModel}">
-                            <Border Style="{StaticResource BorderStyle}">
+                            <Border Style="{StaticResource BorderStyle}" Stroke="Black">
+                                <Grid RowDefinitions="80,56" Margin="8,8,8,8">
+                                    <Image Source="{Binding ImagePath}" 
+                                           VerticalOptions="Start"/>
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
+                                </Grid>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
-                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>
+                                                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path = Text}"/>
                                 </Border.GestureRecognizers>
-                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-VerticalOptions="End" Margin="8,0,0,8"/>
+
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -97,13 +107,18 @@ VerticalOptions="End" Margin="8,0,0,8"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:MainPageModel}">
-                            <Border Style="{StaticResource BorderStyle}">
+                            <Border Style="{StaticResource BorderStyle}" Stroke="Black">
+                                <Grid RowDefinitions="80,56" Margin="8,8,8,8">
+                                    <Image Source="{Binding ImagePath}" 
+                                           VerticalOptions="Start"/>
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
+                                </Grid>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"
-                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path= Text}"/>
+                                                          CommandParameter="{Binding Source={x:Reference nameOfPageLabel}, Path = Text}"/>
                                 </Border.GestureRecognizers>
-                                <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-VerticalOptions="End" Margin="8,0,0,8"/>
+
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
