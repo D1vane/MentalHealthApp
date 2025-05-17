@@ -27,7 +27,6 @@ namespace MentalHealthApp.ViewModels
             new () {NameOfPage = "Оценка самочувствия"},
             new () {NameOfPage = "Оценка сна"},
             new () {NameOfPage = "Список задач"},
-            new () {NameOfPage = "Подключить умные часы"},
         ];
         [RelayCommand]
         private void GoToNextPage (object param)
@@ -43,6 +42,10 @@ namespace MentalHealthApp.ViewModels
                 Shell.Current.GoToAsync("MeditationList");
             else if (param.ToString() == "Дыхательные техники")
                 Shell.Current.GoToAsync("BreatheList");
+            else if (param.ToString() == "Оценка самочувствия")
+                Shell.Current.GoToAsync("Feeling");
+            else if (param.ToString() == "Оценка сна")
+                Shell.Current.GoToAsync("Sleep");
 
         }
     }

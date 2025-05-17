@@ -26,7 +26,13 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         string name;
         [ObservableProperty]
-        double progressBarLength = 0.0;
+        double progressBarTop = 0.0;
+        [ObservableProperty]
+        double progressBarBot = 0.0;
+        [ObservableProperty]
+        double progressBarRight = 0.0;
+        [ObservableProperty]
+        double progressBarLeft = 0.0;
         [RelayCommand]
         void GoBack (object parameter)
         {
@@ -43,14 +49,14 @@ namespace MentalHealthApp.ViewModels
 
         public StartedBreatheViewModel()
         {
-            //Thread.Sleep(500);
-            //TimerCallback tm = new TimerCallback(CountBack);
-            //MainThread.BeginInvokeOnMainThread(() =>
-            //{
-            //    var time = new System.Threading.Timer(tm, Seconds, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
-            //});
+            Thread.Sleep(500);
+            TimerCallback tm = new TimerCallback(CountBack);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                var time = new System.Threading.Timer(tm, Seconds, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
+            });
         }
-        void CountBack(object obj)
+        async void CountBack(object obj)
         {
             if (Minutes != 0 || Seconds != 0)
             {
@@ -61,12 +67,27 @@ namespace MentalHealthApp.ViewModels
                     });
                     Seconds--;
                     countSeconds++;
-                    if (countSeconds == 16)
+                    if (countSeconds <= 4)
+                        ProgressBarTop += 0.25;
+                    else if (countSeconds > 4 && countSeconds <=8)
+                        ProgressBarRight += 0.25;
+                    else if (countSeconds > 8 && countSeconds <= 12)
+                        ProgressBarBot += 0.25;
+                    else if (countSeconds > 12 && countSeconds <= 17)
                     {
-                        LoopCount--;
-                        countSeconds = 0;
+                        ProgressBarLeft += 0.25;
+                        if (countSeconds == 16)
+                        {
+                            LoopCount--;
+                            
+                        }
+                        else if (countSeconds == 17)
+                        {
+                            countSeconds = 1;
+                            ProgressBarTop = 0.25;
+                            ProgressBarBot = ProgressBarLeft = ProgressBarRight = 0;
+                        }
                     }
-                    //ProgressBarLength = (ProgressBarLength == 1) ? ProgressBarLength = 0 : ProgressBarLength += 0.25;
                 }
                 else
                 {
@@ -76,10 +97,26 @@ namespace MentalHealthApp.ViewModels
                     Minutes--;
                     Seconds = 59;
                     countSeconds++;
-                    if (countSeconds == 16)
+                    if (countSeconds <= 4)
+                        ProgressBarTop += 0.25;
+                    else if (countSeconds > 4 && countSeconds <= 8)
+                        ProgressBarRight += 0.25;
+                    else if (countSeconds > 8 && countSeconds <= 12)
+                        ProgressBarBot += 0.25;
+                    else if (countSeconds > 12 && countSeconds <= 17)
                     {
-                        LoopCount--;
-                        countSeconds = 0;
+                        ProgressBarLeft += 0.25;
+                        if (countSeconds == 16)
+                        {
+                            LoopCount--;
+
+                        }
+                        else if (countSeconds == 17)
+                        {
+                            countSeconds = 1;
+                            ProgressBarTop = 0.25;
+                            ProgressBarBot = ProgressBarLeft = ProgressBarRight = 0;
+                        }
                     }
                 }
             }

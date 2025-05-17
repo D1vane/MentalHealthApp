@@ -12,4 +12,12 @@ namespace MentalHealthApp.Platforms.Android
             base.ConnectHandler(platformView);
         }
     }
+    public class MyEditorHandler : Microsoft.Maui.Handlers.EditorHandler
+    {
+        protected override void ConnectHandler(AppCompatEditText platformView)
+        {
+            platformView.Background = null;
+            base.ConnectHandler(platformView);
+        }
+    }
 }

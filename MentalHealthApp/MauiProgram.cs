@@ -14,9 +14,10 @@ namespace MentalHealthApp
                 .UseMauiTouchEffect()
                 .ConfigureMauiHandlers(handlers =>
                 {
-            #if ANDROID
+#if ANDROID
                         handlers.AddHandler(typeof(Entry), typeof (MentalHealthApp.Platforms.Android.MyEntryHandler));
-            #endif
+                        handlers.AddHandler(typeof(Editor), typeof (MentalHealthApp.Platforms.Android.MyEditorHandler));
+#endif
 
                 }
                 )

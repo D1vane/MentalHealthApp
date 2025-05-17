@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.Feeling"
+             xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             Title="Feeling"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="48">
+        
+        <Label  Text="Оценка самочувствия" Style="{StaticResource ContentStyle}" FontSize="32"/>
+
+        <Label Text="Как вы себя чувствуете?" Style="{StaticResource ContentStyle}" HorizontalOptions="Center"/>
+
+        <Image Source="{Binding EmojiStatus,StringFormat='emojifeeling{0}.png'}"/>
+
+        <Slider x:Name="sliderEmoji" ThumbColor="Black" MinimumTrackColor="Gray" MaximumTrackColor="Gray" Maximum="10" Minimum="1"
+                ValueChanged="sliderEmoji_ValueChanged"/>
+        <HorizontalStackLayout Margin="12,-48,0,0" Spacing="39">
+            <Label Text="1" Style="{StaticResource ContentStyle}"/>
+            <Label Text="2" Style="{StaticResource ContentStyle}"/>
+            <Label Text="3" Style="{StaticResource ContentStyle}"/>
+            <Label Text="4" Style="{StaticResource ContentStyle}"/>
+            <Label Text="5" Style="{StaticResource ContentStyle}"/>
+            <Label Text="6" Style="{StaticResource ContentStyle}"/>
+            <Label Text="7" Style="{StaticResource ContentStyle}"/>
+            <Label Text="8" Style="{StaticResource ContentStyle}"/>
+            <Label Text="9" Style="{StaticResource ContentStyle}"/>
+            <Label Text="10" Style="{StaticResource ContentStyle}"/>
+        </HorizontalStackLayout>
+
+        <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96">
+            <Editor Placeholder="Добавить описание.." VerticalOptions="Start" FontFamily="Roboto" FontSize="14" 
+                    HeightRequest="96"/>
+        </Border>
+
+        <Button Text="Сохранить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
+    CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

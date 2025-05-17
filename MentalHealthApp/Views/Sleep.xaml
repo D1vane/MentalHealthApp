@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MentalHealthApp.Views.Sleep"
+             xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:models="clr-namespace:MentalHealthApp.Models"
+             Title="Sleep"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Стиль текста на странице-->
+            <Style x:Key="ContentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <!--Стиль для выделенного времени-->
+            <Style TargetType="Label">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="Gray"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="Black"/>
+                                    <Setter Property="FontSize" Value="76"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!--Стиль для выделенных факторов-->
+            <Style TargetType="Border">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="StrokeThickness" Value="0"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                            Value="LightGray" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ScrollView>
+
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="48" AbsoluteLayout.LayoutFlags="All">
+            <Label Text="Оценка сна" Style="{StaticResource ContentStyle}" FontSize="32" TextColor="Black"/>
+
+            <Label Text="Сколько длился ваш сон?" Style="{StaticResource ContentStyle}" HorizontalOptions="Center" TextColor="Black"/>
+
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-24,0,0">
+
+                <CollectionView x:Name="hoursCollView" SelectionMode="Single" VerticalOptions="Start" HeightRequest="256"
+                                WidthRequest="76" HorizontalOptions="Center" Loaded="hoursCollView_Loaded" Scrolled="hoursCollView_Scrolled">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                            <x:Int32>0</x:Int32>
+                            <x:Int32>1</x:Int32>
+                            <x:Int32>2</x:Int32>
+                            <x:Int32>3</x:Int32>
+                            <x:Int32>4</x:Int32>
+                            <x:Int32>5</x:Int32>
+                            <x:Int32>6</x:Int32>
+                            <x:Int32>7</x:Int32>
+                            <x:Int32>8</x:Int32>
+                            <x:Int32>9</x:Int32>
+                            <x:Int32>10</x:Int32>
+                            <x:Int32>11</x:Int32>
+                            <x:Int32>12</x:Int32>
+                            <x:Int32>13</x:Int32>
+                            <x:Int32>14</x:Int32>
+                            <x:Int32>15</x:Int32>
+                            <x:Int32>16</x:Int32>
+                            <x:Int32>17</x:Int32>
+                            <x:Int32>18</x:Int32>
+                            <x:Int32>19</x:Int32>
+                            <x:Int32>20</x:Int32>
+                            <x:Int32>21</x:Int32>
+                            <x:Int32>22</x:Int32>
+                            <x:Int32>23</x:Int32>
+                            <x:Int32>24</x:Int32>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}" FontSize="64" FontFamily="Roboto" HorizontalOptions="Center"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text=":" Style="{StaticResource ContentStyle}" FontSize="64" VerticalOptions="Center"/>
+
+                <CollectionView x:Name="minutesCollView" SelectionMode="Single" VerticalOptions="Start" 
+                                HeightRequest="256" WidthRequest="76" HorizontalOptions="Center" Loaded="minutesCollView_Loaded"
+                                Scrolled="minutesCollView_Scrolled">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                            <x:Int32>0</x:Int32>
+                            <x:Int32>1</x:Int32>
+                            <x:Int32>2</x:Int32>
+                            <x:Int32>3</x:Int32>
+                            <x:Int32>4</x:Int32>
+                            <x:Int32>5</x:Int32>
+                            <x:Int32>6</x:Int32>
+                            <x:Int32>7</x:Int32>
+                            <x:Int32>8</x:Int32>
+                            <x:Int32>9</x:Int32>
+                            <x:Int32>10</x:Int32>
+                            <x:Int32>11</x:Int32>
+                            <x:Int32>12</x:Int32>
+                            <x:Int32>13</x:Int32>
+                            <x:Int32>14</x:Int32>
+                            <x:Int32>15</x:Int32>
+                            <x:Int32>16</x:Int32>
+                            <x:Int32>17</x:Int32>
+                            <x:Int32>18</x:Int32>
+                            <x:Int32>19</x:Int32>
+                            <x:Int32>20</x:Int32>
+                            <x:Int32>21</x:Int32>
+                            <x:Int32>22</x:Int32>
+                            <x:Int32>23</x:Int32>
+                            <x:Int32>24</x:Int32>
+                            <x:Int32>25</x:Int32>
+                            <x:Int32>26</x:Int32>
+                            <x:Int32>27</x:Int32>
+                            <x:Int32>28</x:Int32>
+                            <x:Int32>29</x:Int32>
+                            <x:Int32>30</x:Int32>
+                            <x:Int32>31</x:Int32>
+                            <x:Int32>32</x:Int32>
+                            <x:Int32>33</x:Int32>
+                            <x:Int32>34</x:Int32>
+                            <x:Int32>35</x:Int32>
+                            <x:Int32>36</x:Int32>
+                            <x:Int32>37</x:Int32>
+                            <x:Int32>38</x:Int32>
+                            <x:Int32>39</x:Int32>
+                            <x:Int32>40</x:Int32>
+                            <x:Int32>41</x:Int32>
+                            <x:Int32>42</x:Int32>
+                            <x:Int32>43</x:Int32>
+                            <x:Int32>44</x:Int32>
+                            <x:Int32>45</x:Int32>
+                            <x:Int32>46</x:Int32>
+                            <x:Int32>47</x:Int32>
+                            <x:Int32>48</x:Int32>
+                            <x:Int32>49</x:Int32>
+                            <x:Int32>50</x:Int32>
+                            <x:Int32>51</x:Int32>
+                            <x:Int32>52</x:Int32>
+                            <x:Int32>53</x:Int32>
+                            <x:Int32>54</x:Int32>
+                            <x:Int32>55</x:Int32>
+                            <x:Int32>56</x:Int32>
+                            <x:Int32>57</x:Int32>
+                            <x:Int32>58</x:Int32>
+                            <x:Int32>59</x:Int32>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}" FontSize="64" FontFamily="Roboto" HorizontalOptions="Center"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+
+                <Label Text="Добавить описание" TextColor="Black" Style="{StaticResource ContentStyle}"/>
+
+                <Image Source="{Binding ArrowImage}"/>
+
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SleepViewModel}},Path=OpenDescriptionCommand}"/>
+                </HorizontalStackLayout.GestureRecognizers>
+
+            </HorizontalStackLayout>
+
+
+
+            <!--Перед сном-->
+            <Label Text="Перед сном" TextColor="Black" Style="{StaticResource ContentStyle}" FontSize="20"
+                   IsVisible="{Binding FactorsVisibility}"/>
+            <CollectionView ItemsSource="{Binding FactorsBeforeSleep}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
+                            Margin="0,-24,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:SleepModel">
+
+                        <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="*">
+                                <Image Source="{Binding ImagePath}" HorizontalOptions="Center"
+                                           WidthRequest="32" HeightRequest="32"/>
+                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                           TextColor="Black" FontSize="14" HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--Во время сна-->
+            <Label Text="Сон" TextColor="Black" Style="{StaticResource ContentStyle}" FontSize="20" IsVisible="{Binding FactorsVisibility}"/>
+
+            <CollectionView ItemsSource="{Binding SleepFactors}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
+                            Margin="0,-24,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:SleepModel">
+
+                        <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="*">
+                                <Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>
+                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                       TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96" StrokeThickness="1" Stroke="Black" IsVisible="{Binding FactorsVisibility}">
+                <Editor Placeholder="Добавить описание.." VerticalOptions="Start" FontFamily="Roboto" FontSize="14" 
+                HeightRequest="96" TextColor="Black" Margin="4,0,4,4"/>
+            </Border>
+
+            <Button Text="Сохранить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
+CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

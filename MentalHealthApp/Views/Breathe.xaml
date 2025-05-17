@@ -37,11 +37,16 @@
 
         <Border WidthRequest="240" HeightRequest="240" HorizontalOptions="Center" Margin="0,24,0,0" Stroke="Black"/>
 
-        <Label Text="{Binding LoopNumbers,StringFormat='Количество циклов: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="Center">
-            <Label.GestureRecognizers>
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+            <Label Text="Количество циклов:" Style="{StaticResource ContentStyle}"/>
+            <Label Text="{Binding LoopNumbers}" Style="{StaticResource ContentStyle}" FontAttributes="Bold"/>
+            
+            <HorizontalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="LoopNumberTapped"/>
-            </Label.GestureRecognizers>
-        </Label>
+            </HorizontalStackLayout.GestureRecognizers>
+            
+        </HorizontalStackLayout>
+
 
         <HorizontalStackLayout Margin="0,-16,0,0" HorizontalOptions="Center">
             <Label Text="{Binding Minutes,StringFormat='Общая длительность: {0} мин'}" Style="{StaticResource ContentStyle}" />

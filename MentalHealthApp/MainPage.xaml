@@ -89,7 +89,7 @@ VerticalOptions="End" Margin="8,0,0,8"/>
             </VerticalStackLayout>
 
             <!--Самоконтроль-->
-            <VerticalStackLayout Spacing="12" Grid.Row="2">
+            <VerticalStackLayout Grid.Row="2">
                 <Label Text="Самоконтроль" Style="{StaticResource HomescreenHeadlinesStyle}"/>
                 <CollectionView ItemsSource="{Binding SelfControl}" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>

@@ -7,6 +7,8 @@
              xmlns:conv ="clr-namespace:MentalHealthApp.Converters"
              Title="StartedBreathe"
              Shell.NavBarIsVisible="False">
+    
+    
     <ContentPage.Resources>
 
         <conv:BreatheListConverter x:Key="BreatheListConverter"/>
@@ -27,19 +29,24 @@
 
         <Label  Text="{Binding Name}" Style="{StaticResource ContentStyle}" FontSize="32"/>
 
-        <VerticalStackLayout HorizontalOptions="Center" WidthRequest="240" HeightRequest="240">
-            <Slider  
-                         Value="0.1" WidthRequest="240"  ThumbColor="Black"
-                      MinimumTrackColor="Gray" MaximumTrackColor="Gray"/>
-            <Slider  Rotation="180"
-             Value="0.1" WidthRequest="240"  Margin="0,180,0,0" ThumbColor="Black"
-                     MinimumTrackColor="Gray" MaximumTrackColor="Gray"/>
-            <Slider 
-             Value="0.1" WidthRequest="233" Rotation="270"  Margin="-210,-127,0,0" ThumbColor="Black"
-                     MinimumTrackColor="Gray" MaximumTrackColor="Gray"/>
-            <Slider   Value="0.1" Margin="210,-22,0,0" WidthRequest="233"  Rotation="90" ThumbColor="Black"
-                      MinimumTrackColor="Gray" MaximumTrackColor="Gray"/>
-        </VerticalStackLayout>
+        <Label  Text="Вдох" Style="{StaticResource ContentStyle}" FontSize="24" HorizontalOptions="Center"/>
+        <HorizontalStackLayout>
+            <Label  Text="Задержка" Style="{StaticResource ContentStyle}" FontSize="24"  VerticalOptions="Center" Rotation="270"/>
+            <VerticalStackLayout HorizontalOptions="Center" WidthRequest="240" HeightRequest="240">
+                <ProgressBar  WidthRequest="240" Progress="{Binding ProgressBarTop}" 
+                  ProgressColor="Black"/>
+                <ProgressBar  Rotation="180" WidthRequest="240"  Margin="0,220,0,0" Progress="{Binding ProgressBarBot}"
+                  ProgressColor="Black"/>
+                <ProgressBar WidthRequest="240" Rotation="270"  Margin="-240,-134,0,0" Progress="{Binding ProgressBarLeft}"
+                 ProgressColor="Black"/>
+                <ProgressBar  Margin="240,-16,0,0" WidthRequest="240"  Rotation="90" Progress="{Binding ProgressBarRight}"
+                  ProgressColor="Black"/>
+            </VerticalStackLayout>
+            <Label  Text="Задержка" Style="{StaticResource ContentStyle}" FontSize="24"  VerticalOptions="Center" Rotation="90"/>
+        </HorizontalStackLayout>
+        
+
+        <Label  Text="Выдох" Style="{StaticResource ContentStyle}" FontSize="24" HorizontalOptions="Center"/>
 
         <Label Text="{Binding LoopCount,StringFormat='Осталось циклов: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="Center"/>
 

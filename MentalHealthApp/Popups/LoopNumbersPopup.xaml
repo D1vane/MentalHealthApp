@@ -11,7 +11,7 @@
         
         <ResourceDictionary>
 
-            <!--Стиль для выделенных дней-->
+            <!--Стиль для выбранного цикла-->
             <Style TargetType="Label">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
