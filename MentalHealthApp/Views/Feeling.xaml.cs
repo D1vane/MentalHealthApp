@@ -15,7 +15,11 @@ public partial class Feeling : ContentPage
     {
         Slider slider = (Slider)sender;
         if (feeling.EmojiStatus != (int)slider.Value)
+        {
             feeling.EmojiStatus = (int)slider.Value;
+            feeling.EmojiDescription = feeling.EmojiDescriptionArr[(int)slider.Value];
+        }
+            
 
     }
 }

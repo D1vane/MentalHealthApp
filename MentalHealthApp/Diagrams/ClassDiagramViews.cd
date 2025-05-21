@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MentalHealthApp.Views.Breathe">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Views\Breathe.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.BreatheList">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\BreatheList.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.Feeling">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAAAI=</HashCode>
+      <FileName>Views\Feeling.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.ForReading">
+    <Position X="9.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ForReading.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.ForReadingSelected">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ForReadingSelected.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.Meditation">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Meditation.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.MeditationList">
+    <Position X="7.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MeditationList.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.PositiveThinking">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PositiveThinking.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.PositiveThinkingCards">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PositiveThinkingCards.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.Sleep">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Views\Sleep.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Views.StartedBreathe">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\StartedBreathe.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Calendar">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Calendar.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Favourites">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Favourites.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Planner">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Planner.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.MainPage">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

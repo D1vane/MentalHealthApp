@@ -28,8 +28,11 @@
 
         <Image Source="{Binding EmojiStatus,StringFormat='emojifeeling{0}.png'}"/>
 
+        <Label Text="{Binding EmojiDescription}" Style="{StaticResource ContentStyle}" FontSize="14" Opacity="0.7"
+               HorizontalOptions="Center" Margin="0,-32,0,0"/>
+
         <Slider x:Name="sliderEmoji" ThumbColor="Black" MinimumTrackColor="Gray" MaximumTrackColor="Gray" Maximum="10" Minimum="1"
-                ValueChanged="sliderEmoji_ValueChanged"/>
+                ValueChanged="sliderEmoji_ValueChanged" Margin="0,-32,0,0"/>
         <HorizontalStackLayout Margin="12,-48,0,0" Spacing="39">
             <Label Text="1" Style="{StaticResource ContentStyle}"/>
             <Label Text="2" Style="{StaticResource ContentStyle}"/>
@@ -43,7 +46,7 @@
             <Label Text="10" Style="{StaticResource ContentStyle}"/>
         </HorizontalStackLayout>
 
-        <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96">
+        <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96" Stroke="Black">
             <Editor Placeholder="Добавить описание.." VerticalOptions="Start" FontFamily="Roboto" FontSize="14" 
                     HeightRequest="96"/>
         </Border>

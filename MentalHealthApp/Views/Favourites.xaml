@@ -49,7 +49,10 @@
                     <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Margin="8">
                         <Grid  Style="{StaticResource InnerGridStyle}" >
                             <Label Text="{Binding NameOfFav}" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
-                            <Label Text="Добавлено: 0" Style="{StaticResource NubmerOfCategoriesStyle}" Grid.Row="1"/>
+
+                            <Label Text="{Binding AllTasks,StringFormat='Добавлено: {0}'}" Style="{StaticResource NubmerOfCategoriesStyle}" 
+                                   Grid.Row="1" HorizontalOptions="End"/>
+
                         </Grid>
                     </Border>
                 </DataTemplate>

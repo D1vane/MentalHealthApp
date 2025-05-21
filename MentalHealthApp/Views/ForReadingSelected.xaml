@@ -19,35 +19,31 @@
             </Style>
 
         </ResourceDictionary>
-        
+
     </ContentPage.Resources>
     <ScrollView>
-    <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        
-        <Label Text="{Binding TName}" Style="{StaticResource ContentStyle}" FontSize="32"/>
-        
-        <Label Text="{Binding STName}" Style="{StaticResource ContentStyle}" FontSize="24"/>
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
 
-        <!--Верхняя часть-->
+            <Label Text="{Binding TName}" Style="{StaticResource ContentStyle}" FontSize="32"/>
+
+            <Label Text="{Binding STName}" Style="{StaticResource ContentStyle}" FontSize="24"/>
+
+            <!--Верхняя часть-->
             <Grid RowDefinitions="24, 164" ColumnDefinitions="188,*" ColumnSpacing="20">
 
                 <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" AbsoluteLayout.LayoutFlags="All" 
                          Grid.RowSpan="2" VerticalOptions="Start" HorizontalOptions="Start"/>
-
+                <Image Source="{Binding ImagePath}" WidthRequest="164" HeightRequest="164" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <HorizontalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Start">
                     <Label Text="{Binding Minutes, StringFormat='Время чтения: {0}'}" Style="{StaticResource ContentStyle}"/>
                     <Image Source="bookopen_icon.png" Margin="0,0,0,4"/>
                 </HorizontalStackLayout>
-                
+
                 <!--Список подтем-->
-                <CollectionView ItemsSource="{Binding STContent}" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding .}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
-                                   Margin="0,8,0,0" TextColor="CornflowerBlue"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+
+                <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Themes}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
+                                   Margin="0,8,0,0" TextColor="Black" Grid.Column="1" Grid.Row="1" LineHeight="1.3" TextDecorations="Underline"/>
+
 
             </Grid>
 

@@ -7,5 +7,6 @@ namespace MentalHealthApp.Models
         public int SubTopicID { get; set; }
         public string NameOfCategory { get; set; }
         public string SubTopicName { get; set; }
+        public string ImagePath { get; set; }
     }
 }

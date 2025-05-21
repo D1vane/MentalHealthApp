@@ -22,9 +22,9 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         ObservableCollection<FavouriteModel> cats =
             [
-            new () {NameOfFav = "Задачи на день"},
-            new () {NameOfFav = "Медитации"},
-            new () {NameOfFav = "Дыхательные техники"}
+            new () {NameOfFav = "Задачи на день", AllTasks = 3, CompletedTasks = 1},
+            new () {NameOfFav = "Медитации", AllTasks = 2, CompletedTasks = 0},
+            new () {NameOfFav = "Дыхательные техники", AllTasks = 1, CompletedTasks = 0}
             ];
 
         [ObservableProperty]
@@ -61,7 +61,7 @@ namespace MentalHealthApp.ViewModels
                     {
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
                             FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : ""});
                             haveTask = false;
@@ -73,7 +73,7 @@ namespace MentalHealthApp.ViewModels
                         FullMonth.Add(new());
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
                             FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
@@ -86,7 +86,7 @@ namespace MentalHealthApp.ViewModels
                         FullMonth.Add(new());
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
                             FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
@@ -101,7 +101,7 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
                             FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
@@ -116,7 +116,7 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
                             FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
@@ -131,9 +131,9 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? "5/5" : "" });
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
                         }
                         break;
@@ -147,9 +147,9 @@ namespace MentalHealthApp.ViewModels
                         }
                         for (var i = StartDate; i < EndDate; i = i.AddDays(1))
                         {
-                            if (i.Day.ToString() == "1" || i.Day.ToString() == "7" || i.Day.ToString() == "25")
+                            if (i.Day.ToString() == "18")
                                 haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? "5/5" : "" });
+                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
                             haveTask = false;
                         }
                         break;

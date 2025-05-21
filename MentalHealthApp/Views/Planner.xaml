@@ -30,11 +30,21 @@
 
         <!--Дата и опции-->
         <Grid RowDefinitions="*" ColumnDefinitions="1*,1*" Grid.Row="1" Grid.ColumnSpan="2">
-            <Label x:Name="PlannerDateLabel" Text="09/04/2025" Style="{StaticResource TasksAndMenuStyle}" FontSize="24" Grid.Column="0"/>
-            <Image Source="threedots_icon.png"  HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,6,0,0"/>
+            <HorizontalStackLayout Spacing="2">
+                <Label Text="{Binding Day}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding Month}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding Year}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+            </HorizontalStackLayout>
+            <!--<Image Source="threedots_icon.png"  HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,6,0,0"/>-->
         </Grid>
-
-        <Label x:Name="CountOfTasks" Text="Выполнено задач 0/3" Style="{StaticResource TasksAndMenuStyle}" HorizontalOptions="End" Grid.Row="2" Grid.Column="1"/>
+        <HorizontalStackLayout HorizontalOptions="End" Grid.Row="2" Grid.Column="1" Spacing="2">
+            <Label Text="{Binding CompletedTasks.Count, StringFormat='Выполнено задач {0}'}" Style="{StaticResource TasksAndMenuStyle}"/>
+            <Label Text="/" Style="{StaticResource TasksAndMenuStyle}"/>
+            <Label Text="{Binding AllTasksCount}" Style="{StaticResource TasksAndMenuStyle}"/>
+        </HorizontalStackLayout>
+        
         <ScrollView Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout>
                 <!--Список задач-->
@@ -50,7 +60,7 @@
                                                 <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
                                                 <Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
-                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text"/>
+                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text" Placeholder="Новая задача"/>
                                                 <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>

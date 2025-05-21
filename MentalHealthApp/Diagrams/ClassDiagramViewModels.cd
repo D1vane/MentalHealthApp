@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MentalHealthApp.ViewModels.BreatheListViewModel">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BreatheListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.BreatheViewModel">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAIAAgBAAAAAAIAAAAAAAAAEAEAAAAAAAAAAAQA=</HashCode>
+      <FileName>ViewModels\BreatheViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.CalendarViewModel">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAgACACAAAAAAAAAAIAQAAAAAAAAABAE=</HashCode>
+      <FileName>ViewModels\CalendarViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.CardsThinksViewModel">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CardsThinksViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.FavouritesViewModel">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\FavouritesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.FeelingViewModel">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAQAAA=</HashCode>
+      <FileName>ViewModels\FeelingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.ForReadingSelectedViewModel">
+    <Position X="9" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAABBAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ForReadingSelectedViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.ForReadingViewModel">
+    <Position X="14.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAIAAAAAgAAAAAAAAAAAAQAAAAAAAAAAACAAAg=</HashCode>
+      <FileName>ViewModels\ForReadingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.MainPageViewModel">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAIAAAgAAAAA=</HashCode>
+      <FileName>ViewModels\MainPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.MeditationListViewModel">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ViewModels\MeditationListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.MeditationViewModel">
+    <Position X="11.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAgAAAAAAAgABAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MeditationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.PlannerViewModel">
+    <Position X="14" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAkBiAAAAAAAAAAAAgAAAAAAAQAAAgAAAAAAABQAAA=</HashCode>
+      <FileName>ViewModels\PlannerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.SleepViewModel">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAAAAAQAAAAAAAAAAAAEAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SleepViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.StartedBreatheViewModel">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAABAAAAAAAAaAAAAAABFAAMAAAAAAAAAAQA=</HashCode>
+      <FileName>ViewModels\StartedBreatheViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.ViewModels.SubTopicsViewModel">
+    <Position X="11.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQAAIAAAAAgAAAAAAAAAAAAQAAAAAAAAAAACAAAg=</HashCode>
+      <FileName>ViewModels\SubTopicsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

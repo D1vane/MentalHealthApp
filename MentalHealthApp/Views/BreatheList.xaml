@@ -53,9 +53,6 @@
 
                             </Border>
 
-
-
-
                             <Label Text="{Binding NameOfBreathe}" Style="{StaticResource ContentStyle}" Grid.Column="1" FontSize="16" 
                                    FontAttributes="Bold"/>
 

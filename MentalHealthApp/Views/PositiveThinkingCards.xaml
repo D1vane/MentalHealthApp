@@ -4,6 +4,7 @@
              x:Class="MentalHealthApp.Views.PositiveThinkingCards"
              xmlns:models ="clr-namespace:MentalHealthApp.Models"
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
+             xmlns:jusitfiedLabel ="clr-namespace:JustifyLabel;assembly=JustifyLabel"
              Title="PositiveThinkingCards"
              Shell.NavBarIsVisible="False">
 
@@ -29,13 +30,13 @@
         <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
-                    <Grid RowDefinitions="1*,1*,1*,1*" ColumnDefinitions="0.7*,0.3*" Margin="8,24,8,0" 
+                    <Grid RowDefinitions="1*,1*,1*,1*" ColumnDefinitions="0.8*,0.2*" Margin="8,24,8,0" 
                               HeightRequest="236" AbsoluteLayout.LayoutFlags="All">
                         
                         <!--Негативная мысль-->
                         <Border Stroke="Black" StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                        <Label Text="{Binding NegThink}" Style="{StaticResource CatsStyle}" Grid.Row="0"
-                               Margin="16,8,0,0"/>
+                        <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegThink}" Style="{StaticResource CatsStyle}" Grid.RowSpan="2"
+                               Margin="16,8,0,0" LineHeight="1.2"/>
                             <Image Source="favourites_icon.png" Grid.Column="1" HorizontalOptions="End" Margin="0,12,12,0" 
                                     VerticalOptions="Start" WidthRequest="20" HeightRequest="20"/>
                             <Image Source="cross_icon.png" WidthRequest="14" HeightRequest="14" Grid.Row="1"
@@ -43,7 +44,8 @@
                         
                         <!--Позитивная мысль-->
                         <Border Stroke="Black" Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,15,15" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                        <Label Text="{Binding PosThink}" Style="{StaticResource CatsStyle}" Grid.Row="2" Margin="16,8,0,0"/>
+                            <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding PosThink}" 
+                                   Style="{StaticResource CatsStyle}" Grid.Row="2" Grid.RowSpan="2" Margin="16,8,0,0" LineHeight="1.2"/>
                         <Image Source="check_icon.png" WidthRequest="18" HeightRequest="18" Grid.Row="3"
        Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0"/>
 

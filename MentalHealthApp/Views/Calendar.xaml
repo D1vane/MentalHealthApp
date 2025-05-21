@@ -121,7 +121,7 @@
 
         <VerticalStackLayout Spacing="16">
 
-            <Label Text="Список событий (10/15)" Style="{StaticResource EventsCountersStyle}" FontSize="20" HorizontalOptions="Center" />
+            <Label Text="Выполнено событий: (1/6)" Style="{StaticResource EventsCountersStyle}" FontSize="20" HorizontalOptions="Center" />
 
             <CollectionView ItemsSource="{Binding Cats}" HorizontalOptions="Center">
                 <CollectionView.ItemTemplate>
@@ -129,9 +129,12 @@
                         <Border StrokeShape="RoundRectangle 15,15,15,15" Margin="8"  HeightRequest="68" StrokeThickness="0.5" AbsoluteLayout.LayoutFlags="All">
                             <Grid  RowDefinitions="1*,1*" ColumnDefinitions="*" >
                                 <Label Text="{Binding NameOfFav}" Style="{StaticResource EventsCountersStyle}" Grid.Row="0" Margin="8,4,0,0"/>
-                                <Label Text="Выполнено: 0 / 3" Style="{StaticResource EventsCountersStyle}" Grid.Row="1" HorizontalOptions="End"
-                                       Margin="0,0,8,4"/>
-                            </Grid>
+                                    <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End" Spacing="2" Margin="0,0,8,4">
+                                        <Label Text="{Binding CompletedTasks,StringFormat='Выполнено: {0}'}" Style="{StaticResource EventsCountersStyle}"/>
+                                        <Label Text="/" Style="{StaticResource EventsCountersStyle}"/>
+                                        <Label Text="{Binding AllTasks}" Style="{StaticResource EventsCountersStyle}"/>
+                                    </HorizontalStackLayout>
+                                </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
