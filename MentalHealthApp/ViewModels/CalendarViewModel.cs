@@ -38,7 +38,7 @@ namespace MentalHealthApp.ViewModels
             StartDate = StartDate.AddMonths(-1);
             EndDate = EndDate.AddMonths(-1);
             NumOfDayWeek = (int)(StartDate.DayOfWeek + 6) % 7;
-            FIllTheList();
+            //FIllTheList();
         }
         [RelayCommand]
         private void SwipeToTheRight()
@@ -46,122 +46,122 @@ namespace MentalHealthApp.ViewModels
             StartDate = StartDate.AddMonths(1);
             EndDate = EndDate.AddMonths(1);
             NumOfDayWeek = (int)(StartDate.DayOfWeek + 6) % 7;
-            FIllTheList();
+            //FIllTheList();
         }
         /// <summary>
         /// Заполнение числами в соответствии с днями недели
         /// </summary>
-        public void FIllTheList()
-        {
-            FullMonth.Clear();
-            bool haveTask = false;
-            switch (NumOfDayWeek)
-            {
-                case 0:
-                    {
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : ""});
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                case 1:
-                    {
-                        FullMonth.Add(new());
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        FullMonth.Add(new());
-                        FullMonth.Add(new());
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        for (int i = 0; i < NumOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                case 4:
-                    {
-                        for (int i = 0; i < NumOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                case 5:
-                    {
-                        for (int i = 0; i < NumOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
+        //public void FIllTheList()
+        //{
+        //    FullMonth.Clear();
+        //    bool haveTask = false;
+        //    switch (NumOfDayWeek)
+        //    {
+        //        case 0:
+        //            {
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : ""});
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        case 1:
+        //            {
+        //                FullMonth.Add(new());
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                FullMonth.Add(new());
+        //                FullMonth.Add(new());
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        case 3:
+        //            {
+        //                for (int i = 0; i < NumOfDayWeek; i++)
+        //                {
+        //                    FullMonth.Add(new());
+        //                }
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        case 4:
+        //            {
+        //                for (int i = 0; i < NumOfDayWeek; i++)
+        //                {
+        //                    FullMonth.Add(new());
+        //                }
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        case 5:
+        //            {
+        //                for (int i = 0; i < NumOfDayWeek; i++)
+        //                {
+        //                    FullMonth.Add(new());
+        //                }
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
 
-                case 6:
-                    {
-                        for (int i = 0; i < NumOfDayWeek; i++)
-                        {
-                            FullMonth.Add(new());
-                        }
-                        for (var i = StartDate; i < EndDate; i = i.AddDays(1))
-                        {
-                            if (i.Day.ToString() == "18")
-                                haveTask = true;
-                            FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
-                            haveTask = false;
-                        }
-                        break;
-                    }
-                default:
-                    break;
-            }
-            if (StartDate.Month == DateTime.Today.Month)
-            CalendarModel = FullMonth[NumOfDayWeek + DateTime.Today.Day - 1];
+        //        case 6:
+        //            {
+        //                for (int i = 0; i < NumOfDayWeek; i++)
+        //                {
+        //                    FullMonth.Add(new());
+        //                }
+        //                for (var i = StartDate; i < EndDate; i = i.AddDays(1))
+        //                {
+        //                    if (i.Day.ToString() == "18")
+        //                        haveTask = true;
+        //                    FullMonth.Add(new() { CurrentDay = i.Day.ToString(), TaskCount = (haveTask == true) ? 5.ToString() : "" });
+        //                    haveTask = false;
+        //                }
+        //                break;
+        //            }
+        //        default:
+        //            break;
+        //    }
+        //    if (StartDate.Month == DateTime.Today.Month)
+        //    CalendarModel = FullMonth[NumOfDayWeek + DateTime.Today.Day - 1];
             
 
-        }
+        //}
 
         
 

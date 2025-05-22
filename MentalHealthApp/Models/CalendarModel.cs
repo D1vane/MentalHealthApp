@@ -1,10 +1,36 @@
 ﻿
 
+using SQLite;
+
+
 namespace MentalHealthApp.Models
 {
+    [Table("Событие")]
     public class CalendarModel
     {
-        public string CurrentDay { get; set; }
-        public string TaskCount { get; set; }
+        [PrimaryKey,AutoIncrement, Column("IDСобытия")]
+        public int EventID { get; set; }
+
+        [Column("IDЗадачи")]
+        public int TaskID { get; set; }
+
+        [Column("IDМедитации")]
+        public int MeditationID { get; set; }
+
+        [Column("IDДыхательнойТехники")]
+        public int BreatheID { get; set; }
+
+        [Column("IDСна")]
+        public int SleepID { get; set; }
+
+        [Column("IDСамочувствия")]
+        public int FeelingID { get; set; }
+
+        [Column("IDИнформации")]
+        public int ForReadingID { get; set; }
+
+        [Column("Дата")]
+        public string EventDate { get; set; }
+
     }
 }

@@ -213,11 +213,11 @@
 
                         <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
                             <Grid RowDefinitions="*,*" ColumnDefinitions="*">
-                                <Image Source="{Binding ImagePath}" HorizontalOptions="Center"
-                                           WidthRequest="32" HeightRequest="32"/>
-                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                <!--<Image Source="{Binding ImagePath}" HorizontalOptions="Center"
+                                           WidthRequest="32" HeightRequest="32"/>-->
+                                <!--<Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
                                            TextColor="Black" FontSize="14" HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"/>
+                                       HorizontalTextAlignment="Center"/>-->
                             </Grid>
                         </Border>
 
@@ -235,9 +235,9 @@
 
                         <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
                             <Grid RowDefinitions="*,*" ColumnDefinitions="*">
-                                <Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>
-                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
-                                       TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                <!--<Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>-->
+                                <!--<Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                       TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>-->
                             </Grid>
                         </Border>
 

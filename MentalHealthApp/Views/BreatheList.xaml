@@ -56,10 +56,10 @@
                             <Label Text="{Binding NameOfBreathe}" Style="{StaticResource ContentStyle}" Grid.Column="1" FontSize="16" 
                                    FontAttributes="Bold"/>
 
-                            <Label Text="{Binding TimeOfLoop,StringFormat='Длительность цикла: {0} с'}" Style="{StaticResource ContentStyle}" 
+                            <Label Text="{Binding LoopDuration,StringFormat='Длительность цикла: {0} с'}" Style="{StaticResource ContentStyle}" 
                                    Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
 
-                            <Label justifyLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}" 
+                            <Label justifyLabel:Label.JustifyText="True" Text="{Binding Guide}" Style="{StaticResource ContentStyle}" 
                                    Grid.Row="2" Grid.Column="1" MaxLines="5"/>
 
                             <Grid RowDefinitions="*" ColumnDefinitions="*" Grid.Row="3" Grid.Column="1">
@@ -68,7 +68,7 @@
                                         <TapGestureRecognizer.CommandParameter>
                                             <MultiBinding Converter="{StaticResource BreatheListConverter}">
                                                 <Binding Path="NameOfBreathe"/>
-                                                <Binding Path="TimeOfLoop"/>
+                                                <Binding Path="LoopDuration"/>
                                                 <Binding Path="Guide"/>
                                             </MultiBinding>
                                         </TapGestureRecognizer.CommandParameter>

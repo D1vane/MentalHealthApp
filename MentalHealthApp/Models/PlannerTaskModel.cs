@@ -1,12 +1,22 @@
-﻿using System.ComponentModel;
+﻿using SQLite;
+using System.ComponentModel;
 
 namespace MentalHealthApp.Models
 {
+    [Table("Задача")]
     public class PlannerTaskModel
     {
-        public bool IsNew { get; set; }
-        public string TextTask { get; set; }
+        [PrimaryKey,AutoIncrement, Column("IDЗадачи")]       
+        public int TaskID { get; set; }
 
-        public string TimeOfTask { get; set; }
+        [Column("Содержание")]
+        public string TaskText { get; set; }
+
+        [Column("Дата")]
+        public DateTime TaskDate { get; set; }
+
+        [Column("Выполнена")]
+        public int IsComplete { get; set; }
+
     }
 }

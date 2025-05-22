@@ -6,7 +6,7 @@ public partial class Calendar : ContentPage
 	{
 		InitializeComponent();
 		CalendarViewModel vm = new();
-		vm.FIllTheList();
+		//vm.FIllTheList();
 		BindingContext = vm;
 	}
 }

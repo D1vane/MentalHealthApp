@@ -3,13 +3,13 @@ using SQLite;
 
 namespace MentalHealthApp.Models
 {
-    [Table("Категория") ]
+    [Table("Категория")]
     public class CategoryModel
     {
-        [Column ("IDКатегории")]
+        [PrimaryKey,AutoIncrement, Column("IDКатегории")]
         public int CategoryID { get; set; }
 
-        [Column ("Наименование")]
+        [Column ("Наименование")]   
         public string NameOfCategory { get; set; }
 
     }

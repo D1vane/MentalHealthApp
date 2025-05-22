@@ -105,9 +105,9 @@
                     <DataTemplate x:DataType="{x:Type models:CalendarModel}">
                         <Border WidthRequest="57" HeightRequest="67" AbsoluteLayout.LayoutFlags="All">
                         <VerticalStackLayout>
-                            <Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>
-                            <Label Text="{Binding TaskCount}" Style="{StaticResource NumbersStyle}" Margin="0" 
-                                   HorizontalOptions="Center" Opacity="0.6"  TextDecorations="Underline"/>
+                            <!--<Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>-->
+                            <!--<Label Text="{Binding TaskCount}" Style="{StaticResource NumbersStyle}" Margin="0" 
+                                   HorizontalOptions="Center" Opacity="0.6"  TextDecorations="Underline"/>-->
                         </VerticalStackLayout>
                     </Border>
 

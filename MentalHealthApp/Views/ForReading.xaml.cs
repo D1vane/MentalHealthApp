@@ -2,9 +2,11 @@ namespace MentalHealthApp.Views;
 using MentalHealthApp.ViewModels;
 public partial class ForReading : ContentPage
 {
+	private ForReadingViewModel vM { get; set; }
 	public ForReading()
 	{
 		InitializeComponent();
-		BindingContext = new ForReadingViewModel();
+		vM = new ForReadingViewModel();
+		BindingContext = vM;
 	}
 }

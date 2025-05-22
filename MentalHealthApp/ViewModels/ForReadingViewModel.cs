@@ -7,7 +7,6 @@ namespace MentalHealthApp.ViewModels
 {
     public partial class ForReadingViewModel : ObservableObject
     {
-        MentalHealthAppDB db;
 
         [ObservableProperty]
         private ObservableCollection<CategoryModel> cats;
@@ -26,38 +25,42 @@ namespace MentalHealthApp.ViewModels
         
         public ForReadingViewModel()
         {
-            Task.Run(async () =>
+            LoadReadings();
+        }
+
+        [RelayCommand]
+        private async void LoadReadings()
+        {
+            
+            var cats = await App.Database.GetListOfCats();
+            if (cats.Any())
             {
-                var cats = await db.GetListOfCats();               
-                if (cats.Any())
-                {
-                    Cats = new ObservableCollection<CategoryModel>(cats);
-                }
+                Cats = new ObservableCollection<CategoryModel>(cats);
+            }
 
-                var work = await db.GetListOfReading(Cats[0].CategoryID);
-                if (work.Any())
-                {
-                    Work = new ObservableCollection<ForReadingModel>(work);   
-                }
+            var work = await App.Database.GetListOfReading(Cats[0].CategoryID);
+            if (work.Any())
+            {
+                Work = new ObservableCollection<ForReadingModel>(work);
+            }
 
-                var study = await db.GetListOfReading(Cats[1].CategoryID);
-                if (work.Any())
-                {
-                    Study = new ObservableCollection<ForReadingModel>(study);
-                }
+            var study = await App.Database.GetListOfReading(Cats[1].CategoryID);
+            if (study.Any())
+            {
+                Study = new ObservableCollection<ForReadingModel>(study);
+            }
 
-                var health = await db.GetListOfReading(Cats[2].CategoryID);
-                if (work.Any())
-                {
-                    Health = new ObservableCollection<ForReadingModel>(health);
-                }
+            var health = await App.Database.GetListOfReading(Cats[2].CategoryID);
+            if (health.Any())
+            {
+                Health = new ObservableCollection<ForReadingModel>(health);
+            }
 
-                var life = await db.GetListOfReading(Cats[3].CategoryID);
-                if (work.Any())
-                {
-                    Life = new ObservableCollection<ForReadingModel>(life);
-                }
-            });
+            var life = await App.Database.GetListOfReading(Cats[3].CategoryID);
+            if (life.Any())
+            {
+                Life = new ObservableCollection<ForReadingModel>(life);
+            }
         }
 
         [RelayCommand]
@@ -79,11 +82,6 @@ namespace MentalHealthApp.ViewModels
                 ["themes"] = themes,
                 ["content"] = content
             });
-        }
-
-        public async Task<List<ForReadingModel>> GetListOfReadings(int )
-        {
-            return await db.Connection.Table<ForReadingModel>().Where;
         }
     }
 }

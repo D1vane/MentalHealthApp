@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,29 @@ using System.Threading.Tasks;
 
 namespace MentalHealthApp.Models
 {
+    [Table("Медитация")]
     public class MeditationListModel
     {
+        [PrimaryKey,AutoIncrement, Column("IDМедитации")]
+        public int MeditationID { get; set; }
+
+        [Column("Наименование")]
         public string MeditationName { get; set; }
-        public int MeditationTime { get; set; }
-        public int Level { get; set; }
-        public string Content { get; set; }
+
+        [Column("Содержание")]
+        public string MeditationContent { get; set; }
+
+        [Column("Сложность")]
+        public int MeditationLevel { get; set; }
+
+        [Column("Руководство")]
+        public string MeditationGuide { get; set; }
+
+        [Column("Длительность")]
+        public int MeditationDuration { get; set; }
+
+        [Column("Изображение")]
         public string ImagePath { get; set; }
-        public string Guide { get; set; }
 
     }
 }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MentalHealthApp.Models;
+using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -10,56 +11,59 @@ namespace MentalHealthApp.ViewModels
     public partial class SubTopicsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<CategoryModel> cats = new()
-        {
-            new() {NameOfCategory = "Работа"},
-            new() {NameOfCategory = "Учеба"},
-            new() {NameOfCategory = "Здоровье"},
-            new() {NameOfCategory = "Быт"}
-
-        };
+        private ObservableCollection<CategoryModel> cats;
 
         [ObservableProperty]
-        private ObservableCollection<PosThModel> work = new()
-        {
-            new () {SubTopicName = "Отношения с начальником", ImagePath = "boss_reading.jpg"} ,
-                new () {SubTopicName = "Отношения с коллегами", ImagePath = "colleagues_reading.jpg" },
-                new() {SubTopicName = "Первый рабочий день", ImagePath = "firstdaywork_reading.jpg"},
-                new () {SubTopicName = "Производительность", ImagePath = "efficiency_reading.jpg"}
-        };
+        private ObservableCollection<PosThCardsModel> work;
         [ObservableProperty]
-        private ObservableCollection<PosThModel> study = new()
-        {
-            new () {SubTopicName = "Отношения с учителем", ImagePath = "teacher_reading.jpg"},
-                new () {SubTopicName = "Отношения с товарищами", ImagePath = "schoolfriends_reading.jpg"},
-                new() {SubTopicName = "Первый учебный день", ImagePath = "student_reading.jpg" },
-                new () {SubTopicName = "Успеваемость", ImagePath = "schoolprogress_reading.jpg"}
-        };
+        private ObservableCollection<PosThCardsModel> study;
         [ObservableProperty]
-        private ObservableCollection<PosThModel> health = new()
-        {
-            new () {SubTopicName = "Тревожное состояние", ImagePath = "anxiety_reading.jpg" },
-                new () {SubTopicName = "Личная гигиена", ImagePath = "selfheallth_reading.jpg"},
-                new() {SubTopicName = "Здоровый образ жизни", ImagePath = "hls_reading.jpg" },
-                new () {SubTopicName = "Мысли о старости", ImagePath = "oldage_reading.jpg"}
-        };
+        private ObservableCollection<PosThCardsModel> health;
         [ObservableProperty]
-        private ObservableCollection<PosThModel> life = new()
-        {
-            new () {SubTopicName = "Отношения с семьей", ImagePath = "family_reading.jpg"} ,
-                new () {SubTopicName = "Личные обязанности", ImagePath = "lifetodo_reading.jpg"},
-                new() {SubTopicName = "Домашние животные", ImagePath = "pets_reading.jpg" },
-                new () {SubTopicName = "Внимание ребенку", ImagePath = "child_reading.jpg" }
-        };
+        private ObservableCollection<PosThCardsModel> life;
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> thCards = new()
+        private ObservableCollection<PosThCardsModel> thCards;
+
+        public SubTopicsViewModel()
         {
-            new () {NegThink = "Начальник придирается ко мне и требует больше, чем от других сотрудников", PosThink = "Вероятно, начальник видит во мне потенциал и потому предъявляет более высокие требования — это шанс расти профессионально",NameOfCategory = "Работа"},
-            new () {NegThink = "Начальник предвзято относится ко мне", PosThink = "Может быть, я интерпретирую ситуацию слишком лично. Стоит попробовать открыто обсудить рабочие моменты и уточнить ожидания, чтобы прояснить недопонимания",NameOfCategory = "Работа"},
-           new () {NegThink = "Начальник не замечает мои достижения и обесценивает мой труд", PosThink = "Возможно, начальник просто не осведомлён о моих результатах — я могу научиться быть более активным в коммуникации", NameOfCategory = "Работа"},
-            new () {NegThink = "Начальник игнорирует мои просьбы и предложения", PosThink = "Возможно, мои идеи требуют более чёткого обоснования или подачи в нужное время и формате.",NameOfCategory = "Работа"},
-            new () {NegThink = "Начальник намеренно не хочет повышать меня и давать новые проекты", PosThink = "Вероятно, сейчас не лучшее время для повышения по объективным причинам. Я могу уточнить, что нужно улучшить, чтобы перейти на следующий уровень, и показать свою готовность к новым задачам",NameOfCategory = "Работа"},
-        };
+            LoadSubTopics();
+        }
+
+        [RelayCommand]
+        private async void LoadSubTopics()
+        {
+
+            var cats = await App.Database.GetListOfCats();
+            if (cats.Any())
+            {
+                Cats = new ObservableCollection<CategoryModel>(cats);
+            }
+
+            var work = await App.Database.GetListOfSubTopics(Cats[0].CategoryID);
+            if (work.Any())
+            {
+                Work = new ObservableCollection<PosThCardsModel>(work);
+            }
+
+            var study = await App.Database.GetListOfSubTopics(Cats[1].CategoryID);
+            if (study.Any())
+            {
+                Study = new ObservableCollection<PosThCardsModel>(study);
+            }
+
+            var health = await App.Database.GetListOfSubTopics(Cats[2].CategoryID);
+            if (health.Any())
+            {
+                Health = new ObservableCollection<PosThCardsModel>(health);
+            }
+
+            var life = await App.Database.GetListOfSubTopics(Cats[3].CategoryID);
+            if (life.Any())
+            {
+                Life = new ObservableCollection<PosThCardsModel>(life);
+            }
+        }
+
         [RelayCommand]
         private void GetSubTopicName(object parametr)
         {
@@ -67,8 +71,10 @@ namespace MentalHealthApp.ViewModels
             var subTpc = param[0];
             var tPc = param[1];
             Shell.Current.GoToAsync($"PositiveThinkingCards", new Dictionary<string, object>
-            {["topicName"] = tPc,
-                ["subTopicName"] = subTpc});
+            {
+                ["topicName"] = tPc,
+                ["subTopicName"] = subTpc
+            });
         }
     }
 }

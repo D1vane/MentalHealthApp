@@ -29,15 +29,15 @@ namespace MentalHealthApp.ViewModels
         /// <summary>
         /// Добавление новой задачи в список
         /// </summary>
-        [RelayCommand]
-        private void AddTask()
-        {
-            if (Tasks.Count > 0)
-                foreach (var temptask in Tasks)
-                    temptask.IsNew = false;
-            Tasks.Add(new PlannerTaskModel {IsNew = true });
-            AllTasksCount = Tasks.Count + CompletedTasks.Count;
-        }
+        //[RelayCommand]
+        //private void AddTask()
+        //{
+        //    if (Tasks.Count > 0)
+        //        foreach (var temptask in Tasks)
+        //            temptask.IsNew = false;
+        //    Tasks.Add(new PlannerTaskModel {IsNew = true });
+        //    AllTasksCount = Tasks.Count + CompletedTasks.Count;
+        //}
         /// <summary>
         /// Удаление задачи из списка
         /// </summary>

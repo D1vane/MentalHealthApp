@@ -59,8 +59,8 @@
                                             <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
                                                 <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
-                                                <Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
-                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text" Placeholder="Новая задача"/>
+                                                <!--<Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
+                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text" Placeholder="Новая задача"/>-->
                                                 <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>
@@ -72,7 +72,7 @@
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"/>
                                                     </CheckBox.GestureRecognizers>
                                                 </CheckBox>
-                                                <Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>
+                                                <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>-->
                                             </Grid>
                                         </Border>
                                     </VerticalStackLayout>
@@ -101,7 +101,7 @@ HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
                                             <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
                                                 <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                   HorizontalOptions="Start"/>
-                                                <Label Margin="0,0,0,8" Text="{Binding TextTask}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>
+                                                <!--<Label Margin="0,0,0,8" Text="{Binding TextTask}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>-->
                                                 <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveCompletedTaskCommand}"/>
@@ -113,7 +113,7 @@ HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"/>
                                                     </CheckBox.GestureRecognizers>
                                                 </CheckBox>
-                                                <Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1" TextDecorations="Strikethrough"/>
+                                                <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1" TextDecorations="Strikethrough"/>-->
                                             </Grid>
                                         </Border>
                                     </VerticalStackLayout>

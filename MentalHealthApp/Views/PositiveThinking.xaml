@@ -19,7 +19,7 @@
             <Style x:Key="CatsStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Text" Value="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path=ThCards.Count}"/>
+                <Setter Property="Text" Value="{Binding Source={RelativeSource AncestorType={x:Type models:PosThCardsModel}}, Path=CountOfCards}"/>
             </Style>
 
             <!--Стиль сетки для отображение категории-->
@@ -45,17 +45,17 @@
     <ScrollView>
     <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
         
-        <Label Text="Позитивное мышление" Style="{StaticResource CatsStyle}" FontSize="32"/>
+        <Label Text="Позитивное мышление" FontFamily="Roboto" FontSize="32"/>
         
         <!--Работа-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label x:Name="topicLabel" Text="Работа" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label x:Name="topicLabel" Text="Работа" FontFamily="Roboto" FontSize="20"/>
                 <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Work}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -73,7 +73,7 @@
                                 <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
        HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
@@ -85,13 +85,13 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Учеба-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Учеба" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="Учеба" FontFamily="Roboto" FontSize="20"/>
                 <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Study}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -109,7 +109,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                 <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
        HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
@@ -121,13 +121,13 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Здоровье-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Здоровье" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="Здоровье" FontFamily="Roboto" FontSize="20"/>
                 <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Health}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -145,7 +145,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                 <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
        HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>
@@ -157,13 +157,13 @@ Grid.Column="1" Margin="0,4,8,0"/>
 
             <!--Быт-->
             <Grid Style="{StaticResource GridCategoryStyle}">
-                <Label Text="Быт" Style="{StaticResource CatsStyle}" FontSize="20"/>
+                <Label Text="Быт" FontFamily="Roboto" FontSize="20"/>
                 <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
                                         ItemsSource="{Binding Life}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThModel}">
+                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -181,7 +181,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                 <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
        HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
-                                <Label x:Name="subTopicLabel" Text="{Binding SubTopicName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
+                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
 Grid.Column="1" Margin="0,4,8,0"/>

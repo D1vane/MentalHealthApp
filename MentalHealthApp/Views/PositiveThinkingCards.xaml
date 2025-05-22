@@ -29,13 +29,13 @@
         <Label Text="{Binding ThCards.Count, StringFormat='Мыслей: {0}'}" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
         <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
+                <DataTemplate x:DataType="{x:Type models:PosThModel}">
                     <Grid RowDefinitions="1*,1*,1*,1*" ColumnDefinitions="0.8*,0.2*" Margin="8,24,8,0" 
                               HeightRequest="236" AbsoluteLayout.LayoutFlags="All">
                         
                         <!--Негативная мысль-->
                         <Border Stroke="Black" StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                        <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegThink}" Style="{StaticResource CatsStyle}" Grid.RowSpan="2"
+                        <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegativeThink}" Style="{StaticResource CatsStyle}" Grid.RowSpan="2"
                                Margin="16,8,0,0" LineHeight="1.2"/>
                             <Image Source="favourites_icon.png" Grid.Column="1" HorizontalOptions="End" Margin="0,12,12,0" 
                                     VerticalOptions="Start" WidthRequest="20" HeightRequest="20"/>
@@ -44,7 +44,7 @@
                         
                         <!--Позитивная мысль-->
                         <Border Stroke="Black" Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,15,15" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                            <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding PosThink}" 
+                            <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding PositiveThink}" 
                                    Style="{StaticResource CatsStyle}" Grid.Row="2" Grid.RowSpan="2" Margin="16,8,0,0" LineHeight="1.2"/>
                         <Image Source="check_icon.png" WidthRequest="18" HeightRequest="18" Grid.Row="3"
        Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0"/>
