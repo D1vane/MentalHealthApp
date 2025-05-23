@@ -35,7 +35,7 @@
 
                 <CollectionView.ItemTemplate>
 
-                    <DataTemplate x:DataType="{x:Type models:BreatheListModel}">
+                    <DataTemplate x:DataType="{x:Type models:BreatheModel}">
                         <Grid RowDefinitions="24,24,116,24,48" ColumnDefinitions="188, *" ColumnSpacing="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,48">
 
                             <!--Изображение-->

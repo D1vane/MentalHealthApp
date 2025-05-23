@@ -13,7 +13,7 @@ namespace MentalHealthApp.ViewModels
     public partial class MeditationListViewModel : ObservableObject
     {
         [ObservableProperty]
-        ObservableCollection<MeditationListModel> mList;
+        ObservableCollection<MeditationModel> mList;
 
         public MeditationListViewModel()
         {
@@ -27,7 +27,7 @@ namespace MentalHealthApp.ViewModels
             var meditationsTemp = await App.Database.GetListOfMeditations();
             if (meditationsTemp.Any())
             {
-                MList = new ObservableCollection<MeditationListModel>(meditationsTemp);
+                MList = new ObservableCollection<MeditationModel>(meditationsTemp);
             }
         }
 

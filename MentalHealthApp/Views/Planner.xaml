@@ -51,7 +51,7 @@
                 <ListView ItemsSource="{Binding Tasks}" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" 
        HorizontalScrollBarVisibility="Never" SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PlannerTaskModel}">
+                        <DataTemplate x:DataType="{x:Type models:TaskModel}">
                             <ViewCell x:Name="oneTask">
                                 <ViewCell.View>
                                     <VerticalStackLayout Padding="12">
@@ -93,7 +93,7 @@
                 <ListView ItemsSource="{Binding CompletedTasks}" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" 
 HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PlannerTaskModel}">
+                        <DataTemplate x:DataType="{x:Type models:TaskModel}">
                             <ViewCell>
                                 <ViewCell.View>
                                     <VerticalStackLayout Padding="12">

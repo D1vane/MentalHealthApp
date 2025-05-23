@@ -3,7 +3,7 @@ namespace MentalHealthApp
 {
     public partial class App : Application
     {
-        public const string DATABASE_NAME = "mHealth.db";
+        public const string DATABASE_NAME = "mHealth_db.db";
         public static MentalHealthAppDB database;
         public static MentalHealthAppDB Database
         {

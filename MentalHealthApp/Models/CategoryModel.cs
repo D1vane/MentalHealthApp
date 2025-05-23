@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace MentalHealthApp.Models
 {
@@ -11,6 +12,12 @@ namespace MentalHealthApp.Models
 
         [Column ("Наименование")]   
         public string NameOfCategory { get; set; }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<ThemeModel> Themes { get; set; }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<ForReadingModel> Readings { get; set; }
 
     }
 }

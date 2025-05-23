@@ -8,15 +8,15 @@ namespace MentalHealthApp.ViewModels
     public partial class PlannerViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<PlannerTaskModel> tasks = new();
+        private ObservableCollection<TaskModel> tasks = new();
         [ObservableProperty]
-        private ObservableCollection<PlannerTaskModel> completedTasks = new();
+        private ObservableCollection<TaskModel> completedTasks = new();
 
         [ObservableProperty]
-        private PlannerTaskModel selectedItem;
+        private TaskModel selectedItem;
 
         [ObservableProperty]
-        private PlannerTaskModel task;
+        private TaskModel task;
         [ObservableProperty]
         int allTasksCount;
         [ObservableProperty]

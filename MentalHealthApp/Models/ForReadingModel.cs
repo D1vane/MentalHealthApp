@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace MentalHealthApp.Models
 {
@@ -8,6 +9,9 @@ namespace MentalHealthApp.Models
     {
         [PrimaryKey,AutoIncrement, Column("IDИнформации")]
         public int InformationID { get; set; }
+
+        [Column("IDКатегории"),ForeignKey(typeof(CategoryModel))]
+        public int CategoryID { get; set; }
 
         [Column("ДлительностьЧтения")]
         public int ReadingDuration { get; set; }
@@ -24,11 +28,16 @@ namespace MentalHealthApp.Models
         [Column("Изображение")]
         public string ImagePath { get; set; }
 
-        [Column("Тема")]
-        public string Theme { get; set; }
+        [Column("Название")]
+        public string ReadingName { get; set; }
 
-        [Column("IDКатегории")]
-        public int CategoryID { get; set; }
+        
+
+        [ManyToMany(typeof(ReadingToCalendar))]
+        public List<CalendarModel> Days { get; set; }
+
+        [ManyToOne]
+        public CategoryModel CurrentCategory { get; set; }
 
     }
 }

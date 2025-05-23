@@ -16,7 +16,7 @@ namespace MentalHealthApp.ViewModels
         
         
         [ObservableProperty]
-        ObservableCollection<BreatheListModel> breathes;
+        ObservableCollection<BreatheModel> breathes;
 
         public BreatheListViewModel()
         {
@@ -30,7 +30,7 @@ namespace MentalHealthApp.ViewModels
             var breathesTemp = await App.Database.GetListOfBreathes();
             if (breathesTemp.Any())
             {
-                Breathes = new ObservableCollection<BreatheListModel>(breathesTemp);
+                Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
             }
         }
 

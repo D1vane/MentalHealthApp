@@ -37,7 +37,7 @@
 
                 <CollectionView.ItemTemplate>
 
-                    <DataTemplate x:DataType="{x:Type models:MeditationListModel}">
+                    <DataTemplate x:DataType="{x:Type models:MeditationModel}">
 
                         <Grid RowDefinitions="24,130,130,48" ColumnDefinitions="138,*" ColumnSpacing="16" >
 

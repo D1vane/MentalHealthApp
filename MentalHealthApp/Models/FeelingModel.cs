@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace MentalHealthApp.Models
         [PrimaryKey,AutoIncrement, Column("IDСамочувствия")]
         public int FeelingID { get; set; }
 
+        [Column("IDДня"),ForeignKey(typeof(CalendarModel))]
+        public int DayID { get; set; }
+
         [Column("Наименование")]
         public string FeelingName { get; set; }
 
@@ -21,6 +25,9 @@ namespace MentalHealthApp.Models
 
         [Column("Описание")]
         public string FeelingDescription { get; set; }
+
+        [ManyToOne]
+        public CalendarModel CalendarDay { get; set; }
 
     }
 }
