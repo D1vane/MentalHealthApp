@@ -12,7 +12,7 @@
     <ContentPage.Resources>
 
         <conv:PosThinkingConverter x:Key="PosThinkingConverter"/>
-        
+
         <ResourceDictionary>
 
             <!-- Стиль текста на странице-->
@@ -43,11 +43,11 @@
 
     </ContentPage.Resources>
     <ScrollView>
-    <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        
-        <Label Text="Позитивное мышление" FontFamily="Roboto" FontSize="32"/>
-        
-        <!--Работа-->
+        <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
+
+            <Label Text="Позитивное мышление" FontFamily="Roboto" FontSize="32"/>
+
+            <!--Работа-->
             <Grid Style="{StaticResource GridCategoryStyle}">
                 <Label x:Name="topicLabel" Text="Работа" FontFamily="Roboto" FontSize="20"/>
                 <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource CatsStyle}" FontSize="14" Opacity="0.7" Grid.Row="1"/>
@@ -69,10 +69,11 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.RowSpan="2"
+Grid.ColumnSpan="2" Opacity="0.3"  />
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-       HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
@@ -105,10 +106,11 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.RowSpan="2"
+Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-       HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
@@ -141,10 +143,11 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.RowSpan="2"
+Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-       HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 
@@ -177,10 +180,11 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.RowSpan="2"
+Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-       HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Style="{StaticResource CatsStyle}" 
 FontSize="14" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 <Label Style="{StaticResource CatsStyle}" FontSize="14" HorizontalOptions="End" 

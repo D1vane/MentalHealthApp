@@ -23,7 +23,7 @@
             <Style x:Key="SubTopics" TargetType="Label">
                 <Setter Property="FontFamily" Value="Roboto"/>
                 <Setter Property="FontSize" Value="14"/>
-                <Setter Property="Text" Value="{Binding Theme}"/>
+                <Setter Property="Text" Value="{Binding ReadingName}"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
                 <Setter Property="Grid.Row" Value="1"/>
                 <Setter Property="VerticalOptions" Value="End"/>
@@ -76,7 +76,7 @@
             <!--Работа-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label Text="Работа" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label Text="{Binding Cats[0].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
                 <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
                        Opacity="0.7" Grid.Row="1"/>
 
@@ -103,10 +103,11 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}"  VerticalOptions="Center" 
+       HorizontalOptions="Center" Grid.RowSpan="2"
+       Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-                                       HorizontalOptions="Center" Grid.RowSpan="2"
-                                       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Style="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -122,7 +123,7 @@
             <!--Учеба-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="Учеба" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label  Text="{Binding Cats[1].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
                 <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
                        Opacity="0.7" Grid.Row="1"/>
 
@@ -149,11 +150,12 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" 
+       VerticalOptions="Center" HorizontalOptions="Center"
+       Grid.RowSpan="2"
+       Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" 
-                                       VerticalOptions="Center" HorizontalOptions="Center"
-                                       Grid.RowSpan="2"
-                                       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -168,7 +170,7 @@
             <!--Здоровье-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="Здоровье" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label  Text="{Binding Cats[2].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
                 <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
                        Opacity="0.7" Grid.Row="1"/>
 
@@ -195,10 +197,11 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}" 
+       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
+       Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" 
-                                       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
-                                       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -213,7 +216,7 @@
             <!--Быт-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="Быт" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
+                <Label  Text="{Binding Cats[3].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
                 <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
                        Opacity="0.7" Grid.Row="1"/>
 
@@ -240,10 +243,11 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
+                                    <Image Source="{Binding ImagePath}"  
+       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
+       Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" 
-                                       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
-                                       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" />

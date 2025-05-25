@@ -36,31 +36,21 @@ namespace MentalHealthApp.ViewModels
             if (cats.Any())
             {
                 Cats = new ObservableCollection<CategoryModel>(cats);
+
+                var work = await App.Database.GetListOfReading(1);
+                Work = new ObservableCollection<ForReadingModel>(work.Readings);
+
+                var study = await App.Database.GetListOfReading(2);
+                Study = new ObservableCollection<ForReadingModel>(study.Readings);
+
+                var health = await App.Database.GetListOfReading(3);
+                Health = new ObservableCollection<ForReadingModel>(health.Readings);
+
+                var life = await App.Database.GetListOfReading(4);
+                Life = new ObservableCollection<ForReadingModel>(life.Readings);
             }
 
-            var work = await App.Database.GetListOfReading(Cats[0].CategoryID);
-            if (work.Any())
-            {
-                Work = new ObservableCollection<ForReadingModel>(work);
-            }
-
-            var study = await App.Database.GetListOfReading(Cats[1].CategoryID);
-            if (study.Any())
-            {
-                Study = new ObservableCollection<ForReadingModel>(study);
-            }
-
-            var health = await App.Database.GetListOfReading(Cats[2].CategoryID);
-            if (health.Any())
-            {
-                Health = new ObservableCollection<ForReadingModel>(health);
-            }
-
-            var life = await App.Database.GetListOfReading(Cats[3].CategoryID);
-            if (life.Any())
-            {
-                Life = new ObservableCollection<ForReadingModel>(life);
-            }
+            
         }
 
         [RelayCommand]

@@ -14,15 +14,15 @@ namespace MentalHealthApp.ViewModels
         private ObservableCollection<CategoryModel> cats;
 
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> work;
+        private ObservableCollection<ThemeModel> work;
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> study;
+        private ObservableCollection<ThemeModel> study;
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> health;
+        private ObservableCollection<ThemeModel> health;
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> life;
+        private ObservableCollection<ThemeModel> life;
         [ObservableProperty]
-        private ObservableCollection<PosThCardsModel> thCards;
+        private ObservableCollection<ThemeModel> thCards;
 
         public SubTopicsViewModel()
         {
@@ -37,31 +37,21 @@ namespace MentalHealthApp.ViewModels
             if (cats.Any())
             {
                 Cats = new ObservableCollection<CategoryModel>(cats);
+
+                var work = await App.Database.GetListOfSubTopics(1);
+                Work = new ObservableCollection<ThemeModel>(work.Themes);
+
+                var study = await App.Database.GetListOfSubTopics(2);
+                Study = new ObservableCollection<ThemeModel>(study.Themes);
+
+                var health = await App.Database.GetListOfSubTopics(3);
+                Health = new ObservableCollection<ThemeModel>(health.Themes);
+
+                var life = await App.Database.GetListOfSubTopics(4);
+                Life = new ObservableCollection<ThemeModel>(life.Themes);
             }
 
-            var work = await App.Database.GetListOfSubTopics(Cats[0].CategoryID);
-            if (work.Any())
-            {
-                Work = new ObservableCollection<PosThCardsModel>(work);
-            }
-
-            var study = await App.Database.GetListOfSubTopics(Cats[1].CategoryID);
-            if (study.Any())
-            {
-                Study = new ObservableCollection<PosThCardsModel>(study);
-            }
-
-            var health = await App.Database.GetListOfSubTopics(Cats[2].CategoryID);
-            if (health.Any())
-            {
-                Health = new ObservableCollection<PosThCardsModel>(health);
-            }
-
-            var life = await App.Database.GetListOfSubTopics(Cats[3].CategoryID);
-            if (life.Any())
-            {
-                Life = new ObservableCollection<PosThCardsModel>(life);
-            }
+            
         }
 
         [RelayCommand]
