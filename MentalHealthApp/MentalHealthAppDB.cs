@@ -20,7 +20,7 @@ namespace MentalHealthApp
         public MentalHealthAppDB(string databasePath)
         {
             _connection = new SQLiteAsyncConnection(databasePath);
-            //_connection.DropTableAsync<FeelingToCalendar>().Wait();
+            //_connection.DropTableAsync<SleepFactorsModel>().Wait();
             //_connection.DropTableAsync<CalendarModel>().Wait();
             _connection.CreateTablesAsync<ForReadingModel, ReadingToCalendar, CalendarModel, TaskModel>().Wait();
             _connection.CreateTablesAsync<MeditationModel, BreatheModel, MeditationToCalendar, BreatheToCalendar>().Wait();
@@ -34,20 +34,29 @@ namespace MentalHealthApp
 
         private async void AddItems()
         {
-            List<FeelingModel> newFeelings =
+            List<SleepFactorsModel> newFactors =
                 [
-                new () {FeelingName = "Отвратительно", FeelingMark = 1},
-                new () {FeelingName = "Ужасно", FeelingMark = 2},
-                new () {FeelingName = "Скверно", FeelingMark = 3},
-                new () {FeelingName = "Плохо", FeelingMark = 4},
-                new () {FeelingName = "Хочется грустить", FeelingMark = 5},
-                new () {FeelingName = "Бывало и лучше", FeelingMark = 6},
-                new () {FeelingName = "Хорошо", FeelingMark = 7},
-                new () {FeelingName = "Отлично", FeelingMark = 8},
-                new () {FeelingName = "Превосходно", FeelingMark = 9},
-                new () {FeelingName = "Лучше некуда", FeelingMark = 10},
+                    new () {FactorName = "Гаджет", ImagePath = "phone_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Легкий перекус", ImagePath = "smalleat_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Тяжелая пища", ImagePath = "hardeating_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Кофеин", ImagePath = "coffee_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Никотин", ImagePath = "nicotine_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Алкоголь", ImagePath = "alcohol_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Сильный стресс", ImagePath = "stress_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Умственная нагрузка", ImagePath = "brainthink_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Физическая нагрузка", ImagePath = "physicalexecrises_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Выпито много воды", ImagePath = "alotofwater_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Прием лекарств", ImagePath = "medicines_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Помещение проветрено", ImagePath = "wind_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Чтение книги", ImagePath = "bookreading_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Прогулка на воздухе", ImagePath = "walkingonair_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Теплый душ", ImagePath = "shower_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Спокойная музыка", ImagePath = "headphones_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Посторонние звуки", ImagePath = "earvolume_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Нарушение темноты", ImagePath = "lamp_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Нарушение режима", ImagePath = "brokensleeptime_icon.jpg", IsBeforeSleep = 1},
                 ];
-            await _connection.InsertAllAsync(newFeelings);
+            await _connection.InsertAllAsync(newFactors);
         }
         private async void UpdateItems()
         {
@@ -70,7 +79,7 @@ namespace MentalHealthApp
                 ];
             theme.Thinks = listOfThinks;
 
-            await _connection.InsertOrReplaceWithChildrenAsync(theme,true);
+            await _connection.InsertOrReplaceWithChildrenAsync(theme, true);
         }
 
         /// <summary>
@@ -142,6 +151,10 @@ namespace MentalHealthApp
         /// Запись отмеченного самочувствия в БД
         /// </summary>
         /// <param name="textDate"></param>
+        /// <param name="textTime"></param>
+        /// <param name="feelingMark"></param>
+        /// <param name="descr"></param>
+        /// <returns></returns>
         public async Task<FeelingToCalendar> WriteFeelingsToDB(string textDate, string textTime, int feelingMark, string descr)
         {
             var currentDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == textDate).FirstOrDefaultAsync();
@@ -175,5 +188,10 @@ namespace MentalHealthApp
             await _connection.UpdateWithChildrenAsync(additionalInfo);
             return additionalInfo;
         }
+
+        //public async Task<CalendarModel> WriteSleepToDB()
+        //{
+
+        //}
     }
 }

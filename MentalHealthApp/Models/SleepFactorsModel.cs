@@ -20,6 +20,9 @@ namespace MentalHealthApp.Models
         [Column("ПередСном")]
         public int IsBeforeSleep { get; set; }
 
+        [Column("Изображение")]
+        public string ImagePath { get; set; }
+
         [ManyToMany(typeof(SleepModel))]
         public List<SleepModel> CurrentSleep { get; set; }
     }
