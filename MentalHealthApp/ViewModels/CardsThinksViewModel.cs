@@ -20,7 +20,7 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         private ObservableCollection<PosThModel> thCards;
 
-        public CardsThinksViewModel()
+        partial void OnSTNameChanged(string value)
         {
             LoadThinks();
         }
@@ -29,15 +29,8 @@ namespace MentalHealthApp.ViewModels
         private async void LoadThinks()
         {
             var cards = await App.Database.GetListOfThinks(STName);
-            if (cards.Any())
-            {
-                ThCards = new ObservableCollection<PosThModel>(cards);
-            }
-            else
-            {
-                var cardsNew = await App.Database.GetListOfThinks(STName);
-                ThCards = new ObservableCollection<PosThModel>(cardsNew);
-            }
+            ThCards = new ObservableCollection<PosThModel>(cards.Thinks);
+
         }
 
     }

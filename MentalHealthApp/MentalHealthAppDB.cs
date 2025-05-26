@@ -22,14 +22,16 @@ namespace MentalHealthApp
             _connection.CreateTablesAsync<MeditationModel, BreatheModel, MeditationToCalendar, BreatheToCalendar>().Wait();
             _connection.CreateTablesAsync<ForReadingModel, ReadingToCalendar, CalendarModel, TaskModel>().Wait();
             _connection.CreateTablesAsync<FeelingModel,SleepModel,SleepFactorsModel,SleepToSleepFactors>().Wait();
+            //_connection.DropTableAsync<CategoryModel>().Wait();
+            //_connection.DropTableAsync<ThemeModel>().Wait();
             _connection.CreateTablesAsync<PosThModel, ThemeModel, CategoryModel>().Wait();
-            AddItems();
+            //AddItems();
             //UpdateItems();
         }
 
         private async void AddItems()
         {
-            //!CategoryModel catWork = await _connection.GetWithChildrenAsync<CategoryModel>(1);
+            CategoryModel catWork = await _connection.GetWithChildrenAsync<CategoryModel>(1);
 
             CategoryModel catStudy = await _connection.GetWithChildrenAsync<CategoryModel>(2);
 
@@ -38,7 +40,7 @@ namespace MentalHealthApp
             CategoryModel catLife = await _connection.GetWithChildrenAsync<CategoryModel>(4);
 
 
-            ThemeModel theme1 = new() { ThemeName = "Что обо мне думает начальник?", ImagePath = "boss_thinks.jpg"};
+            ThemeModel theme1 = new() { ThemeName = "Что обо мне думает начальник?", ImagePath = "boss_thinks.jpg" };
 
             ThemeModel theme2 = new() { ThemeName = "Что обо мне думают коллеги?", ImagePath = "colleagues_thinks.jpg" };
 
@@ -83,7 +85,7 @@ namespace MentalHealthApp
             catLife.Themes = new List<ThemeModel> { theme13, theme14, theme15, theme16 };
 
 
-            await _connection.InsertOrReplaceWithChildrenAsync(catWork,true);
+            await _connection.InsertOrReplaceWithChildrenAsync(catWork, true);
             await _connection.InsertOrReplaceWithChildrenAsync(catStudy, true);
             await _connection.InsertOrReplaceWithChildrenAsync(catHealth, true);
             await _connection.InsertOrReplaceWithChildrenAsync(catLife, true);
@@ -92,13 +94,25 @@ namespace MentalHealthApp
         private async void UpdateItems()
         {
 
-           ForReadingModel model = await _connection.Table<ForReadingModel>().Where(x => x.CategoryID == 1).FirstOrDefaultAsync();
-            //var category = await _connection.Table<CategoryModel>().ToListAsync();
-            CategoryModel category = new CategoryModel { NameOfCategory = "Работа", CategoryID = 1 };
-            // string content = "\tМедитативная практика, которая сосредоточена на внимательном наблюдении за дыханием. Она фокусируется на наблюдении за ощущением вдоха и выдоха через нос, чтобы помочь практикующему развить осознанность и сосредоточение ума. Цель и польза этой практики с психологической точки зрения – достижение полного присутствия в настоящем моменте без вмешательства мыслей или оценок, улучшить концентрацию и снизить стресс и тревогу.\r\nПринято считать, что практика памятования о дыхании довольно универсальна, поэтому часто используется как фундамент для любой медитации, так как «мы способны вступить в контакт со всеми нашими физическими и психическими способностями и поставить их в связь с нашим сознательным умом».\r\nПрактика анапанасати основана на универсальных принципах и подходит всем людям. Именно поэтому анапанасати рекомендуется как наилучшая точка отсчёта для любого вида медитации. Анапанасати может также рассматриваться как основа любой медитации, так как именно с помощью дыхания «мы способны вступить в контакт со всеми нашими физическими и психическими способностями и поставить их в связь с нашим сознательным умом».\r\nПрактика анапанасати — это, прежде всего, тренировка внимания, а не дыхательное упражнение в ключе пранаямы, дыхательной гимнастики в йоге. В буддийских практиках с дыханием намеренные воздействия не совершаются. Наблюдая за естественным течением дыхания, практикующий гармонизирует своё общее состояние. Внимательность по отношению к дыханию оказывается одним из факторов физического и психического здоровья в целом.\r\nПри целенаправленных занятиях в дальнейшем анапанасати позволяет осуществить практику более глубоких уровней медитации, таких как дхьяна и самадхи. Превращение процесса дыхания из автоматической функции тела в сознательную позволяет использовать её в дальнейшем как посредника духовных сил.\r\nМетодика практики анапанасати проста на начальном этапе настолько, что её может выполнять даже самый новоиспеченный последователь. Однако, при всей видимой простоте техники, сосредоточить внимание на дыхании удаётся далеко не сразу. Дыхание зачастую так же неупорядоченно, как и поток мыслей в сознании. Но при направлении внимания на дыхание, теряется его естественный ритм. Сложность состоит в том, чтобы не начать управлять дыханием, а спокойно следить за его течением. Поначалу для того чтобы не сбиться, медитирующий считает вдохи и выдохи. С одной стороны, цифры помогают сосредоточить внимание на дыхании и не отвлекаться на другие мысли, но и таят опасность привлечь внимание к себе как объекту.\r\nСреди главных условий практики подчёркивается естественность процесса дыхания. Медитирующего предостерегают от задержки дыхания, а также от придания ему определённого ритма. Основная задача анапанасати — не препятствовать дыханию и наблюдать за ним, не пытаясь повлиять на его ход. При выполнении упражнения точка внимания удерживается на месте соприкосновения воздуха с телом, то есть на ноздрях. Избежание преднамеренности — одна из важных черт успешности осуществления практики анапанасати. Наиболее предпочтительной при практике анапанасати считается поза «лотос» со скрещёнными ногами. В «Анапанасати-сутте» указано, что правильно выбранная поза и место для практики играют не последнюю роль. Предпочтительной является практика под руководством опытного учителя, так как любая медитация требует индивидуального подхода. Однако, избегая крайностей, человек может достичь определённых результатов и будучи один.\r\n";
-            model.CurrentCategory = category;
-            model.CategoryID = category.CategoryID;
-            await _connection.UpdateAsync(model);
+           ThemeModel theme = await _connection.GetWithChildrenAsync<ThemeModel>(1);
+            List<PosThModel> listOfThinks =
+                [
+                new() {isFavourite = 0, NegativeThink = "Начальник не замечает мои достижения и обесценивает мой труд", 
+                    PositiveThink = "Возможно, начальник просто не осведомлён о моих результатах — мне стоит научиться быть более заметным"},
+                new() {isFavourite = 0, NegativeThink = "Начальник придирается ко мне и требует больше, чем от других сотрудников", 
+                    PositiveThink = "Вероятно, начальник видит во мне потенциал и потому предъявляет более высокие требования — это шанс расти профессионально"},
+                new() {isFavourite = 0, NegativeThink = "Начальник предвзято относится ко мне", 
+                    PositiveThink = "Может быть, я интерпретирую ситуацию слишком лично. Стоит попробовать открыто обсудить рабочие моменты и уточнить ожидания, чтобы прояснить недопонимания"},
+                new() {isFavourite = 0, NegativeThink = "Начальник игнорирует мои просьбы и предложения", 
+                    PositiveThink = "Возможно, мои идеи требуют более чёткого обоснования или подачи в нужное время"},
+                new() {isFavourite = 0, NegativeThink = "Начальник намеренно не хочет повышать меня и давать новые проекты", 
+                    PositiveThink = "Вероятно, сейчас не лучшее время для повышения по объективным причинам. Я могу уточнить, что нужно улучшить, чтобы перейти на следующий уровень, и показать свою готовность к новым задачам"},
+                new() {isFavourite = 0, NegativeThink = "Начальник не хочет повышать мне зарплату", 
+                    PositiveThink = "Возможно дело в обстоятельствах, не зависящих от моего начальника - мне стоит спросить его об этом напрямую"},
+                ];
+            theme.Thinks = listOfThinks;
+
+           await _connection.InsertOrReplaceWithChildrenAsync(theme);
         }
 
         /// <summary>
@@ -151,9 +165,16 @@ namespace MentalHealthApp
         /// Получение негативных и позитвных мыслей
         /// </summary>
         /// <returns></returns>
-        public async Task<List<PosThModel>> GetListOfThinks(string str)
+        public async Task<ThemeModel> GetListOfThinks(string str)
         {
-            return await _connection.Table<PosThModel>().ToListAsync();
+
+            if (str != null)
+            {
+                var themeName = await _connection.Table<ThemeModel>().Where(x => x.ThemeName == str).FirstOrDefaultAsync();
+                return await _connection.GetWithChildrenAsync<ThemeModel>(themeName.ThemeID);
+            }
+            return null;
+            
         }
     }
 }

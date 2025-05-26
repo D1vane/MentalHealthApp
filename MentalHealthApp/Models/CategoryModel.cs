@@ -10,7 +10,7 @@ namespace MentalHealthApp.Models
         [PrimaryKey,AutoIncrement, Column("IDКатегории")]
         public int CategoryID { get; set; }
 
-        [Column ("Наименование")]   
+        [Column ("Наименование"),Unique]   
         public string NameOfCategory { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

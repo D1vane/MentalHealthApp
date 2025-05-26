@@ -55,7 +55,7 @@
                                         ItemsSource="{Binding Work}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
+                        <DataTemplate x:DataType="{x:Type models:ThemeModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -92,7 +92,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                         ItemsSource="{Binding Study}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
+                        <DataTemplate x:DataType="{x:Type models:ThemeModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -129,7 +129,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                         ItemsSource="{Binding Health}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
+                        <DataTemplate x:DataType="{x:Type models:ThemeModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
@@ -166,7 +166,7 @@ Grid.Column="1" Margin="0,4,8,0"/>
                                         ItemsSource="{Binding Life}"  
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type models:PosThCardsModel}">
+                        <DataTemplate x:DataType="{x:Type models:ThemeModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
