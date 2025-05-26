@@ -14,20 +14,14 @@ namespace MentalHealthApp.Models
         [PrimaryKey,AutoIncrement, Column("IDСамочувствия")]
         public int FeelingID { get; set; }
 
-        [Column("IDДня"),ForeignKey(typeof(CalendarModel))]
-        public int DayID { get; set; }
-
-        [Column("Наименование")]
+        [Column("Наименование"),Unique]
         public string FeelingName { get; set; }
 
-        [Column("Оценка")]
+        [Column("Оценка"),Unique]
         public int FeelingMark { get; set; }
 
-        [Column("Описание")]
-        public string FeelingDescription { get; set; }
-
-        [ManyToOne]
-        public CalendarModel CalendarDay { get; set; }
+        [ManyToMany(typeof(FeelingToCalendar))]
+        public List<CalendarModel> Days { get; set; }
 
     }
 }

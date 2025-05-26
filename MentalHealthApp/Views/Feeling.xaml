@@ -48,11 +48,13 @@
 
         <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96" Stroke="Black">
             <Editor Placeholder="Добавить описание.." VerticalOptions="Start" FontFamily="Roboto" FontSize="14" 
-                    HeightRequest="96"/>
+                    HeightRequest="96" Text="{Binding Description}"/>
         </Border>
 
-        <Button Text="Сохранить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
-    CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1"/>
+        <Button x:Name="buttonSave" Text="Сохранить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
+    CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" 
+                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FeelingViewModel}}, Path=WriteFeelingTODBCommand}"
+                Clicked="Button_Clicked" IsVisible="False"/>
 
     </VerticalStackLayout>
     

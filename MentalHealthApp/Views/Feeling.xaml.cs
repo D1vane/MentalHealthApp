@@ -17,9 +17,20 @@ public partial class Feeling : ContentPage
         if (feeling.EmojiStatus != (int)slider.Value)
         {
             feeling.EmojiStatus = (int)slider.Value;
-            feeling.EmojiDescription = feeling.EmojiDescriptionArr[(int)slider.Value];
+            feeling.EmojiDescription = feeling.FullDescriptionList[(int)slider.Value];
         }
-            
+        if (slider.Value == 0)
+        {
+            buttonSave.IsVisible = false;
+        }
+        else
+            buttonSave.IsVisible = true;
 
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        sliderEmoji.Value = 0;
+        buttonSave.IsVisible = false;
     }
 }

@@ -12,7 +12,7 @@ namespace MentalHealthApp.Models
         [PrimaryKey,AutoIncrement, Column("IDДня")]
         public int DayID { get; set; }
 
-        [Column("Дата")]
+        [Column("Дата"),Unique]
         public string FullDate { get; set; }
 
         [ManyToMany(typeof(MeditationToCalendar))]
@@ -27,7 +27,7 @@ namespace MentalHealthApp.Models
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<TaskModel> Tasks { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        [ManyToMany(typeof(FeelingToCalendar))]
         public List<FeelingModel> Feelings { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

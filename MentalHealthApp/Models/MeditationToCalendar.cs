@@ -20,5 +20,6 @@ namespace MentalHealthApp.Models
 
         [Column("IDДня"), ForeignKey(typeof(CalendarModel))]
         public int DayID { get; set; }
+
     }
 }
