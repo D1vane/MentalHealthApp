@@ -42,9 +42,6 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiIcon Include="Resources\Images\calendar_icon_navbar.jpg" />
-		<MauiIcon Include="Resources\Images\favourites_icon_navbar.jpg" />
-		<MauiIcon Include="Resources\Images\health_icon_navbar.jpg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />

@@ -67,11 +67,49 @@
     <ScrollView>
 
         <VerticalStackLayout Margin="8,24,8,8" Spacing="48" AbsoluteLayout.LayoutFlags="All">
-            <Label Text="Оценка сна" Style="{StaticResource ContentStyle}" FontSize="32" TextColor="Black"/>
+            
+            <Label Text="Оценка сна" Style="{StaticResource ContentStyle}" FontSize="32" TextColor="Black" />
 
-            <Label Text="Сколько длился ваш сон?" Style="{StaticResource ContentStyle}" HorizontalOptions="Center" TextColor="Black"/>
+            <VerticalStackLayout IsVisible="{Binding AlreadyMarkedVisibility}" Margin="0,0,0,0" Spacing="32">
+                <Label Text="{Binding AlreadyMarkedText}" FontFamily="Roboto" FontSize="32" HorizontalOptions="Center"
+VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
+                <HorizontalStackLayout Spacing="12" Margin="0,8,0,0">
+                    <Label Text="Сегодня вы спали:" Style="{StaticResource ContentStyle}" TextColor="Black" FontSize="20"/>
+                    <Label Text="{Binding SleepTime[0], StringFormat='{0} часов'}" Style="{StaticResource ContentStyle}" 
+                           TextColor="Black" FontSize="20"/>
+                    <Label Text="{Binding SleepTime[1], StringFormat='{0} минут'}" 
+                           Style="{StaticResource ContentStyle}" TextColor="Black" FontSize="20"/>
+                </HorizontalStackLayout>
+                <Label Text="Отмеченные факторы" Style="{StaticResource ContentStyle}" TextColor="Black" 
+                       FontSize="24" HorizontalOptions="Center"/>
+                <Label Text="{Binding FactorsDescription}" Style="{StaticResource ContentStyle}" IsVisible="{Binding MarkedFactorsVisibility}" TextColor="Black"/>
+                <CollectionView ItemsSource="{Binding SleepFactors}" ItemsLayout="VerticalGrid,4" SelectionMode="None"
+                Margin="0,12,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:SleepFactorsModel">
 
-            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-24,0,0">
+                            <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*">
+                                    <Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                           TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="Добавленное описание" Style="{StaticResource ContentStyle}" TextColor="Black"
+                       HorizontalOptions="Center" FontSize="24"/>
+                <Label Text="{Binding SleepDescription}" Style="{StaticResource ContentStyle}" TextColor="Black"/>
+            </VerticalStackLayout>
+            
+
+            <Label Text="Сколько длился ваш сон?" Style="{StaticResource ContentStyle}" HorizontalOptions="Center" TextColor="Black"
+                   IsVisible="{Binding AllVisibility}"/>
+
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-24,0,0" 
+                                   IsVisible="{Binding AllVisibility}">
 
                 <CollectionView x:Name="hoursCollView" SelectionMode="Single" VerticalOptions="Start" HeightRequest="256"
                                 WidthRequest="76" HorizontalOptions="Center" Loaded="hoursCollView_Loaded" Scrolled="hoursCollView_Scrolled">
@@ -189,7 +227,7 @@
 
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" IsVisible="{Binding AllVisibility}">
 
                 <Label Text="Добавить описание" TextColor="Black" Style="{StaticResource ContentStyle}"/>
 
@@ -206,18 +244,18 @@
             <!--Перед сном-->
             <Label Text="Перед сном" TextColor="Black" Style="{StaticResource ContentStyle}" FontSize="20"
                    IsVisible="{Binding FactorsVisibility}"/>
-            <CollectionView ItemsSource="{Binding FactorsBeforeSleep}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
-                            Margin="0,-24,0,0">
+            <CollectionView x:Name="collViewBfrSleep" ItemsSource="{Binding FactorsBeforeSleep}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
+                            Margin="0,-24,0,0" IsVisible="{Binding FactorsVisibility}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SleepModel">
+                    <DataTemplate x:DataType="models:SleepFactorsModel">
 
                         <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
                             <Grid RowDefinitions="*,*" ColumnDefinitions="*">
-                                <!--<Image Source="{Binding ImagePath}" HorizontalOptions="Center"
-                                           WidthRequest="32" HeightRequest="32"/>-->
-                                <!--<Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                <Image Source="{Binding ImagePath}" HorizontalOptions="Center"
+                                           WidthRequest="32" HeightRequest="32"/>
+                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
                                            TextColor="Black" FontSize="14" HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"/>-->
+                                       HorizontalTextAlignment="Center"/>
                             </Grid>
                         </Border>
 
@@ -228,16 +266,16 @@
             <!--Во время сна-->
             <Label Text="Сон" TextColor="Black" Style="{StaticResource ContentStyle}" FontSize="20" IsVisible="{Binding FactorsVisibility}"/>
 
-            <CollectionView ItemsSource="{Binding SleepFactors}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
-                            Margin="0,-24,0,0">
+            <CollectionView x:Name="collViewSleep" ItemsSource="{Binding SleepFactors}" ItemsLayout="VerticalGrid,4" SelectionMode="Multiple"
+                            Margin="0,-24,0,0" IsVisible="{Binding FactorsVisibility}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:SleepModel">
+                    <DataTemplate x:DataType="models:SleepFactorsModel">
 
                         <Border StrokeShape="RoundRectangle 5,5,5,5" WidthRequest="88" HeightRequest="88">
                             <Grid RowDefinitions="*,*" ColumnDefinitions="*">
-                                <!--<Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>-->
-                                <!--<Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
-                                       TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>-->
+                                <Image Source="{Binding ImagePath}" WidthRequest="32" HeightRequest="32" HorizontalOptions="Center"/>
+                                <Label Grid.Row="1" Text="{Binding FactorName}" Style="{StaticResource ContentStyle}" 
+                                       TextColor="Black" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                             </Grid>
                         </Border>
 
@@ -247,11 +285,12 @@
 
             <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="96" StrokeThickness="1" Stroke="Black" IsVisible="{Binding FactorsVisibility}">
                 <Editor Placeholder="Добавить описание.." VerticalOptions="Start" FontFamily="Roboto" FontSize="14" 
-                HeightRequest="96" TextColor="Black" Margin="4,0,4,4"/>
+                HeightRequest="96" TextColor="Black" Margin="4,0,4,4" Text="{Binding SleepDescription}"/>
             </Border>
 
             <Button Text="Сохранить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
-CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1"/>
+CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Button_Clicked"
+                    IsVisible="{Binding AllVisibility}"/>
 
         </VerticalStackLayout>
 

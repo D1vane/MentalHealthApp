@@ -10,17 +10,17 @@
 
     <TabBar Shell.TabBarUnselectedColor="Gray" Shell.TabBarTitleColor="Black" Shell.TabBarForegroundColor="Black">
 
-        <Tab Title="Избранное" Icon="favourites_icon_navbar.jpg" >
+        <Tab Title="Избранное" Icon="favourites_icon_navbar.png" >
             <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>
         </Tab>
 
-        <Tab Title="Здоровье" Icon="health_icon_navbar.jpg">
+        <Tab Title="Здоровье" Icon="health_icon_navbar.png">
             <ShellContent x:Name="HealthPage" ContentTemplate="{DataTemplate local:MainPage}">
 
             </ShellContent>
         </Tab>
 
-        <Tab Title="Календарь" Icon="calendar_icon_navbar.jpg">
+        <Tab Title="Календарь" Icon="calendar_icon_navbar.png">
             <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
         </Tab>
 

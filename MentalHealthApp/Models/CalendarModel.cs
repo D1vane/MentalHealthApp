@@ -30,8 +30,8 @@ namespace MentalHealthApp.Models
         [ManyToMany(typeof(FeelingToCalendar))]
         public List<FeelingModel> Feelings { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<SleepModel> Sleeps { get; set; }
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public SleepModel Sleep { get; set; }
 
 
 

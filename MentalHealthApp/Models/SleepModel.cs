@@ -18,7 +18,7 @@ namespace MentalHealthApp.Models
         public int DayID { get; set; }
 
         [Column("Длительность")]
-        public int SleepDuration { get; set; }
+        public string SleepDuration { get; set; }
 
         [Column("Описание")]
         public string SleepDescription { get; set; }
@@ -26,7 +26,7 @@ namespace MentalHealthApp.Models
         [ManyToMany(typeof(SleepToSleepFactors))]
         public List<SleepFactorsModel> Factors { get; set; }
 
-        [ManyToOne]
+        [OneToOne]
         public CalendarModel CalendarDay { get; set; }
     }
 }

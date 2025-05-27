@@ -20,8 +20,9 @@ namespace MentalHealthApp
         public MentalHealthAppDB(string databasePath)
         {
             _connection = new SQLiteAsyncConnection(databasePath);
-            //_connection.DropTableAsync<SleepFactorsModel>().Wait();
+            //_connection.DropTableAsync<SleepModel>().Wait();
             //_connection.DropTableAsync<CalendarModel>().Wait();
+            //_connection.DropTableAsync<FeelingToCalendar>().Wait();
             _connection.CreateTablesAsync<ForReadingModel, ReadingToCalendar, CalendarModel, TaskModel>().Wait();
             _connection.CreateTablesAsync<MeditationModel, BreatheModel, MeditationToCalendar, BreatheToCalendar>().Wait();
             _connection.CreateTablesAsync<FeelingModel, SleepModel, SleepFactorsModel, SleepToSleepFactors>().Wait();
@@ -36,25 +37,25 @@ namespace MentalHealthApp
         {
             List<SleepFactorsModel> newFactors =
                 [
-                    new () {FactorName = "Гаджет", ImagePath = "phone_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Легкий перекус", ImagePath = "smalleat_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Тяжелая пища", ImagePath = "hardeating_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Кофеин", ImagePath = "coffee_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Никотин", ImagePath = "nicotine_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Алкоголь", ImagePath = "alcohol_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Сильный стресс", ImagePath = "stress_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Умственная нагрузка", ImagePath = "brainthink_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Физическая нагрузка", ImagePath = "physicalexecrises_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Выпито много воды", ImagePath = "alotofwater_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Прием лекарств", ImagePath = "medicines_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Помещение проветрено", ImagePath = "wind_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Чтение книги", ImagePath = "bookreading_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Прогулка на воздухе", ImagePath = "walkingonair_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Теплый душ", ImagePath = "shower_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Спокойная музыка", ImagePath = "headphones_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Посторонние звуки", ImagePath = "earvolume_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Нарушение темноты", ImagePath = "lamp_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Нарушение режима", ImagePath = "brokensleeptime_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Гаджет", ImagePath = "phone_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Легкий перекус", ImagePath = "smalleat_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Тяжелая пища", ImagePath = "hardeating_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Кофеин", ImagePath = "coffee_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Никотин", ImagePath = "nicotine_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Алкоголь", ImagePath = "alcohol_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Сильный стресс", ImagePath = "stress_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Умственная нагрузка", ImagePath = "brainthink_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Физическая нагрузка", ImagePath = "physicalexecrises_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Выпито много воды", ImagePath = "alotofwater_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Прием лекарств", ImagePath = "medicines_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Помещение проветрено", ImagePath = "wind_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Чтение книги", ImagePath = "bookreading_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Прогулка на воздухе", ImagePath = "walkingonair_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Теплый душ", ImagePath = "shower_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Спокойная музыка", ImagePath = "headphones_icon.jpg", IsBeforeSleep = 1},
+                    new () {FactorName = "Посторонние звуки", ImagePath = "earvolume_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Нарушение темноты", ImagePath = "lamp_icon.jpg", IsBeforeSleep = 0},
+                    new () {FactorName = "Нарушение режима", ImagePath = "brokensleeptime_icon.jpg", IsBeforeSleep = 0},
                 ];
             await _connection.InsertAllAsync(newFactors);
         }
@@ -147,6 +148,14 @@ namespace MentalHealthApp
             return await _connection.Table<FeelingModel>().ToListAsync();
         }
 
+        public async Task<CalendarModel> GetCurrentDay()
+        {
+            DateTime dateTimeNow = new DateTime();
+            dateTimeNow = DateTime.UtcNow + TimeZoneInfo.Local.BaseUtcOffset;
+            string currentDate = dateTimeNow.ToString("dd/MM/yyyy");
+            return await _connection.Table<CalendarModel>().Where(x => x.FullDate == currentDate).FirstOrDefaultAsync();
+        }
+
         /// <summary>
         /// Запись отмеченного самочувствия в БД
         /// </summary>
@@ -188,10 +197,36 @@ namespace MentalHealthApp
             await _connection.UpdateWithChildrenAsync(additionalInfo);
             return additionalInfo;
         }
+        /// <summary>
+        /// Получение списка факторов сна
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<SleepFactorsModel>> GetListOfFactors()
+        {
+            return await _connection.Table<SleepFactorsModel>().ToListAsync();
+        }
 
-        //public async Task<CalendarModel> WriteSleepToDB()
-        //{
+        public async Task<CalendarModel> WriteSleepToDB(SleepModel todaySleep)
+        {
+            DateTime dateTimeNow = new DateTime();
+            dateTimeNow = DateTime.UtcNow + TimeZoneInfo.Local.BaseUtcOffset;
+            string currentDate = dateTimeNow.ToString("dd/MM/yyyy");
 
-        //}
+            var date = await _connection.Table<CalendarModel>().Where(x => x.FullDate == currentDate).FirstOrDefaultAsync();
+            if (date != null)
+            {
+                todaySleep.CalendarDay = date;
+                await _connection.InsertWithChildrenAsync(todaySleep);
+            }
+            else
+            {
+                await _connection.InsertAsync(new CalendarModel() { FullDate = currentDate });
+                date = await _connection.Table<CalendarModel>().Where(x => x.FullDate == currentDate).FirstOrDefaultAsync();
+                todaySleep.CalendarDay = date;
+                await _connection.InsertWithChildrenAsync(todaySleep);
+            }
+            var newDate = await _connection.GetWithChildrenAsync<CalendarModel>(date.DayID);
+            return newDate;
+        }
     }
 }

@@ -1,11 +1,15 @@
 namespace MentalHealthApp.Views;
+
+using MentalHealthApp.Models;
 using ViewModels;
 public partial class Sleep : ContentPage
 {
+    SleepViewModel sleepVM;
 	public Sleep()
 	{
 		InitializeComponent();
-		BindingContext = new SleepViewModel();
+        sleepVM = new SleepViewModel();
+		BindingContext = sleepVM;
 	}
 
     private void hoursCollView_Loaded(object sender, EventArgs e)
@@ -27,4 +31,12 @@ public partial class Sleep : ContentPage
     {
         hoursCollView.SelectedItem = e.CenterItemIndex;
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        List<SleepFactorsModel> selectedFctrsBfrSleep = collViewBfrSleep.SelectedItems.Cast<SleepFactorsModel>().ToList();
+        List<SleepFactorsModel> selectedFctrsSleep = collViewSleep.SelectedItems.Cast<SleepFactorsModel>().ToList();
+        sleepVM.WriteSleepToDB(hoursCollView.SelectedItem.ToString(), minutesCollView.SelectedItem.ToString(), selectedFctrsBfrSleep, selectedFctrsSleep);
+    }
+
 }
