@@ -4,7 +4,7 @@
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models ="clr-namespace:MentalHealthApp.Models"
              xmlns:triggers ="clr-namespace:MentalHealthApp.Triggers"
-             
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MentalHealthApp.Planner"
              Title="Planner"
              Shell.NavBarIsVisible="False">
@@ -31,13 +31,12 @@
         <!--Дата и опции-->
         <Grid RowDefinitions="*" ColumnDefinitions="1*,1*" Grid.Row="1" Grid.ColumnSpan="2">
             <HorizontalStackLayout Spacing="2">
-                <Label Text="{Binding Day}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[0]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
                 <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="{Binding Month}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[1]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
                 <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="{Binding Year}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[2]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
             </HorizontalStackLayout>
-            <!--<Image Source="threedots_icon.png"  HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,6,0,0"/>-->
         </Grid>
         <HorizontalStackLayout HorizontalOptions="End" Grid.Row="2" Grid.Column="1" Spacing="2">
             <Label Text="{Binding CompletedTasks.Count, StringFormat='Выполнено задач {0}'}" Style="{StaticResource TasksAndMenuStyle}"/>
@@ -48,39 +47,38 @@
         <ScrollView Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout>
                 <!--Список задач-->
-                <ListView ItemsSource="{Binding Tasks}" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" 
-       HorizontalScrollBarVisibility="Never" SelectionMode="None">
-                    <ListView.ItemTemplate>
+                <CollectionView ItemsSource="{Binding Tasks}" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:TaskModel}">
-                            <ViewCell x:Name="oneTask">
-                                <ViewCell.View>
-                                    <VerticalStackLayout Padding="12">
-                                        <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
-                                            <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
-                                                <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
+                            <VerticalStackLayout Padding="12">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
+                                    <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
+                                        <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
-                                                <!--<Entry Text="{Binding TextTask, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
-                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" Keyboard="Text" Placeholder="Новая задача"/>-->
-                                                <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}"/>
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                                <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
-                                                <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
-                                                    <CheckBox.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"/>
-                                                    </CheckBox.GestureRecognizers>
-                                                </CheckBox>
-                                                <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>-->
-                                            </Grid>
-                                        </Border>
-                                    </VerticalStackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
+                                        <Entry Text="{Binding TaskText, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
+                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" 
+                                                       Keyboard="Text" Placeholder="Новая задача" Completed="Entry_Completed">
+                                        </Entry>
+                                        <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}" 
+                                                                              CommandParameter="{Binding TaskID}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
+                                        <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
+                                            <CheckBox.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"
+                                                                              CommandParameter="{Binding TaskID}"/>
+                                            </CheckBox.GestureRecognizers>
+                                        </CheckBox>
+                                        <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1"/>-->
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
                 <!--Добавление задачи-->
                 <Image Source="add_icon.png" HorizontalOptions="End" Margin="0,8,20,0" Opacity="0.7" >
@@ -90,38 +88,36 @@
                 </Image>
 
                 <!--Выполеннные задачи-->
-                <ListView ItemsSource="{Binding CompletedTasks}" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" 
-HorizontalScrollBarVisibility="Never" SelectionMode="None" Margin="0,48,0,0">
-                    <ListView.ItemTemplate>
+                <CollectionView ItemsSource="{Binding CompletedTasks}" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" 
+                 SelectionMode="None" Margin="0,48,0,0">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:TaskModel}">
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <VerticalStackLayout Padding="12">
-                                        <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
-                                            <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
-                                                <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
+                            <VerticalStackLayout Padding="12">
+                                <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
+                                    <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
+                                        <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                   HorizontalOptions="Start"/>
-                                                <!--<Label Margin="0,0,0,8" Text="{Binding TextTask}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>-->
-                                                <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveCompletedTaskCommand}"/>
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                                <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
-                                                <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
-                                                    <CheckBox.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"/>
-                                                    </CheckBox.GestureRecognizers>
-                                                </CheckBox>
-                                                <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1" TextDecorations="Strikethrough"/>-->
-                                            </Grid>
-                                        </Border>
-                                    </VerticalStackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
+                                        <Label Margin="0,0,0,8" Text="{Binding TaskText}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>
+                                        <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveCompletedTaskCommand}"
+                                                                              CommandParameter="{Binding TaskID}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
+                                        <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
+                                            <CheckBox.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"
+                                                                              CommandParameter="{Binding TaskID}"/>
+                                            </CheckBox.GestureRecognizers>
+                                        </CheckBox>
+                                        <!--<Label Margin="2,0,0,0" Text="{Binding TimeOfTask}" Style="{StaticResource TasksAndMenuStyle}" Grid.Row="1" Grid.Column="1" TextDecorations="Strikethrough"/>-->
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </VerticalStackLayout>
         </ScrollView>
 

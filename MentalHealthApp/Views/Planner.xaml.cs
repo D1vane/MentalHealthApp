@@ -5,11 +5,17 @@ namespace MentalHealthApp;
 
 public partial class Planner : ContentPage
 {
-
+    PlannerViewModel plannerVM;
     public Planner()
     {
         InitializeComponent();
-        BindingContext = new PlannerViewModel();
+        plannerVM = new PlannerViewModel();
+        BindingContext = plannerVM;
     }
 
+    private void Entry_Completed(object sender, EventArgs e)
+    {
+        plannerVM.UpdateTasksInDB();
+        plannerVM.AddTask();
+    }
 }

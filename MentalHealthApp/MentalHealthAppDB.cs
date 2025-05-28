@@ -20,7 +20,7 @@ namespace MentalHealthApp
         public MentalHealthAppDB(string databasePath)
         {
             _connection = new SQLiteAsyncConnection(databasePath);
-            //_connection.DropTableAsync<SleepModel>().Wait();
+            //_connection.DropTableAsync<TaskModel>().Wait();
             //_connection.DropTableAsync<CalendarModel>().Wait();
             //_connection.DropTableAsync<FeelingToCalendar>().Wait();
             _connection.CreateTablesAsync<ForReadingModel, ReadingToCalendar, CalendarModel, TaskModel>().Wait();
@@ -206,6 +206,11 @@ namespace MentalHealthApp
             return await _connection.Table<SleepFactorsModel>().ToListAsync();
         }
 
+        /// <summary>
+        /// Запись отмеченного сна в БД
+        /// </summary>
+        /// <param name="todaySleep"></param>
+        /// <returns></returns>
         public async Task<CalendarModel> WriteSleepToDB(SleepModel todaySleep)
         {
             DateTime dateTimeNow = new DateTime();
@@ -227,6 +232,19 @@ namespace MentalHealthApp
             }
             var newDate = await _connection.GetWithChildrenAsync<CalendarModel>(date.DayID);
             return newDate;
+        }
+
+        public async Task<CalendarModel> GetTasksFromACurrentDay(DateTime date)
+        {
+            string formatedDate = date.ToString("dd/MM/yyyy");
+            var todayDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == formatedDate).FirstOrDefaultAsync();
+            if (todayDate != null)
+            {
+                var todayDateWithChildren = await _connection.GetWithChildrenAsync<CalendarModel>(todayDate.DayID);
+                return todayDateWithChildren;
+            }
+            else
+                return todayDate;
         }
     }
 }
