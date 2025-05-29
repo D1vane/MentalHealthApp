@@ -102,6 +102,9 @@
 	  <MauiXaml Update="Views\Calendar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ExistingFeeling.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Favourites.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -10,10 +10,10 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         private ObservableCollection<Models.FavouriteModel> favs =
             [
-            new () {NameOfFav = "Медитации", AllTasks = 2},
-            new () {NameOfFav = "Дыхательные техники", AllTasks = 0},
-            new () {NameOfFav = "Полезная информация", AllTasks = 3},
-            new () {NameOfFav = "Позитивное мышление", AllTasks = 4},
+            //new () {NameOfFav = "Медитации", AllTasks = 2},
+            //new () {NameOfFav = "Дыхательные техники", AllTasks = 0},
+            //new () {NameOfFav = "Полезная информация", AllTasks = 3},
+            //new () {NameOfFav = "Позитивное мышление", AllTasks = 4},
             ];
     }
 }

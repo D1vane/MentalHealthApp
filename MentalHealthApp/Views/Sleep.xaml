@@ -74,7 +74,7 @@
                 <Label Text="{Binding AlreadyMarkedText}" FontFamily="Roboto" FontSize="32" HorizontalOptions="Center"
 VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
                 <HorizontalStackLayout Spacing="12" Margin="0,8,0,0">
-                    <Label Text="Сегодня вы спали:" Style="{StaticResource ContentStyle}" TextColor="Black" FontSize="20"/>
+                    <Label Text="{Binding TodayOrAnotherDaySleep}" Style="{StaticResource ContentStyle}" TextColor="Black" FontSize="20"/>
                     <Label Text="{Binding SleepTime[0], StringFormat='{0} часов'}" Style="{StaticResource ContentStyle}" 
                            TextColor="Black" FontSize="20"/>
                     <Label Text="{Binding SleepTime[1], StringFormat='{0} минут'}" 

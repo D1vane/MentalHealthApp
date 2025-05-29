@@ -35,29 +35,20 @@ namespace MentalHealthApp
 
         private async void AddItems()
         {
-            List<SleepFactorsModel> newFactors =
-                [
-                    new () {FactorName = "Гаджет", ImagePath = "phone_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Легкий перекус", ImagePath = "smalleat_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Тяжелая пища", ImagePath = "hardeating_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Кофеин", ImagePath = "coffee_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Никотин", ImagePath = "nicotine_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Алкоголь", ImagePath = "alcohol_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Сильный стресс", ImagePath = "stress_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Умственная нагрузка", ImagePath = "brainthink_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Физическая нагрузка", ImagePath = "physicalexecrises_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Выпито много воды", ImagePath = "alotofwater_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Прием лекарств", ImagePath = "medicines_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Помещение проветрено", ImagePath = "wind_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Чтение книги", ImagePath = "bookreading_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Прогулка на воздухе", ImagePath = "walkingonair_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Теплый душ", ImagePath = "shower_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Спокойная музыка", ImagePath = "headphones_icon.jpg", IsBeforeSleep = 1},
-                    new () {FactorName = "Посторонние звуки", ImagePath = "earvolume_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Нарушение темноты", ImagePath = "lamp_icon.jpg", IsBeforeSleep = 0},
-                    new () {FactorName = "Нарушение режима", ImagePath = "brokensleeptime_icon.jpg", IsBeforeSleep = 0},
-                ];
-            await _connection.InsertAllAsync(newFactors);
+            List<FeelingModel> newFeelings =
+    [
+    new () {FeelingName = "Отвратительно", FeelingMark = 1},
+    new () {FeelingName = "Ужасно", FeelingMark = 2},
+    new () {FeelingName = "Скверно", FeelingMark = 3},
+    new () {FeelingName = "Плохо", FeelingMark = 4},
+    new () {FeelingName = "Хочется грустить", FeelingMark = 5},
+    new () {FeelingName = "Бывало и лучше", FeelingMark = 6},
+    new () {FeelingName = "Хорошо", FeelingMark = 7},
+    new () {FeelingName = "Отлично", FeelingMark = 8},
+    new () {FeelingName = "Превосходно", FeelingMark = 9},
+    new () {FeelingName = "Лучше некуда", FeelingMark = 10},
+    ];
+            await _connection.InsertAllAsync(newFeelings);
         }
         private async void UpdateItems()
         {
@@ -148,14 +139,6 @@ namespace MentalHealthApp
             return await _connection.Table<FeelingModel>().ToListAsync();
         }
 
-        public async Task<CalendarModel> GetCurrentDay()
-        {
-            DateTime dateTimeNow = new DateTime();
-            dateTimeNow = DateTime.UtcNow + TimeZoneInfo.Local.BaseUtcOffset;
-            string currentDate = dateTimeNow.ToString("dd/MM/yyyy");
-            return await _connection.Table<CalendarModel>().Where(x => x.FullDate == currentDate).FirstOrDefaultAsync();
-        }
-
         /// <summary>
         /// Запись отмеченного самочувствия в БД
         /// </summary>
@@ -190,11 +173,12 @@ namespace MentalHealthApp
             }
 
             var feelsToCalendar = await _connection.Table<FeelingToCalendar>().Where(x => x.DayID == fullDay.DayID).ToListAsync();
-            var additionalInfo = await _connection.GetWithChildrenAsync<FeelingToCalendar>(feelsToCalendar.Last().DayID);
+            var lastFeel = feelsToCalendar.Last();
+            var additionalInfo = await _connection.GetWithChildrenAsync<FeelingToCalendar>(lastFeel.RelationID);
             additionalInfo.Time = textTime;
             if (descr != null)
                 additionalInfo.Description = descr;
-            await _connection.UpdateWithChildrenAsync(additionalInfo);
+            await _connection.InsertWithChildrenAsync(additionalInfo);
             return additionalInfo;
         }
         /// <summary>
@@ -234,9 +218,9 @@ namespace MentalHealthApp
             return newDate;
         }
 
-        public async Task<CalendarModel> GetTasksFromACurrentDay(DateTime date)
+        public async Task<CalendarModel> GetCurrentDay(string[] date)
         {
-            string formatedDate = date.ToString("dd/MM/yyyy");
+            string formatedDate = date[0] + "/" + date[1] + "/" + date[2];
             var todayDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == formatedDate).FirstOrDefaultAsync();
             if (todayDate != null)
             {

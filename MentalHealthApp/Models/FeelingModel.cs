@@ -14,7 +14,7 @@ namespace MentalHealthApp.Models
         [PrimaryKey,AutoIncrement, Column("IDСамочувствия")]
         public int FeelingID { get; set; }
 
-        [Column("Наименование"),Unique]
+        [Column("Наименование")]
         public string FeelingName { get; set; }
 
         [Column("Оценка"),Unique]

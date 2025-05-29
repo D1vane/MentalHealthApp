@@ -24,6 +24,7 @@ namespace MentalHealthApp
             Routing.RegisterRoute("StartedBreathe", typeof(StartedBreathe));
 
             Routing.RegisterRoute("Feeling", typeof(Feeling));
+            Routing.RegisterRoute("ExistingFeeling", typeof(ExistingFeeling));
 
             Routing.RegisterRoute("Sleep", typeof(Sleep));
         }

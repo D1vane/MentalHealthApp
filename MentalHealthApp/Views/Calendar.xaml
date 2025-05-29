@@ -4,11 +4,13 @@
              x:Class="MentalHealthApp.Calendar"
              xmlns:vm ="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:conv ="clr-namespace:MentalHealthApp.Converters"
              Title="Calendar"
              Shell.NavBarIsVisible="False">
     <!-- Ресурсы для элементов -->
     <ContentPage.Resources>
 
+        <conv:BreatheListConverter x:Key="BreatheListConverter"/>
         <ResourceDictionary>
 
             <!-- Стиль дней недели-->
@@ -60,87 +62,100 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    
+
     <ScrollView>
-        
-    
-    <VerticalStackLayout Margin="8,24,8,0" Spacing="12">
-
-        <!--Месяц и год-->
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <Image Source="arrowleft_icon.png" WidthRequest="64" Margin="0,0,12,0" AbsoluteLayout.LayoutFlags="All">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheLeftCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Label Text="{Binding StartDate.Month}" Style="{StaticResource DaysStyle}" FontSize="24" Margin="0"/>
-            <Label Text="/" Style="{StaticResource DaysStyle}" FontSize="24"/>
-            <Label Text="{Binding StartDate.Year}" Style="{StaticResource DaysStyle}" FontSize="24"/>
-            <Image Source="arrowright_icon.png" WidthRequest="64" Margin="12,0,0,0" AbsoluteLayout.LayoutFlags="All">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheRightCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </HorizontalStackLayout>
 
 
-        <!--Дни недели-->
-        <Grid RowDefinitions="1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*" Padding="0,12,0,0" AbsoluteLayout.LayoutFlags="All">
+        <VerticalStackLayout Margin="8,24,8,0" Spacing="12">
 
-            <Label Text="Пн" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="Вт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="1"/>
-            <Label Text="Ср" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="2"/>
-            <Label Text="Чт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="3"/>
-            <Label Text="Пт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="4"/>
-            <Label Text="Сб" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="5"/>
-            <Label Text="Вс" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="6"/>
-        </Grid>
-        
-        <!--Календарные числа-->
-        <CollectionView ItemsSource="{Binding FullMonth}" SelectionMode="Single" SelectedItem="{Binding CalendarModel}">
+            <!--Месяц и год-->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image Source="arrowleft_icon.png" WidthRequest="64" Margin="0,0,12,0" AbsoluteLayout.LayoutFlags="All">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheLeftCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="{Binding ArrStartDateToString[0]}" Style="{StaticResource DaysStyle}" FontSize="24" Margin="0"/>
+                <Label Text="/" Style="{StaticResource DaysStyle}" FontSize="24"/>
+                <Label Text="{Binding ArrStartDateToString[1]}" Style="{StaticResource DaysStyle}" FontSize="24"/>
+                <Image Source="arrowright_icon.png" WidthRequest="64" Margin="12,0,0,0" AbsoluteLayout.LayoutFlags="All">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=SwipeToTheRightCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </HorizontalStackLayout>
+
+
+            <!--Дни недели-->
+            <Grid RowDefinitions="1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*" Padding="0,12,0,0" AbsoluteLayout.LayoutFlags="All">
+
+                <Label Text="Пн" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Вт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Ср" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="2"/>
+                <Label Text="Чт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="3"/>
+                <Label Text="Пт" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="4"/>
+                <Label Text="Сб" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="5"/>
+                <Label Text="Вс" Style="{StaticResource DaysStyle}" Grid.Row="0" Grid.Column="6"/>
+            </Grid>
+
+            <!--Календарные числа-->
+            <CollectionView ItemsSource="{Binding FullMonth}" SelectionMode="Single" SelectedItem="{Binding SelectedDay}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="7"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:CalendarModel}">
+                    <DataTemplate x:DataType="{x:Type models:DayAtCalendarModel}">
                         <Border WidthRequest="57" HeightRequest="67" AbsoluteLayout.LayoutFlags="All">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding }" Style="{StaticResource NumbersStyle}"/>
-                            <Label Text="{Binding TaskCount}" Style="{StaticResource NumbersStyle}" Margin="0" 
-                                   HorizontalOptions="Center" Opacity="0.6"  TextDecorations="Underline"/>
-                        </VerticalStackLayout>
-                    </Border>
-
-
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-
-
-
-        <VerticalStackLayout Spacing="16">
-
-            <Label Text="Выполнено событий: (1/6)" Style="{StaticResource EventsCountersStyle}" FontSize="20" HorizontalOptions="Center" />
-
-            <CollectionView ItemsSource="{Binding Cats}" HorizontalOptions="Center">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:FavouriteModel}">
-                        <Border StrokeShape="RoundRectangle 15,15,15,15" Margin="8"  HeightRequest="68" StrokeThickness="0.5" AbsoluteLayout.LayoutFlags="All">
-                            <Grid  RowDefinitions="1*,1*" ColumnDefinitions="*" >
-                                <Label Text="{Binding NameOfFav}" Style="{StaticResource EventsCountersStyle}" Grid.Row="0" Margin="8,4,0,0"/>
-                                    <HorizontalStackLayout Grid.Row="1" HorizontalOptions="End" Spacing="2" Margin="0,0,8,4">
-                                        <Label Text="{Binding CompletedTasks,StringFormat='Выполнено: {0}'}" Style="{StaticResource EventsCountersStyle}"/>
-                                        <Label Text="/" Style="{StaticResource EventsCountersStyle}"/>
-                                        <Label Text="{Binding AllTasks}" Style="{StaticResource EventsCountersStyle}"/>
-                                    </HorizontalStackLayout>
-                                </Grid>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>
+                                <Ellipse WidthRequest="14" HeightRequest="14" BackgroundColor="LightGray" IsVisible="{Binding IsHasTasks}"
+                                     HorizontalOptions="Center"/>
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=GetListOfTasksCommand}"
+                      CommandParameter="{Binding CurrentDay}"/>
+                                </VerticalStackLayout.GestureRecognizers>
+                            </VerticalStackLayout>
+                            
                         </Border>
+
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+
+
+
+            <VerticalStackLayout Spacing="16">
+
+                <Label Text="{Binding TodayEvents}" Style="{StaticResource EventsCountersStyle}" FontSize="20" HorizontalOptions="Center" />
+
+                <CollectionView ItemsSource="{Binding Cats}" HorizontalOptions="Center">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:FavouriteModel}">
+                            <Border StrokeShape="RoundRectangle 15,15,15,15" Margin="8"  HeightRequest="68" StrokeThickness="0.5" AbsoluteLayout.LayoutFlags="All">
+                                <Grid  RowDefinitions="1*,1*" ColumnDefinitions="*" >
+                                    <Label Text="{Binding NameOfFav}" Style="{StaticResource EventsCountersStyle}" Grid.Row="0" Margin="8,4,0,0"/>
+                                    <Label Text="{Binding Description}" Style="{StaticResource EventsCountersStyle}" Grid.Row="1" HorizontalOptions="End"
+                                              Margin="0,0,8,4" FontSize="12"/>
+                                </Grid>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=FromCalendarToPageCommand}">
+                                        <TapGestureRecognizer.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource BreatheListConverter}">
+                                                <Binding x:DataType="{x:Type models:FavouriteModel}" Path="NameOfFav"/>
+                                                <Binding Source="{RelativeSource AncestorType={x:Type vm:CalendarViewModel}}" Path="StartDateToString"/>
+                                                <Binding Source="{RelativeSource AncestorType={x:Type vm:CalendarViewModel}}" Path="SelectedDay.CurrentDay"/>
+                                            </MultiBinding>
+                                        </TapGestureRecognizer.CommandParameter>
+                                    </TapGestureRecognizer>
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -50,7 +50,7 @@
                         <Grid  Style="{StaticResource InnerGridStyle}" >
                             <Label Text="{Binding NameOfFav}" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
 
-                            <Label Text="{Binding AllTasks,StringFormat='Добавлено: {0}'}" Style="{StaticResource NubmerOfCategoriesStyle}" 
+                            <Label Text="{Binding Description,StringFormat='Добавлено: {0}'}" Style="{StaticResource NubmerOfCategoriesStyle}" 
                                    Grid.Row="1" HorizontalOptions="End"/>
 
                         </Grid>

@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty("MonthAndYear", "givenMonthAndYear")]
+    [QueryProperty("CurrentDay", "givenDay")]
     public partial class PlannerViewModel : ObservableObject
     {
         [ObservableProperty]
@@ -18,18 +20,32 @@ namespace MentalHealthApp.ViewModels
         private TaskModel selectedItem;
 
         [ObservableProperty]
+        int currentDay;
+        [ObservableProperty]
+        string monthAndYear;
+        [ObservableProperty]
         private TaskModel task;
         [ObservableProperty]
         int allTasksCount = 0;
         [ObservableProperty]
         string[] calendarDate = (DateTime.UtcNow + TimeZoneInfo.Local.BaseUtcOffset).ToString("dd/MM/yyyy").Split('/');
 
+        
 
         public PlannerViewModel()
         {
+            //GetListOfTasks();
+        }
+        partial void OnCurrentDayChanged(int value)
+        {
+            string fullDate = "";
+            if (value < 10)
+                fullDate = "0" + value.ToString() + "/" + MonthAndYear;
+            else
+                fullDate = value.ToString() + "/" + MonthAndYear;
+            CalendarDate = fullDate.Split('/');
             GetListOfTasks();
         }
-
         /// <summary>
         /// Добавление новой задачи в список
         /// </summary>
@@ -97,7 +113,7 @@ namespace MentalHealthApp.ViewModels
         {
             Tasks.Clear();
             CompletedTasks.Clear();
-            var dateWithTasks = await App.Database.GetTasksFromACurrentDay(DateTime.UtcNow + TimeZoneInfo.Local.BaseUtcOffset);
+            var dateWithTasks = await App.Database.GetCurrentDay(CalendarDate);
             if (dateWithTasks != null && dateWithTasks.Tasks.Count != 0)
             {
                 foreach (var task in dateWithTasks.Tasks.Cast<TaskModel>())

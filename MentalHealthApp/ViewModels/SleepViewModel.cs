@@ -12,11 +12,15 @@ using System.Threading.Tasks;
 
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty("MonthAndYear", "givenMonthAndYear")]
+    [QueryProperty("CurrentDay", "givenDay")]
     public partial class SleepViewModel : ObservableObject
     {
 
         [ObservableProperty]
         string arrowImage = "doublearrowdown_icon.png";
+        [ObservableProperty]
+        string todayOrAnotherDaySleep;
 
         [ObservableProperty]
         bool factorsVisibility = false;
@@ -32,6 +36,15 @@ namespace MentalHealthApp.ViewModels
 
         [ObservableProperty]
         string[] sleepTime = new string[2];
+
+        [ObservableProperty]
+        int currentDay;
+
+        [ObservableProperty]
+        string monthAndYear;
+
+        [ObservableProperty]
+        string fullDate = DateTime.Today.ToString("dd/MM/yyyy");
 
         [ObservableProperty]
         ObservableCollection<SleepFactorsModel> factorsBeforeSleep;
@@ -55,36 +68,57 @@ namespace MentalHealthApp.ViewModels
             IsAlreadyMarked();
         }
 
+        partial void OnCurrentDayChanged(int value)
+        {
+            if (value < 10)
+                FullDate = "0" + value.ToString() + "/" + MonthAndYear;
+            else
+                FullDate = value.ToString() + "/" + MonthAndYear;
+
+            IsAlreadyMarked();
+        }
+
         async void IsAlreadyMarked()
         {
-           var today = await App.Database.GetCurrentDay();
+            var today = await App.Database.GetCurrentDay(FullDate.Split('/'));
             if (today != null)
             {
                 var currentDate = await App.Database.Connection.GetWithChildrenAsync<CalendarModel>(today.DayID);
-                var currentSleep = await App.Database.Connection.GetWithChildrenAsync<SleepModel>(currentDate.Sleep.SleepID);
-                if (currentSleep != null)
+                if (currentDate.Sleep != null)
                 {
+                    var currentSleep = await App.Database.Connection.GetWithChildrenAsync<SleepModel>(currentDate.Sleep.SleepID);
                     AllVisibility = false;
                     FactorsVisibility = false;
                     AlreadyMarkedVisibility = true;
-                    AlreadyMarkedText = "Вы сегодня уже отметили свой сон,\nвозвращайтесь завтра!";
+                    if (FullDate == DateTime.Today.ToString("dd/MM/yyyy"))
+                    {
+                        AlreadyMarkedText = "Вы сегодня уже отметили свой сон,\nвозвращайтесь завтра!";
+                        TodayOrAnotherDaySleep = "Сегодня вы спали:";
+                    }
+                        
+                    else
+                    {
+                        AlreadyMarkedText = "";
+                        TodayOrAnotherDaySleep = $"{FullDate} вы спали:";
+                    }
+                        
                     SleepTime = currentSleep.SleepDuration.Split(':');
                     if (currentSleep.Factors != null)
                     {
                         MarkedFactorsVisibility = false;
                         SleepFactors = currentSleep.Factors.ToObservableCollection();
                     }
-                        
-                    else 
+
+                    else
                         MarkedFactorsVisibility = true;
                     SleepDescription = currentSleep.SleepDescription;
                     if (SleepDescription == "")
                         SleepDescription = "Описание отсутствует";
                 }
-                
+                else
+                    GetListOfFactors();
             }
-            else
-                GetListOfFactors();
+            
         }
 
         async void GetListOfFactors()
@@ -95,7 +129,7 @@ namespace MentalHealthApp.ViewModels
             {
                 if (item.IsBeforeSleep == 0)
                     sleepFctrs.Add(item);
-                
+
                 else
                     factsBfrSlp.Add(item);
             }
@@ -120,8 +154,8 @@ namespace MentalHealthApp.ViewModels
 
         }
 
-        
-        public async void WriteSleepToDB(string hours, string minutes, List<SleepFactorsModel> selectedFactorsBeforeSleep, 
+
+        public async void WriteSleepToDB(string hours, string minutes, List<SleepFactorsModel> selectedFactorsBeforeSleep,
             List<SleepFactorsModel> selectedSleepFactors)
         {
             SleepModel mySleep = new SleepModel();
