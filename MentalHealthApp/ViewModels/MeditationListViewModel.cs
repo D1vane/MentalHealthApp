@@ -68,7 +68,8 @@ namespace MentalHealthApp.ViewModels
         {
             string text = Convert.ToDateTime(SelectedDate).ToString("dd/MM/yyyy");
             var today = await App.Database.GetCurrentDay(text.Split('/'));
-            today.Meditations.Add(MList.Where(x => x.MeditationID == MeditationID).First());
+            MeditationModel meditationModel = MList.Where(x => x.MeditationID == MeditationID).First();
+            today.Meditations.Add(meditationModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
         }
     }
