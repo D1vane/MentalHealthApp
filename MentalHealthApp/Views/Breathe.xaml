@@ -85,11 +85,11 @@
             
             <Label Text="Запланировать сеанс" Style="{StaticResource ContentStyle}"/>
             <Image Source="calendar_icon.png" WidthRequest="20" HeightRequest="20"/>
-            
+
             <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer/>
+                <TapGestureRecognizer Tapped="AddToCalendar_Clicked"/>
             </HorizontalStackLayout.GestureRecognizers>
-            
+
         </HorizontalStackLayout>
 
 

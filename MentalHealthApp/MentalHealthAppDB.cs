@@ -3,6 +3,7 @@ using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
 using SQLitePCL;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -236,5 +237,7 @@ namespace MentalHealthApp
             }
                 
         }
+
+
     }
 }

@@ -2,7 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using MentalHealthApp.Models;
 using Microsoft.Maui.Controls.Shapes;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,7 +19,12 @@ namespace MentalHealthApp.ViewModels
         
         [ObservableProperty]
         ObservableCollection<BreatheModel> breathes;
-
+        [ObservableProperty]
+        string minDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        int breatheID;
         public BreatheListViewModel()
         {
             LoadBreathes();
@@ -34,7 +41,12 @@ namespace MentalHealthApp.ViewModels
             }
         }
 
+        [RelayCommand]
+        void GetBreatheID(object id)
+        {
+            BreatheID = (int)id;
 
+        }
         [RelayCommand]
         void GoToBreathe(object parameter)
         {
@@ -52,6 +64,15 @@ namespace MentalHealthApp.ViewModels
                 ["seconds"] = new TimeSpan(0, 0, (int)loopDuration).Multiply(10).Seconds,
                 ["guide"] = guideText
             });
+        }
+
+        public async void AddBreatheToDB()
+        {
+            string text = Convert.ToDateTime(SelectedDate).ToString("dd/MM/yyyy");
+            var today = await App.Database.GetCurrentDay(text.Split('/'));
+            BreatheModel breatheModel = Breathes.Where(x => x.BreatheID == BreatheID).First();
+            today.Breathes.Add(breatheModel);
+            await App.Database.Connection.UpdateWithChildrenAsync(today);
         }
     }
 }

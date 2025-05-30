@@ -51,12 +51,16 @@
                     <HorizontalStackLayout Spacing="16" Grid.Row="1">
                         <Label Text="Добавить в избранное" Style="{StaticResource ContentStyle}"/>
                         <Image Source="favourites_icon.png" Margin="0,0,0,2"/>
-                    </HorizontalStackLayout>
+
+                </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="16" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
                         <Label Text="Запланировать сеанс" Style="{StaticResource ContentStyle}"/>
                     <Image Source="calendar_icon.png" Margin="0,0,0,2"/>
-                    </HorizontalStackLayout>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddToCalendar_Clicked"/>
+                    </HorizontalStackLayout.GestureRecognizers>
+                </HorizontalStackLayout>
 
 
 

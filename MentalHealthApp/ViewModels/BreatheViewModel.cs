@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MentalHealthApp.Models;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,12 @@ namespace MentalHealthApp.ViewModels
         int seconds;
         [ObservableProperty]
         string guide;
+        [ObservableProperty]
+        string minDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+
+
         [RelayCommand]
         public void LoopsToTime()
         {
@@ -48,6 +56,7 @@ namespace MentalHealthApp.ViewModels
             Minutes = allDuration.Minutes;
             Seconds = allDuration.Seconds;
         }
+
         [RelayCommand]
         void StartBreathe(object parameter)
         {
@@ -65,6 +74,15 @@ namespace MentalHealthApp.ViewModels
                 ["loopCount"] = loopNumber,
                 ["name"] = name
             });
+        }
+
+        public async void AddBreatheToDB()
+        {
+            string text = Convert.ToDateTime(SelectedDate).ToString("dd/MM/yyyy");
+            var today = await App.Database.GetCurrentDay(text.Split('/'));
+            BreatheModel breatheModel = await App.Database.Connection.Table<BreatheModel>().Where(x=>x.NameOfBreathe==Name).FirstAsync();
+            today.Breathes.Add(breatheModel);
+            await App.Database.Connection.UpdateWithChildrenAsync(today);
         }
     }
 }

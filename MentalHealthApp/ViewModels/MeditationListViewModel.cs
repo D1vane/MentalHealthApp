@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace MentalHealthApp.ViewModels
 {
     public partial class MeditationListViewModel : ObservableObject
@@ -41,6 +40,7 @@ namespace MentalHealthApp.ViewModels
         void GetMeditationID(object id)
         {
             MeditationID = (int)id;
+
         }
 
         [RelayCommand]
@@ -72,5 +72,6 @@ namespace MentalHealthApp.ViewModels
             today.Meditations.Add(meditationModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
         }
+
     }
 }
