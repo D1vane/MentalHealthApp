@@ -90,6 +90,9 @@
 	  <MauiXaml Update="Popups\BreatheDatePickerPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Popups\ForReadingDatePickerPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Popups\GuidePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

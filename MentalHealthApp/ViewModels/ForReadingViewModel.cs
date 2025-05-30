@@ -22,12 +22,16 @@ namespace MentalHealthApp.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<ForReadingModel> life;
-        
+
+
+
         public ForReadingViewModel()
         {
             LoadReadings();
         }
 
+
+     
         [RelayCommand]
         private async void LoadReadings()
         {

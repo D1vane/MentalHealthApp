@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MentalHealthApp.Models;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +33,19 @@ namespace MentalHealthApp.ViewModels
 
         [ObservableProperty]
         string content;
+
+        [ObservableProperty]
+        string minDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+
+        public async void AddReadingToDB()
+        {
+            string text = Convert.ToDateTime(SelectedDate).ToString("dd/MM/yyyy");
+            var today = await App.Database.GetCurrentDay(text.Split('/'));
+            ForReadingModel readingModel = await App.Database.Connection.Table<ForReadingModel>().Where(x => x.ReadingName == STName).FirstAsync();
+            today.Readings.Add(readingModel);
+            await App.Database.Connection.UpdateWithChildrenAsync(today);
+        }
     }
 }

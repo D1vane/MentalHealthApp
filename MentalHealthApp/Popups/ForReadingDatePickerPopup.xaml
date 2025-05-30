@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MentalHealthApp.Popups.ForReadingDatePickerPopup"
+            xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+            xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
+            xmlns:justifiedLabel ="clr-namespace:JustifyLabel;assembly=JustifyLabel"
+            xmlns:models="clr-namespace:MentalHealthApp.Models"
+            CanBeDismissedByTappingOutsideOfPopup="False">
+
+
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="24">
+        <Label Text="Выберите дату для планирования" FontFamily="Roboto" FontSize="14" HorizontalOptions="Center"/>
+        <DatePicker MinimumDate="{Binding MinDate}" Date="{Binding SelectedDate,Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"
+                    Format="dd/MM/yyyy"/>
+
+        <Button Text="Отмена" FontFamily="Roboto" FontSize="14"  HorizontalOptions="Fill" HeightRequest="40"
+CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Cancel_Clicked"/>
+
+        <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Fill" HeightRequest="40"
+CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Button_Clicked"/>
+
+    </VerticalStackLayout>
+
+</mct:Popup>
