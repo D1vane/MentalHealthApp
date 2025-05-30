@@ -48,7 +48,13 @@
                                 <Grid RowDefinitions="*" ColumnDefinitions="69,69">
                                     <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="120" HeightRequest="120"/>
                                     <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
-                                           WidthRequest="20" HeightRequest="20"/>
+                                           WidthRequest="20" HeightRequest="20">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AddToCalendar_Clicked" 
+                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeditationListViewModel}}, Path=GetMeditationIDCommand}"
+                                                                  CommandParameter="{Binding MeditationID}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
                                            WidthRequest="20" HeightRequest="20"/>
                                 </Grid>

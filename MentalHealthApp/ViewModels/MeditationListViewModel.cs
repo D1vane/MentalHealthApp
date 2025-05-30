@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MentalHealthApp.Models;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,12 @@ namespace MentalHealthApp.ViewModels
     {
         [ObservableProperty]
         ObservableCollection<MeditationModel> mList;
+        [ObservableProperty]
+        string minDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        int meditationID;
 
         public MeditationListViewModel()
         {
@@ -29,6 +36,11 @@ namespace MentalHealthApp.ViewModels
             {
                 MList = new ObservableCollection<MeditationModel>(meditationsTemp);
             }
+        }
+        [RelayCommand]
+        void GetMeditationID(object id)
+        {
+            MeditationID = (int)id;
         }
 
         [RelayCommand]
@@ -50,6 +62,14 @@ namespace MentalHealthApp.ViewModels
                 ["content"] = content,
                 ["guide"] = guide
             });
+        }
+
+        public async void AddMeditationToDB()
+        {
+            string text = Convert.ToDateTime(SelectedDate).ToString("dd/MM/yyyy");
+            var today = await App.Database.GetCurrentDay(text.Split('/'));
+            today.Meditations.Add(MList.Where(x => x.MeditationID == MeditationID).First());
+            await App.Database.Connection.UpdateWithChildrenAsync(today);
         }
     }
 }

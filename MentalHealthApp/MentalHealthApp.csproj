@@ -93,6 +93,9 @@
 	  <MauiXaml Update="Popups\LoopNumbersPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Popups\MeditationDatePickerPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Breathe.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

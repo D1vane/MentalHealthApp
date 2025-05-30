@@ -228,7 +228,13 @@ namespace MentalHealthApp
                 return todayDateWithChildren;
             }
             else
+            {
+                await _connection.InsertAsync(new CalendarModel() { FullDate = formatedDate });
+                todayDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == formatedDate).FirstOrDefaultAsync();
+                var todayDateWithChildren = await _connection.GetWithChildrenAsync<CalendarModel>(todayDate.DayID);
                 return todayDate;
+            }
+                
         }
     }
 }
