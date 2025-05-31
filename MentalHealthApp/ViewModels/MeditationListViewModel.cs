@@ -44,6 +44,13 @@ namespace MentalHealthApp.ViewModels
         }
 
         [RelayCommand]
+        void GetFavouriteStatus(object id)
+        {
+            MeditationID = (int)id;
+            MeditationFavouriteStatusUpdate();
+        }
+
+        [RelayCommand]
         private void GetMeditationName(object parametr)
         {
             var param = parametr as object[];
@@ -53,6 +60,7 @@ namespace MentalHealthApp.ViewModels
             var imgPath = param[3];
             var content = param[4];
             var guide = param[5];
+            var favourite = param[6];
             Shell.Current.GoToAsync($"Meditation", new Dictionary<string, object>
             {
                 ["meditationName"] = subTpc,
@@ -60,7 +68,8 @@ namespace MentalHealthApp.ViewModels
                 ["meditationLevel"] = mntsCount,
                 ["imagePath"] = imgPath,
                 ["content"] = content,
-                ["guide"] = guide
+                ["guide"] = guide,
+                ["favourite"] = favourite
             });
         }
 
@@ -71,6 +80,16 @@ namespace MentalHealthApp.ViewModels
             MeditationModel meditationModel = MList.Where(x => x.MeditationID == MeditationID).First();
             today.Meditations.Add(meditationModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
+        }
+
+        public async void MeditationFavouriteStatusUpdate()
+        {
+            MeditationModel meditationModel = MList.Where(x => x.MeditationID == MeditationID).First();
+            int index = MList.IndexOf(meditationModel);
+            meditationModel.IsFavourite = (meditationModel.IsFavourite == 0) ? 1 : 0;
+            MList[index] = meditationModel;
+            await App.Database.Connection.UpdateWithChildrenAsync(meditationModel);
+   
         }
 
     }

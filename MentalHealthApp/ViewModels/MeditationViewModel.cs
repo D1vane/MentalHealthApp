@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty("FavouriteImage", "favourite")]
     [QueryProperty("MName", "meditationName")]
     [QueryProperty("MTime", "meditationTime")]
     [QueryProperty("MLevel", "meditationLevel")]
@@ -35,6 +36,14 @@ namespace MentalHealthApp.ViewModels
         string minDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        int favouriteImage = 2;
+        [ObservableProperty]
+        string favouriteText;
+        partial void OnFavouriteImageChanged(int value)
+        {
+            FavouriteText = (value == 1) ? "Удалить из избранного" : "Добавить в избранное";
+        }
 
         public async void AddMeditationToDB()
         {
@@ -43,6 +52,15 @@ namespace MentalHealthApp.ViewModels
             MeditationModel meditationModel = await App.Database.Connection.Table<MeditationModel>().Where(x=>x.MeditationName==MName).FirstAsync();
             today.Meditations.Add(meditationModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
+        }
+        [RelayCommand]
+        public async void MeditationFavouriteStatusUpdate()
+        {
+            MeditationModel meditationModel = await App.Database.Connection.Table<MeditationModel>().Where(x=>x.MeditationName==MName).FirstAsync();
+            meditationModel.IsFavourite = (meditationModel.IsFavourite == 0) ? 1 : 0;
+            FavouriteImage = (FavouriteImage == 0) ? 1 : 0;
+            FavouriteText = (FavouriteImage == 1) ? "Удалить из избранного" : "Добавить в избранное";
+            await App.Database.Connection.UpdateWithChildrenAsync(meditationModel);
         }
     }
 }

@@ -49,9 +49,11 @@
        HorizontalOptions="Start" Grid.Column="1" WidthRequest="240"/>
                                     
                     <HorizontalStackLayout Spacing="16" Grid.Row="1">
-                        <Label Text="Добавить в избранное" Style="{StaticResource ContentStyle}"/>
-                        <Image Source="favourites_icon.png" Margin="0,0,0,2"/>
-
+                        <Label Text="{Binding FavouriteText}" Style="{StaticResource ContentStyle}"/>
+                    <Image Source="{Binding FavouriteImage,StringFormat='favourites{0}_icon.jpg'}" Margin="0,0,0,2"/>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeditationViewModel}}, Path=MeditationFavouriteStatusUpdateCommand}"/>
+                    </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="16" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">

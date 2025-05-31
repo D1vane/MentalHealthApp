@@ -238,6 +238,9 @@ namespace MentalHealthApp
                 
         }
 
+        public async void GetFavourites()
+        {
 
+        }
     }
 }
