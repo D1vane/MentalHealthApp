@@ -75,7 +75,12 @@ namespace MentalHealthApp.ViewModels
             {
                 
                 Cats = getFullMonth.ListOfEvents.ToObservableCollection();
-                TodayEvents = $"Событий на сегодня ({Cats.Count})";
+                string dateText;
+                if (SelectedDay.CurrentDay < 10)
+                    dateText = "0" + SelectedDay.CurrentDay.ToString() + "/" + StartDate.ToString("MM");
+                else
+                    dateText = SelectedDay.CurrentDay.ToString() + "/" + StartDate.ToString("MM");
+                TodayEvents = $"События на {dateText}\t({Cats.Count})";
             }
             else
             {
@@ -93,10 +98,18 @@ namespace MentalHealthApp.ViewModels
             switch (parameter[0].ToString())
             {
                 case "Медитации":
-                    Shell.Current.GoToAsync("MeditationList");
+                    Shell.Current.GoToAsync($"MeditationList", new Dictionary<string, object>
+                    {
+                        ["givenMonthAndYear"] = parameter[1],
+                        ["givenDay"] = parameter[2]
+                    });
                     break;
                 case "Дыхательные техники":
-                    Shell.Current.GoToAsync("BreatheList");
+                    Shell.Current.GoToAsync($"BreatheList", new Dictionary<string, object>
+                    {
+                        ["givenMonthAndYear"] = parameter[1],
+                        ["givenDay"] = parameter[2]
+                    });
                     break;
                 case "Отмеченный сон":
                     Shell.Current.GoToAsync($"Sleep", new Dictionary<string, object>
@@ -120,7 +133,11 @@ namespace MentalHealthApp.ViewModels
                     });
                     break;
                 case "Для чтения":
-                    Shell.Current.GoToAsync("ForReading");
+                    Shell.Current.GoToAsync($"ForReading", new Dictionary<string, object>
+                    {
+                        ["givenMonthAndYear"] = parameter[1],
+                        ["givenDay"] = parameter[2]
+                    });
                     break;
                 default:
                     break;

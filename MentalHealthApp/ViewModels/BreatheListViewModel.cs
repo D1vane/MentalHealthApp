@@ -14,18 +14,30 @@ using System.Threading.Tasks;
 namespace MentalHealthApp.ViewModels
 {
     [QueryProperty("FromFavourite", "IsFavourite")]
+    [QueryProperty("MonthAndYear", "givenMonthAndYear")]
+    [QueryProperty("CurrentDay", "givenDay")]
     public partial class BreatheListViewModel : ObservableObject
     {
         [ObservableProperty]
         ObservableCollection<BreatheModel> breathes;
+
         [ObservableProperty]
         string minDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+
         [ObservableProperty]
         int breatheID;
+
         [ObservableProperty]
         int fromFavourite;
+
+        [ObservableProperty]
+        int currentDay;
+        [ObservableProperty]
+        string monthAndYear;
+        [ObservableProperty]
+        string fullDate;
         public BreatheListViewModel()
         {
             LoadBreathes();
@@ -34,16 +46,36 @@ namespace MentalHealthApp.ViewModels
         {
             LoadBreathes();
         }
+        partial void OnCurrentDayChanged(int value)
+        {
+            if (value < 10)
+                FullDate = "0" + value.ToString() + "/" + MonthAndYear;
+            else
+                FullDate = value.ToString() + "/" + MonthAndYear;
+            LoadBreathes();
+        }
         [RelayCommand]
         private async void LoadBreathes()
         {
             if (FromFavourite == 0)
             {
-                var breathesTemp = await App.Database.GetListOfBreathes();
-                if (breathesTemp.Any())
+                if (CurrentDay == 0)
                 {
-                    Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
+                    var breathesTemp = await App.Database.GetListOfBreathes();
+                    if (breathesTemp.Any())
+                    {
+                        Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
+                    }
                 }
+                else
+                {
+                    var curDay = await App.Database.GetCurrentDay(FullDate.Split('/'));
+                    if (curDay.Breathes.Count > 0)
+                    {
+                        Breathes = new ObservableCollection<BreatheModel>(curDay.Breathes);
+                    }
+                }
+                
             }
             else
             {

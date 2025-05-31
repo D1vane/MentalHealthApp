@@ -11,18 +11,30 @@ using System.Threading.Tasks;
 namespace MentalHealthApp.ViewModels
 {
     [QueryProperty ("FromFavourite","IsFavourite")]
+    [QueryProperty("MonthAndYear", "givenMonthAndYear")]
+    [QueryProperty("CurrentDay", "givenDay")]
     public partial class MeditationListViewModel : ObservableObject
     {
         [ObservableProperty]
         ObservableCollection<MeditationModel> mList;
+
         [ObservableProperty]
         string minDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+
         [ObservableProperty]
         int meditationID;
+
         [ObservableProperty]
         int fromFavourite;
+
+        [ObservableProperty]
+        int currentDay;
+        [ObservableProperty]
+        string monthAndYear;
+        [ObservableProperty]
+        string fullDate;
 
         public MeditationListViewModel()
         {
@@ -33,18 +45,37 @@ namespace MentalHealthApp.ViewModels
         {
             LoadMeditations();
         }
+
+        partial void OnCurrentDayChanged(int value)
+        {
+            if (value < 10)
+                FullDate = "0" + value.ToString() + "/" + MonthAndYear;
+            else
+                FullDate = value.ToString() + "/" + MonthAndYear;
+            LoadMeditations();
+        }
         [RelayCommand]
         private async void LoadMeditations()
         {
             if (FromFavourite == 0)
             {
-                var meditationsTemp = await App.Database.GetListOfMeditations();
-                if (meditationsTemp.Any())
+                if (CurrentDay == 0)
                 {
-                    MList = new ObservableCollection<MeditationModel>(meditationsTemp);
+                    var meditationsTemp = await App.Database.GetListOfMeditations();
+                    if (meditationsTemp.Any())
+                    {
+                        MList = new ObservableCollection<MeditationModel>(meditationsTemp);
+                    }
                 }
+                else
+                {
+                    var curDay = await App.Database.GetCurrentDay(FullDate.Split('/'));
+                    if (curDay.Meditations.Count > 0)
+                        MList = new ObservableCollection<MeditationModel>(curDay.Meditations);
+                }
+                
             }
-            else
+            else 
             {
                 var meditationsTemp = await App.Database.Connection.Table<MeditationModel>().Where(x=>x.IsFavourite==FromFavourite).ToListAsync();
                 if (meditationsTemp.Any())
