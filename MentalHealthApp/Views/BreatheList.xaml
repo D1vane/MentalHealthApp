@@ -12,24 +12,15 @@
     <ContentPage.Resources>
 
         <conv:BreatheListConverter x:Key="BreatheListConverter"/>
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="ContentStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
-        </ResourceDictionary>
 
     </ContentPage.Resources>
     <ScrollView>
 
         <VerticalStackLayout Margin="8,24,8,8" Spacing="12" AbsoluteLayout.LayoutFlags="All">
 
-            <Label Text="Дыхательные техники" Style="{StaticResource ContentStyle}" FontSize="32"/>
+            <Label Text="Дыхательные техники"  FontSize="32"/>
 
-            <Label Text="{Binding Breathes.Count,StringFormat='Техник: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="End" Opacity="0.7" FontSize="14"/>
+            <Label Text="{Binding Breathes.Count,StringFormat='Техник: {0}'}" HorizontalOptions="End" Opacity="0.7" />
 
             <CollectionView ItemsSource="{Binding Breathes}">
 
@@ -40,7 +31,7 @@
 
                             <!--Изображение-->
                             <Border StrokeShape="RoundRectangle 15,15,15,15" WidthRequest="188" HeightRequest="188" Grid.RowSpan="2"
-        HorizontalOptions="Start" VerticalOptions="Start" Stroke="Black">
+        HorizontalOptions="Start" VerticalOptions="Start">
 
                                 <Grid RowDefinitions="*" ColumnDefinitions="94,94">
                                     <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="160" HeightRequest="160"
@@ -64,13 +55,13 @@
 
                             </Border>
 
-                            <Label Text="{Binding NameOfBreathe}" Style="{StaticResource ContentStyle}" Grid.Column="1" FontSize="16" 
+                            <Label Text="{Binding NameOfBreathe}" Grid.Column="1" FontSize="16" 
                                    FontAttributes="Bold"/>
 
-                            <Label Text="{Binding LoopDuration,StringFormat='Длительность цикла: {0} с'}" Style="{StaticResource ContentStyle}" 
+                            <Label Text="{Binding LoopDuration,StringFormat='Длительность цикла: {0} с'}" FontSize="16"
                                    Grid.Row="1" Grid.Column="1" FontAttributes="Italic" />
 
-                            <Label justifyLabel:Label.JustifyText="True" Text="{Binding Guide}" Style="{StaticResource ContentStyle}" 
+                            <Label justifyLabel:Label.JustifyText="True" Text="{Binding Guide}" FontSize="16"
                                    Grid.Row="2" Grid.Column="1" MaxLines="5"/>
 
                             <Grid RowDefinitions="*" ColumnDefinitions="*" Grid.Row="3" Grid.Column="1">
@@ -86,7 +77,7 @@
                                         </TapGestureRecognizer.CommandParameter>
                                     </TapGestureRecognizer>
                                 </Grid.GestureRecognizers>
-                                <Label Text="Перейти к технике" Style="{StaticResource ContentStyle}"/>
+                                <Label Text="Перейти к технике" FontSize="16"/>
 
                                 <Image Source="brokenarrow_icon.png" HorizontalOptions="End" WidthRequest="32" HeightRequest="32"/>
                             </Grid>

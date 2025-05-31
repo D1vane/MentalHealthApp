@@ -19,12 +19,6 @@
 
         <ResourceDictionary>
 
-            <!-- Стиль лэйбла для заголовков главного экрана -->
-            <Style x:Key="HomescreenHeadlinesStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="24"/>
-            </Style>
-            
             <!--Стиль бордера отображений-->
             <Style x:Key="BorderStyle" TargetType="Border">
                 <Setter Property="StrokeShape" Value="RoundRectangle 15,15,15,15"/>
@@ -46,7 +40,7 @@
 
             <!--Расслабление и профилактика-->
             <VerticalStackLayout>
-                <Label Text="Расслабление и профилактика" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <Label Text="Расслабление и профилактика" FontSize="24"/>
                 <CollectionView ItemsSource="{Binding Relax}" HorizontalOptions="Start">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
@@ -57,7 +51,7 @@
                                 <Grid RowDefinitions="80,56" Margin="8,8,8,8">
                                     <Image Source="{Binding ImagePath}" 
                                            VerticalOptions="Start"/>
-                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" 
 VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
                                 </Grid>
                                 <Border.GestureRecognizers>
@@ -73,7 +67,7 @@ VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
 
             <!--Полезная информация-->
             <VerticalStackLayout Grid.Row="1">
-                <Label Text="Полезная информация" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <Label Text="Полезная информация" FontSize="24"/>
                 <CollectionView ItemsSource="{Binding UsefulInfo}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
@@ -84,7 +78,7 @@ VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
                                 <Grid RowDefinitions="80,56" Margin="8,8,8,8">
                                     <Image Source="{Binding ImagePath}" 
                                            VerticalOptions="Start"/>
-                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" 
 VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
                                 </Grid>
                                 <Border.GestureRecognizers>
@@ -100,7 +94,7 @@ VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
 
             <!--Самоконтроль-->
             <VerticalStackLayout Grid.Row="2">
-                <Label Text="Самоконтроль" Style="{StaticResource HomescreenHeadlinesStyle}"/>
+                <Label Text="Самоконтроль" FontSize="24"/>
                 <CollectionView ItemsSource="{Binding SelfControl}" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="12"/>
@@ -111,8 +105,7 @@ VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
                                 <Grid RowDefinitions="80,56" Margin="8,8,8,8">
                                     <Image Source="{Binding ImagePath}" 
                                            VerticalOptions="Start"/>
-                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" Style="{StaticResource HomescreenHeadlinesStyle}" FontSize="14" 
-VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
+                                    <Label x:Name="nameOfPageLabel" Text="{Binding NameOfPage}" VerticalOptions="End" Margin="0,0,0,16" Grid.Row="1"/>
                                 </Grid>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=GoToNextPageCommand}"

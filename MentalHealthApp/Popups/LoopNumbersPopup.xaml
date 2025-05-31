@@ -39,8 +39,8 @@
     
     <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All">
 
-        <Label Text="Количество циклов" HorizontalOptions="Center" VerticalOptions="End" FontFamily="Roboto" FontSize="24" Margin="24" 
-               Grid.Row="0" TextColor="Black" />
+        <Label Text="Количество циклов" HorizontalOptions="Center" VerticalOptions="End" FontSize="24" Margin="24" 
+               Grid.Row="0"/>
         
         <CollectionView x:Name="numbersCollView" Grid.Row="1" Scrolled="CollectionView_Scrolled"
                         Loaded="numbersCollView_Loaded" SelectionMode="Single" VerticalOptions="End">
@@ -156,11 +156,9 @@
 
         <Grid RowDefinitions="*" ColumnDefinitions="*,*" Grid.Row="2" ColumnSpacing="24" Margin="12">
             
-            <Button Text="Отмена" FontFamily="Roboto" FontSize="14"  HorizontalOptions="Fill" HeightRequest="40"
-        CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Cancel_Clicked"/>
+            <Button Text="Отмена"  HorizontalOptions="Fill" Clicked="Cancel_Clicked"/>
 
-            <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Fill" HeightRequest="40"
-        CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Button_Clicked"/>
+            <Button Text="Ок" Grid.Column="1" HorizontalOptions="Fill" Clicked="Button_Clicked"/>
 
 
         </Grid>

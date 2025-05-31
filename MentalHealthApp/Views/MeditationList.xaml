@@ -13,25 +13,15 @@
 
         <conv:MeditationListConverter x:Key="MeditationListConverter"/>
 
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="AllText" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
-        </ResourceDictionary>
-
     </ContentPage.Resources>
 
     <ScrollView>
 
         <VerticalStackLayout Margin="8,24,8,8" AbsoluteLayout.LayoutFlags="All" Spacing="12">
 
-            <Label Text="Медитации" Style="{StaticResource AllText}" FontSize="32"/>
+            <Label Text="Медитации" FontSize="32"/>
 
-            <Label Text="{Binding MList.Count, StringFormat='Медитаций: {0}'}" Style="{StaticResource AllText}" FontSize="14" Opacity="0.7" HorizontalOptions="End"/>
+            <Label Text="{Binding MList.Count, StringFormat='Медитаций: {0}'}" Opacity="0.7" HorizontalOptions="End"/>
 
             <CollectionView ItemsSource="{Binding MList}">
 
@@ -67,12 +57,12 @@
                             </Border>
 
                             <!--Описание медитации-->
-                                <Label x:Name="meditationNameLabel" Text="{Binding MeditationName}" Style="{StaticResource AllText}" Grid.Column="1" HorizontalOptions="Start"/>
+                                <Label x:Name="meditationNameLabel" Text="{Binding MeditationName}" FontSize="16" Grid.Column="1" HorizontalOptions="Start"/>
 
                                 <VerticalStackLayout Grid.Column="1" Grid.Row="1" Spacing="12" HorizontalOptions="Start"  Margin="0,8,0,0">
 
                                 <HorizontalStackLayout Spacing="8">
-                                    <Label x:Name="meditationTimeLabel" Text="{Binding MeditationDuration, StringFormat='Время выполнения: {0} минут'}" Style="{StaticResource AllText}"/>
+                                    <Label x:Name="meditationTimeLabel" Text="{Binding MeditationDuration, StringFormat='Время выполнения: {0} минут'}" FontSize="16"/>
                                     <Image Source="clock_icon.png"/>
                                 </HorizontalStackLayout>
                                 
@@ -82,7 +72,7 @@
                                 <HorizontalStackLayout Spacing="12" Margin="0,12,0,0">
 
 
-                                    <Label Text="Перейти к медитации" Style="{StaticResource AllText}"/>
+                                    <Label Text="Перейти к медитации" FontSize="16"/>
 
                                     <Image Source="brokenarrow_icon.png"/>
 
@@ -108,7 +98,7 @@
                             </VerticalStackLayout>
 
                             <Label justifiedLabel:Label.JustifyText="True" Text="{Binding MeditationContent}" Grid.Row="2" LineBreakMode="CharacterWrap" Grid.ColumnSpan="2" 
-                                   HorizontalOptions="Start" Style="{StaticResource AllText}" FontSize="16" MaxLines="6"/>
+                                   HorizontalOptions="Start" FontSize="16" MaxLines="6"/>
 
                             <Border Grid.Row="3" Grid.ColumnSpan="2" HeightRequest="1" VerticalOptions="Center"/>
 

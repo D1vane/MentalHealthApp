@@ -13,18 +13,16 @@
           AbsoluteLayout.LayoutFlags="All">
 
         
-            <Label Text="Руководство к выполнению:" HorizontalOptions="Center" VerticalOptions="End" FontFamily="Roboto" FontSize="20" Margin="24" 
-    Grid.Row="0" TextColor="Black" />
+            <Label Text="Руководство к выполнению:" HorizontalOptions="Center" VerticalOptions="End" FontSize="20" Margin="24" 
+    Grid.Row="0" />
 
         <ScrollView Grid.Row="1" HorizontalOptions="Center" Margin="16,0,16,0" VerticalScrollBarVisibility="Never">
-            <Label justifiedLabel:Label.JustifyText="True"  Text="{Binding Guide}" FontSize="18" FontFamily="Roboto" LineHeight="1.5"/>
+            <Label justifiedLabel:Label.JustifyText="True"  Text="{Binding Guide}" FontSize="18" LineHeight="1.5"/>
         </ScrollView>
         
 
 
-        <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Center" HeightRequest="40"
-     WidthRequest="188" CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Grid.Row="2"
-                Clicked="Button_Clicked"/>
+        <Button Text="Ок" Grid.Column="1" HorizontalOptions="Center" Grid.Row="2" Clicked="Button_Clicked"/>
 
 
 

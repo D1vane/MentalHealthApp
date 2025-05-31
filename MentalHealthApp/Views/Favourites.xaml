@@ -12,21 +12,6 @@
 
         <ResourceDictionary>
 
-            <!-- Стиль названия категории -->
-            <Style x:Key="CategoriesStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="VerticalOptions" Value="Start"/>
-            </Style>
-
-            <!-- Стиль количества записей -->
-            <Style x:Key="NubmerOfCategoriesStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="VerticalOptions" Value="Start"/>
-                <Setter Property="HorizontalOptions" Value="End"/>
-            </Style>
-
             <!-- Стиль сетки для вкладок -->
             <Style x:Key="InnerGridStyle" TargetType="Grid">
                 <Setter Property="RowSpacing" Value="12"/>
@@ -41,16 +26,16 @@
     <!--Отображение элементов-->
     <VerticalStackLayout Margin="8,24,8,0" Spacing="16">
 
-        <Label Text="Избранные практики и материалы" Style="{StaticResource CategoriesStyle}" FontSize="20" HorizontalOptions="Center" />
+        <Label Text="Избранные практики и материалы" FontSize="20" HorizontalOptions="Center" />
 
         <CollectionView ItemsSource="{Binding Favs}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:FavouriteModel}">
                     <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Margin="8">
-                        <Grid  Style="{StaticResource InnerGridStyle}" >
-                            <Label Text="{Binding NameOfFav}" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
+                        <Grid Style="{StaticResource InnerGridStyle}" >
+                            <Label Text="{Binding NameOfFav}"  Grid.Row="0"/>
 
-                            <Label Text="{Binding Description}" Style="{StaticResource NubmerOfCategoriesStyle}" 
+                            <Label Text="{Binding Description}" 
                                    Grid.Row="1" HorizontalOptions="End"/>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FavouritesViewModel}}, Path=FromFavouriteToPageCommand}"

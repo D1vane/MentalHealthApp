@@ -10,15 +10,8 @@
 
         <ResourceDictionary>
 
-            <!-- Стиль количества событий и функций-->
-            <Style x:Key="EventsAndFunctionsStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
             <!-- Стиль для линий между элементами меню-->
             <Style x:Key="LinesStyle" TargetType="Border">
-                <Setter Property="Stroke" Value="Black"/>
                 <Setter Property="StrokeThickness" Value="0.5"/>
                 <Setter Property="Opacity" Value="0.6"/>
             </Style>
@@ -31,17 +24,17 @@
         
         <!--Редактирование профиля-->
         <Ellipse WidthRequest="188" HeightRequest="188" Stroke="Gray" StrokeThickness="3" HorizontalOptions="Center"/>
-        <Label Text="Имя пользователя" FontFamily="Roboto" FontSize="20" Margin="0,24,0,0" HorizontalOptions="Center"/>
+        <Label Text="Имя пользователя" FontSize="20" Margin="0,24,0,0" HorizontalOptions="Center"/>
         
         <!--Количество событий-->
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="48" Margin="0,24,0,0">
             <HorizontalStackLayout>
                 <Image Source="calendar_icon.png"/>
-                <Label Text="16/25" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="16/25" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Image Source="favourites_icon.png"/>
-                <Label Text="8" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="8" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
         </HorizontalStackLayout>
@@ -49,10 +42,9 @@
         <!--Цитата-->
         <Border StrokeShape="RoundRectangle 15,15,15,15"  Margin="0,32,0,0" BackgroundColor="#E5E5E5">
             <Grid RowDefinitions="1*,1*" ColumnDefinitions="0.9*,0.1*" Margin="20,12,8,8" RowSpacing="12">
-                <Label Text="&quot;Стоит только поверить, что вы можете, - и вы уже на полпути к цели&quot; " 
-       Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14"  Grid.RowSpan="2" LineBreakMode="WordWrap" LineHeight="1.2"/>
-                <Label Text="Теодор Рузвельт" Style="{StaticResource EventsAndFunctionsStyle}" FontSize="14" HorizontalOptions="End"
-       Margin="0,12,24,0" Grid.Row="2" />
+                <Label Text="&quot;Стоит только поверить, что вы можете, - и вы уже на полпути к цели&quot; "  Grid.RowSpan="2" LineBreakMode="WordWrap"
+                       LineHeight="1.2"/>
+                <Label Text="Теодор Рузвельт" HorizontalOptions="End" Margin="0,12,24,0" Grid.Row="2" />
                 <Image Source="favourites_icon.png" HorizontalOptions="End" Grid.Column="1" 
                        Margin="0,0,8,0" WidthRequest="24" HeightRequest="24"/>
             </Grid>
@@ -63,7 +55,7 @@
             <!--Ежедневный совет-->
             <HorizontalStackLayout>
                 <Image Source="advice_icon.png"/>
-                <Label Text="Получить ежедневный совет" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="Получить ежедневный совет" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
 
@@ -71,7 +63,7 @@
             <!--История советов-->
             <HorizontalStackLayout Margin="0,8,0,0">
                 <Image Source="clock_icon.png"/>
-                <Label Text="История советов" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="История советов" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
             <Border Style="{StaticResource LinesStyle}"/>
@@ -79,14 +71,14 @@
             <!--Настройка уведомлений-->
             <HorizontalStackLayout>
                 <Image Source="notification_icon.png"/>
-                <Label Text="Настройка уведомлений" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="Настройка уведомлений" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
             
             <!--Настройка темы приложения-->
             <HorizontalStackLayout Margin="0,8,0,0">
                 <Image Source="sun_icon.png"/>
-                <Label Text="Настройка темы приложения" Style="{StaticResource EventsAndFunctionsStyle}" Margin="8,2,0,0"/>
+                <Label Text="Настройка темы приложения" FontSize="16" Margin="8,2,0,0"/>
             </HorizontalStackLayout>
             
             

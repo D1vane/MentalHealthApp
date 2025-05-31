@@ -8,25 +8,11 @@
              Title="PositiveThinkingCards"
              Shell.NavBarIsVisible="False">
 
-    <!-- Ресурсы для элементов -->
-    <ContentPage.Resources>
-
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="CatsStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
-
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
     <ScrollView>
     <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
-        <Label Text="{Binding TName}" Style="{StaticResource CatsStyle}" FontSize="32"/>
-        <Label Text="{Binding STName}" Style="{StaticResource CatsStyle}" FontSize="24"/>
-        <Label Text="{Binding ThCards.Count, StringFormat='Мыслей: {0}'}" Style="{StaticResource CatsStyle}" Opacity="0.7" HorizontalOptions="End"/>
+        <Label Text="{Binding TName}" FontSize="32"/>
+        <Label Text="{Binding STName}" FontSize="24"/>
+        <Label Text="{Binding ThCards.Count, StringFormat='Мыслей: {0}'}"  Opacity="0.7" HorizontalOptions="End"/>
         <CollectionView SelectionMode="None" BackgroundColor="Transparent" ItemsSource="{Binding ThCards}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:PosThModel}">
@@ -34,8 +20,8 @@
                               HeightRequest="236" AbsoluteLayout.LayoutFlags="All">
                         
                         <!--Негативная мысль-->
-                        <Border Stroke="Black" StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                        <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegativeThink}" Style="{StaticResource CatsStyle}" Grid.RowSpan="2"
+                        <Border StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                        <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegativeThink}" Grid.RowSpan="2"
                                Margin="16,8,0,0" LineHeight="1.2"/>
                             <Image Source="{Binding isFavourite,StringFormat='favourites{0}_icon.jpg'}" Grid.Column="1" HorizontalOptions="End" Margin="0,12,12,0" 
                                     VerticalOptions="Start" WidthRequest="20" HeightRequest="20">
@@ -48,9 +34,9 @@
                                    Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0" />
                         
                         <!--Позитивная мысль-->
-                        <Border Stroke="Black" Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,15,15" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                        <Border Margin="0,-2,0,0" StrokeShape="RoundRectangle 0,0,15,15" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                             <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding PositiveThink}" 
-                                   Style="{StaticResource CatsStyle}" Grid.Row="2" Grid.RowSpan="2" Margin="16,8,0,0" LineHeight="1.2"/>
+                                   Grid.Row="2" Grid.RowSpan="2" Margin="16,8,0,0" LineHeight="1.2"/>
                         <Image Source="check_icon.png" WidthRequest="18" HeightRequest="18" Grid.Row="3"
        Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0"/>
 

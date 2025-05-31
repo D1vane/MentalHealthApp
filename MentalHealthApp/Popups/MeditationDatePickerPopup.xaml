@@ -10,15 +10,12 @@
 
 
     <VerticalStackLayout Margin="8,24,8,8" Spacing="24">
-        <Label Text="Выберите дату для планирования" FontFamily="Roboto" FontSize="14" HorizontalOptions="Center"/>
-        <DatePicker MinimumDate="{Binding MinDate}" Date="{Binding SelectedDate,Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"
-                    Format="dd/MM/yyyy"/>
+        <Label Text="Выберите дату для планирования" HorizontalOptions="Center"/>
+        <DatePicker MinimumDate="{Binding MinDate}" Date="{Binding SelectedDate,Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
         
-        <Button Text="Отмена" FontFamily="Roboto" FontSize="14"  HorizontalOptions="Fill" HeightRequest="40"
-CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Cancel_Clicked"/>
+        <Button Text="Отмена" HorizontalOptions="Fill" Clicked="Cancel_Clicked"/>
 
-        <Button Text="Ок" FontFamily="Roboto" FontSize="14" Grid.Column="1" HorizontalOptions="Fill" HeightRequest="40"
-CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" Clicked="Button_Clicked"/>
+        <Button Text="Ок" Grid.Column="1" HorizontalOptions="Fill" Clicked="Button_Clicked"/>
         
     </VerticalStackLayout>
     

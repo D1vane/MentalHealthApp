@@ -14,15 +14,8 @@
 
         <ResourceDictionary>
 
-            <!-- Стиль текста на странице-->
-            <Style x:Key="SubtopicsStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
             <!-- Стиль подтем-->
             <Style x:Key="SubTopics" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
                 <Setter Property="Text" Value="{Binding ReadingName}"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
                 <Setter Property="Grid.Row" Value="1"/>
@@ -41,27 +34,8 @@
             
             <!--Стиль для количества минут на чтение-->
             <Style x:Key="Minutes" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
                 <Setter Property="Text" Value="{Binding ReadingDuration, StringFormat='{0} минут'}"/>
-            </Style>
-
-            <!--Стиль сетки для отображение категории-->
-            <Style x:Key="GridCategoryStyle" TargetType="Grid">
-                <Setter Property="RowDefinitions" Value="24,24,136"/>
-                <Setter Property="ColumnDefinitions" Value="*"/>
-                <Setter Property="RowSpacing" Value="4"/>
-                <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
-            </Style>
-
-            <!--Стиль сетки для отображение подтемы-->
-            <Style x:Key="GridSubTopicStyle" TargetType="Grid">
-                <Setter Property="RowDefinitions" Value="24,112"/>
-                <Setter Property="ColumnDefinitions" Value="110,24"/>
-                <Setter Property="Margin" Value="-12,0,0,0"/>
-                <Setter Property="Padding" Value="12"/>
-                <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
             </Style>
 
         </ResourceDictionary>
@@ -71,13 +45,13 @@
     <ScrollView>
         <VerticalStackLayout Margin="8,24,8,8" Spacing="12" AbsoluteLayout.LayoutFlags="All">
 
-            <Label Text="Для чтения" Style="{StaticResource SubtopicsStyle}" FontSize="32"/>
+            <Label Text="Для чтения" FontSize="32"/>
 
             <!--Работа-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label Text="{Binding Cats[0].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
-                <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                <Label Text="{Binding Cats[0].NameOfCategory}" FontSize="20"/>
+                <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" 
                        Opacity="0.7" Grid.Row="1"/>
 
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -87,7 +61,7 @@
                         <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2"
-                                        Stroke="Black">
+                                        >
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
@@ -120,14 +94,14 @@
                 </CollectionView>
                 <Label Text="Вы ничего не добавляли из раздела &quot;Работа&quot;"  VerticalOptions="Center" 
 HorizontalOptions="Center" Grid.Row="3"
-Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextWork}"/>
+Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextWork}"/>
             </Grid>
 
             <!--Учеба-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="{Binding Cats[1].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
-                <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                <Label  Text="{Binding Cats[1].NameOfCategory}" FontSize="20"/>
+                <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}"
                        Opacity="0.7" Grid.Row="1"/>
 
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -137,7 +111,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                         <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" 
-                                        Grid.ColumnSpan="2" Stroke="Black">
+                                        Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
@@ -170,14 +144,14 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                 </CollectionView>
                 <Label Text="Вы ничего не добавляли из раздела &quot;Учеба&quot;"  VerticalOptions="Center" 
 HorizontalOptions="Center" Grid.Row="3"
-Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextStudy}"/>
+Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextStudy}"/>
             </Grid>
 
             <!--Здоровье-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="{Binding Cats[2].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
-                <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                <Label  Text="{Binding Cats[2].NameOfCategory}"  FontSize="20"/>
+                <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}"
                        Opacity="0.7" Grid.Row="1"/>
 
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -187,7 +161,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                         <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" 
-                                        Grid.RowSpan="2" Grid.ColumnSpan="2" Stroke="Black">
+                                        Grid.RowSpan="2" Grid.ColumnSpan="2" >
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
@@ -219,14 +193,14 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                 </CollectionView>
                 <Label Text="Вы ничего не добавляли из раздела &quot;Здоровье&quot;"  VerticalOptions="Center" 
 HorizontalOptions="Center" Grid.Row="3"
-Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextHealth}"/>
+Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextHealth}"/>
             </Grid>
 
             <!--Быт-->
             <Grid Style="{StaticResource GridCategoryStyle}">
 
-                <Label  Text="{Binding Cats[3].NameOfCategory}" Style="{StaticResource SubtopicsStyle}" FontSize="20"/>
-                <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Style="{StaticResource SubtopicsStyle}" FontSize="14" 
+                <Label  Text="{Binding Cats[3].NameOfCategory}" FontSize="20"/>
+                <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}"
                        Opacity="0.7" Grid.Row="1"/>
 
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -236,7 +210,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                         <DataTemplate x:DataType="{x:Type models:ForReadingModel}">
                             <Grid Style="{StaticResource GridSubTopicStyle}">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" 
-                                        Grid.ColumnSpan="2" Stroke="Black">
+                                        Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path=GetSubTopicNameCommand}">
@@ -268,7 +242,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                 </CollectionView>
                 <Label Text="Вы ничего не добавляли из раздела &quot;Быт&quot;"  VerticalOptions="Center" 
 HorizontalOptions="Center" Grid.Row="3"
-Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextLife}"/>
+Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextLife}"/>
             </Grid>
 
 

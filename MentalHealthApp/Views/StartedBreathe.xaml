@@ -13,25 +13,15 @@
 
         <conv:BreatheListConverter x:Key="BreatheListConverter"/>
 
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="ContentStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
-        </ResourceDictionary>
-
     </ContentPage.Resources>
 
     <VerticalStackLayout Margin="8,24,8,8" Spacing="24" AbsoluteLayout.LayoutFlags="All">
 
-        <Label  Text="{Binding Name}" Style="{StaticResource ContentStyle}" FontSize="32"/>
+        <Label  Text="{Binding Name}" FontSize="32"/>
 
-        <Label  Text="Вдох" Style="{StaticResource ContentStyle}" FontSize="24" HorizontalOptions="Center"/>
+        <Label  Text="Вдох"  FontSize="24" HorizontalOptions="Center"/>
         <HorizontalStackLayout>
-            <Label  Text="Задержка" Style="{StaticResource ContentStyle}" FontSize="24"  VerticalOptions="Center" Rotation="270"/>
+            <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="270"/>
             <VerticalStackLayout HorizontalOptions="Center" WidthRequest="240" HeightRequest="240">
                 <ProgressBar  WidthRequest="240" Progress="{Binding ProgressBarTop}" 
                   ProgressColor="Black"/>
@@ -42,28 +32,27 @@
                 <ProgressBar  Margin="240,-16,0,0" WidthRequest="240"  Rotation="90" Progress="{Binding ProgressBarRight}"
                   ProgressColor="Black"/>
             </VerticalStackLayout>
-            <Label  Text="Задержка" Style="{StaticResource ContentStyle}" FontSize="24"  VerticalOptions="Center" Rotation="90"/>
+            <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="90"/>
         </HorizontalStackLayout>
         
 
-        <Label  Text="Выдох" Style="{StaticResource ContentStyle}" FontSize="24" HorizontalOptions="Center"/>
+        <Label  Text="Выдох" FontSize="24" HorizontalOptions="Center"/>
 
-        <Label Text="{Binding LoopCount,StringFormat='Осталось циклов: {0}'}" Style="{StaticResource ContentStyle}" HorizontalOptions="Center"/>
-
-
+        <Label Text="{Binding LoopCount,StringFormat='Осталось циклов: {0}'}" FontSize="16" HorizontalOptions="Center"/>
 
 
-        <Label Text="Осталось времени:" HorizontalOptions="Center" Style="{StaticResource ContentStyle}" FontSize="20"/>
+
+
+        <Label Text="Осталось времени:" HorizontalOptions="Center" FontSize="20"/>
 
         <HorizontalStackLayout Margin="0,0,0,0" HorizontalOptions="Center" Spacing="8">
-            <Label Text="{Binding Minutes}" Style="{StaticResource ContentStyle}" FontSize="64"/>
-            <Label Text=":" Style="{StaticResource ContentStyle}" FontSize="64"/>
-            <Label Text="{Binding Seconds}" Style="{StaticResource ContentStyle}" FontSize="64"/>
+            <Label Text="{Binding Minutes}" FontSize="64"/>
+            <Label Text=":" FontSize="64"/>
+            <Label Text="{Binding Seconds}" FontSize="64"/>
         </HorizontalStackLayout>
 
 
-        <Button Text="Завершить" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
-            CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1">
+        <Button Text="Завершить" HorizontalOptions="Center">
             <Button.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:StartedBreatheViewModel}},Path=GoBackCommand}">
                     <TapGestureRecognizer.CommandParameter>

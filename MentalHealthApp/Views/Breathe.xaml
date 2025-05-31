@@ -13,21 +13,11 @@
 
         <conv:BreatheListConverter x:Key="BreatheListConverter"/>
 
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="ContentStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
-        </ResourceDictionary>
-
     </ContentPage.Resources>
 
     <VerticalStackLayout Margin="8,24,8,8" Spacing="24" AbsoluteLayout.LayoutFlags="All">
         
-        <Label  Text="{Binding Name}" Style="{StaticResource ContentStyle}" FontSize="32"/>
+        <Label  Text="{Binding Name}" FontSize="32"/>
 
         <Image Source="info_icon.png" HorizontalOptions="End">
             <Image.GestureRecognizers>
@@ -35,11 +25,11 @@
             </Image.GestureRecognizers>
         </Image>
 
-        <Border WidthRequest="240" HeightRequest="240" HorizontalOptions="Center" Margin="0,24,0,0" Stroke="Black"/>
+        <Border WidthRequest="240" HeightRequest="240" HorizontalOptions="Center" Margin="0,24,0,0"/>
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
-            <Label Text="Количество циклов:" Style="{StaticResource ContentStyle}"/>
-            <Label Text="{Binding LoopNumbers}" Style="{StaticResource ContentStyle}" FontAttributes="Bold"/>
+            <Label Text="Количество циклов:" FontSize="16"/>
+            <Label Text="{Binding LoopNumbers}" FontSize="16" FontAttributes="Bold"/>
             
             <HorizontalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="LoopNumberTapped"/>
@@ -49,13 +39,12 @@
 
 
         <HorizontalStackLayout Margin="0,-16,0,0" HorizontalOptions="Center">
-            <Label Text="{Binding Minutes,StringFormat='Общая длительность: {0} мин'}" Style="{StaticResource ContentStyle}" />
-            <Label Text="{Binding Seconds,StringFormat=' {0} с'}" Style="{StaticResource ContentStyle}" />
+            <Label Text="{Binding Minutes,StringFormat='Общая длительность: {0} мин'}" FontSize="16" />
+            <Label Text="{Binding Seconds,StringFormat=' {0} с'}" FontSize="16" />
         </HorizontalStackLayout>
 
 
-        <Button Text="Запустить технику" FontFamily="Roboto" FontSize="14" WidthRequest="188" HeightRequest="40" HorizontalOptions="Center"
-                CornerRadius="15" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="1">
+        <Button Text="Запустить технику" HorizontalOptions="Center">
             <Button.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BreatheViewModel}},Path=StartBreatheCommand}">
                     <TapGestureRecognizer.CommandParameter>
@@ -72,7 +61,7 @@
 
         <HorizontalStackLayout Spacing="12" Margin="132,0,0,0">
 
-            <Label Text="{Binding FavouriteText}" Style="{StaticResource ContentStyle}"/>
+            <Label Text="{Binding FavouriteText}" FontSize="16"/>
             <Image Source="{Binding FavouriteImage,StringFormat='favourites{0}_icon.jpg'}"  WidthRequest="20" HeightRequest="20"/>
 
             <HorizontalStackLayout.GestureRecognizers>
@@ -83,7 +72,7 @@
 
         <HorizontalStackLayout Spacing="19"  Margin="132,-12,0,0">
             
-            <Label Text="Запланировать сеанс" Style="{StaticResource ContentStyle}"/>
+            <Label Text="Запланировать сеанс" FontSize="16"/>
             <Image Source="calendar_icon.png" WidthRequest="20" HeightRequest="20"/>
 
             <HorizontalStackLayout.GestureRecognizers>

@@ -7,26 +7,18 @@
              Title="ExistingFeeling"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.Resources>
-
-        <Style x:Key="TextOnPage" TargetType="Label">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-        
-    </ContentPage.Resources>
     
     <CollectionView VerticalScrollBarVisibility="Never" Margin="8,24,8,8" ItemsSource="{Binding ExistingFeelings}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="{x:Type models:FeelingAllInfo}">
                 <VerticalStackLayout Spacing="12">
                     <HorizontalStackLayout Spacing="4">
-                        <Label Text="{Binding Feeling.FeelingMark}" Style="{StaticResource TextOnPage}"/>
-                        <Label Text="{Binding Feeling.FeelingName}" Style="{StaticResource TextOnPage}"/>
+                        <Label Text="{Binding Feeling.FeelingMark}"/>
+                        <Label Text="{Binding Feeling.FeelingName}"/>
                         <Image Source="{Binding Feeling.FeelingMark,StringFormat='emojifeeling{0}.png'}"/>
                     </HorizontalStackLayout>
-                    <Label Text="{Binding FeelingInfo.Description}" Style="{StaticResource TextOnPage}"/>
-                    <Label Text="{Binding FeelingInfo.Time}" Style="{StaticResource TextOnPage}"/>
+                    <Label Text="{Binding FeelingInfo.Description}"/>
+                    <Label Text="{Binding FeelingInfo.Time}"/>
                 </VerticalStackLayout>
             </DataTemplate>
 

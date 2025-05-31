@@ -8,25 +8,13 @@
              Title="ForReadingSelected"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.Resources>
 
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="ContentStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="16"/>
-            </Style>
-
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout Margin="8,24,8,8" Spacing="12">
 
-            <Label Text="{Binding TName}" Style="{StaticResource ContentStyle}" FontSize="32"/>
+            <Label Text="{Binding TName}" FontSize="32"/>
 
-            <Label Text="{Binding STName}" Style="{StaticResource ContentStyle}" FontSize="24"/>
+            <Label Text="{Binding STName}" FontSize="24"/>
 
             <!--Верхняя часть-->
             <Grid RowDefinitions="24, 164,48" ColumnDefinitions="188,*" ColumnSpacing="20">
@@ -37,20 +25,20 @@
                 </Border>
 
                 <HorizontalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Start">
-                    <Label Text="{Binding Minutes, StringFormat='Время чтения: {0}'}" Style="{StaticResource ContentStyle}"/>
+                    <Label Text="{Binding Minutes, StringFormat='Время чтения: {0}'}" FontSize="16"/>
                     <Image Source="bookopen_icon.png" Margin="0,0,0,4"/>
                 </HorizontalStackLayout>
 
                 <!--Список подтем-->
 
-                <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Themes}" Style="{StaticResource ContentStyle}" LineBreakMode="WordWrap" 
-                                   Margin="0,8,0,0" TextColor="Black" Grid.Column="1" Grid.Row="1" LineHeight="1.3" TextDecorations="Underline"/>
+                <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Themes}" FontSize="16" LineBreakMode="WordWrap" 
+                                   Margin="0,8,0,0" Grid.Column="1" Grid.Row="1" LineHeight="1.3" TextDecorations="Underline"/>
 
 
                 <HorizontalStackLayout Spacing="12" HorizontalOptions="Start" Grid.Row="3" Margin="8,12,0,0"
                                        VerticalOptions="Start">
 
-                    <Label Text="{Binding FavouriteText}" Style="{StaticResource ContentStyle}"/>
+                    <Label Text="{Binding FavouriteText}" FontSize="16"/>
                     <Image Source="{Binding FavouriteImage,StringFormat='favourites{0}_icon.jpg'}"  WidthRequest="20" HeightRequest="20"/>
 
                     <HorizontalStackLayout.GestureRecognizers>
@@ -62,7 +50,7 @@
                     <HorizontalStackLayout Spacing="12" Grid.Column="1" Grid.Row="3" HorizontalOptions="End"
                                            Margin="0,12,8,0" VerticalOptions="Start">
 
-                        <Label Text="Запланировать чтение" Style="{StaticResource ContentStyle}"/>
+                        <Label Text="Запланировать чтение" FontSize="16"/>
                         <Image Source="calendar_icon.png" WidthRequest="20" HeightRequest="20"/>
 
                         <HorizontalStackLayout.GestureRecognizers>
@@ -76,7 +64,7 @@
             </Grid>
 
             <!--Содержимое-->
-            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" Style="{StaticResource ContentStyle}"  LineBreakMode="CharacterWrap" 
+            <Label justifiedLabel:Label.JustifyText="True" Text="{Binding Content}" FontSize="16"  LineBreakMode="CharacterWrap" 
                                            LineHeight="1.5" Margin="0,12,0,0"/>
 
         </VerticalStackLayout>

@@ -9,39 +9,24 @@
              Title="Planner"
              Shell.NavBarIsVisible="False">
 
-    <!-- Ресурсы для элементов -->
-    <ContentPage.Resources>
-
-        <ResourceDictionary>
-
-            <!-- Стиль текста на странице-->
-            <Style x:Key="TasksAndMenuStyle" TargetType="Label">
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
-
-        </ResourceDictionary>
-
-    </ContentPage.Resources>
-
     <Grid Margin="8,24,8,8" RowDefinitions="0.1*,0.1*,0.1*,1*" ColumnDefinitions="1*,0.6*">
 
-        <Label x:Name="TasksLabel" Text="Список задач" Style="{StaticResource TasksAndMenuStyle}" FontSize="32" Grid.ColumnSpan="2"/>
+        <Label x:Name="TasksLabel" Text="Список задач" FontSize="32" Grid.ColumnSpan="2"/>
 
         <!--Дата и опции-->
         <Grid RowDefinitions="*" ColumnDefinitions="1*,1*" Grid.Row="1" Grid.ColumnSpan="2">
             <HorizontalStackLayout Spacing="2">
-                <Label Text="{Binding CalendarDate[0]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="{Binding CalendarDate[1]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="/" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
-                <Label Text="{Binding CalendarDate[2]}" Style="{StaticResource TasksAndMenuStyle}" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[0]}"  FontSize="24"/>
+                <Label Text="/" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[1]}" FontSize="24"/>
+                <Label Text="/" FontSize="24"/>
+                <Label Text="{Binding CalendarDate[2]}" FontSize="24"/>
             </HorizontalStackLayout>
         </Grid>
         <HorizontalStackLayout HorizontalOptions="End" Grid.Row="2" Grid.Column="1" Spacing="2">
-            <Label Text="{Binding CompletedTasks.Count, StringFormat='Выполнено задач {0}'}" Style="{StaticResource TasksAndMenuStyle}"/>
-            <Label Text="/" Style="{StaticResource TasksAndMenuStyle}"/>
-            <Label Text="{Binding AllTasksCount}" Style="{StaticResource TasksAndMenuStyle}"/>
+            <Label Text="{Binding CompletedTasks.Count, StringFormat='Выполнено задач {0}'}"/>
+            <Label Text="/"/>
+            <Label Text="{Binding AllTasksCount}"/>
         </HorizontalStackLayout>
         
         <ScrollView Grid.Row="3" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Never">
@@ -56,7 +41,7 @@
                                         <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
                                         <Entry Text="{Binding TaskText, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
-                                                       FontFamily="Roboto" FontSize="14" IsTextPredictionEnabled="True" 
+                                                       IsTextPredictionEnabled="True" 
                                                        Keyboard="Text" Placeholder="Новая задача" Completed="Entry_Completed">
                                         </Entry>
                                         <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
@@ -66,7 +51,7 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                         <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
-                                        <CheckBox IsChecked="False" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
+                                        <CheckBox IsChecked="False"  Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
                                             <CheckBox.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=CompletedTaskCommand}"
                                                                               CommandParameter="{Binding TaskID}"/>
@@ -105,7 +90,7 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                         <!--<Image Source="threedots_icon.png"  Grid.Column="3" HorizontalOptions="End"/>-->
-                                        <CheckBox IsChecked="True" Color="Gray" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
+                                        <CheckBox IsChecked="True" Grid.Column="4" WidthRequest="24" HeightRequest="24" HorizontalOptions="End">
                                             <CheckBox.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=UnCompletedTaskCommand}"
                                                                               CommandParameter="{Binding TaskID}"/>
