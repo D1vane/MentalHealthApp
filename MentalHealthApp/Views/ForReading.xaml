@@ -99,6 +99,7 @@
                                                     <Binding Path="ImagePath"/>
                                                     <Binding Path="Sections"/>
                                                     <Binding Path="Content"/>
+                                                    <Binding Path="isFavourite"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>

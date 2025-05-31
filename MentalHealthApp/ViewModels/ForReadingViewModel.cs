@@ -42,6 +42,7 @@ namespace MentalHealthApp.ViewModels
                 Cats = new ObservableCollection<CategoryModel>(cats);
 
                 var work = await App.Database.GetListOfReading(1);
+                //await App.Database.Connection.DeleteAsync<ForReadingModel>(49);
                 Work = new ObservableCollection<ForReadingModel>(work.Readings);
 
                 var study = await App.Database.GetListOfReading(2);
@@ -67,6 +68,7 @@ namespace MentalHealthApp.ViewModels
             var imagePath = param[3];
             var themes = param[4];
             var content = param[5];
+            var favourite = param[6];
             Shell.Current.GoToAsync($"ForReadingSelected", new Dictionary<string, object>
             {
                 ["topicName"] = tPc,
@@ -74,7 +76,8 @@ namespace MentalHealthApp.ViewModels
                 ["minutes"] = mntsCount,
                 ["imagePath"] = imagePath,
                 ["themes"] = themes,
-                ["content"] = content
+                ["content"] = content,
+                ["favourite"] = favourite
             });
         }
     }
