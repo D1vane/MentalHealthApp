@@ -37,8 +37,13 @@
                         <Border Stroke="Black" StrokeShape="RoundRectangle 15,15,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                         <Label jusitfiedLabel:Label.JustifyText="True" Text="{Binding NegativeThink}" Style="{StaticResource CatsStyle}" Grid.RowSpan="2"
                                Margin="16,8,0,0" LineHeight="1.2"/>
-                            <Image Source="favourites_icon.png" Grid.Column="1" HorizontalOptions="End" Margin="0,12,12,0" 
-                                    VerticalOptions="Start" WidthRequest="20" HeightRequest="20"/>
+                            <Image Source="{Binding isFavourite,StringFormat='favourites{0}_icon.jpg'}" Grid.Column="1" HorizontalOptions="End" Margin="0,12,12,0" 
+                                    VerticalOptions="Start" WidthRequest="20" HeightRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CardsThinksViewModel}}, Path=PosThinkFavouriteStatusUpdateCommand}"
+                                                          CommandParameter="{Binding ThinkID}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                             <Image Source="cross_icon.png" WidthRequest="14" HeightRequest="14" Grid.Row="1"
                                    Grid.Column="1" HorizontalOptions="End" Margin="0,0,16,0" />
                         
