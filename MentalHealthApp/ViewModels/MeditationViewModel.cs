@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace MentalHealthApp.ViewModels
 {
-    [QueryProperty("FavouriteImage", "favourite")]
     [QueryProperty("MName", "meditationName")]
     [QueryProperty("MTime", "meditationTime")]
     [QueryProperty("MLevel", "meditationLevel")]
     [QueryProperty("ImagePath", "imagePath")]
     [QueryProperty("Content", "content")]
     [QueryProperty("Guide", "guide")]
+    [QueryProperty("FavouriteImage", "favourite")]
     public partial class MeditationViewModel : ObservableObject
     {
         [ObservableProperty]

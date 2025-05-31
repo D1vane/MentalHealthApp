@@ -17,6 +17,7 @@ namespace MentalHealthApp.ViewModels
     [QueryProperty("Minutes", "minutes")]
     [QueryProperty("Seconds", "seconds")]
     [QueryProperty("Guide", "guide")]
+    [QueryProperty("FavouriteImage", "favourite")]
     public partial class BreatheViewModel: ObservableObject
     {
 
@@ -46,7 +47,15 @@ namespace MentalHealthApp.ViewModels
         string minDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
+        [ObservableProperty]
+        int favouriteImage = 2;
+        [ObservableProperty]
+        string favouriteText;
 
+        partial void OnFavouriteImageChanged(int value)
+        {
+            FavouriteText = (value == 1) ? "Удалить из избранного" : "Добавить в избранное";
+        }
 
         [RelayCommand]
         public void LoopsToTime()
@@ -56,6 +65,7 @@ namespace MentalHealthApp.ViewModels
             Minutes = allDuration.Minutes;
             Seconds = allDuration.Seconds;
         }
+
 
         [RelayCommand]
         void StartBreathe(object parameter)
@@ -83,6 +93,16 @@ namespace MentalHealthApp.ViewModels
             BreatheModel breatheModel = await App.Database.Connection.Table<BreatheModel>().Where(x=>x.NameOfBreathe==Name).FirstAsync();
             today.Breathes.Add(breatheModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
+        }
+
+        [RelayCommand]
+        public async void BreatheFavouriteStatusUpdate()
+        {
+            BreatheModel breatheModel = await App.Database.Connection.Table<BreatheModel>().Where(x => x.NameOfBreathe == Name).FirstAsync();
+            breatheModel.IsFavourite = (breatheModel.IsFavourite == 0) ? 1 : 0;
+            FavouriteImage = (FavouriteImage == 0) ? 1 : 0;
+            FavouriteText = (FavouriteImage == 1) ? "Удалить из избранного" : "Добавить в избранное";
+            await App.Database.Connection.UpdateWithChildrenAsync(breatheModel);
         }
     }
 }

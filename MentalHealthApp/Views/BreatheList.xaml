@@ -53,8 +53,13 @@
                                                                   CommandParameter="{Binding BreatheID}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Image Source="favourites_icon.png" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
-               WidthRequest="20" HeightRequest="20"/>
+                                    <Image Source="{Binding IsFavourite,StringFormat='favourites{0}_icon.jpg'}" HorizontalOptions="End" VerticalOptions="Start" Grid.Column="1" Margin="0,8,8,0"
+               WidthRequest="20" HeightRequest="20">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:BreatheListViewModel}}, Path=GetFavouriteStatusCommand}"
+                           CommandParameter="{Binding BreatheID}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </Grid>
 
                             </Border>
@@ -76,6 +81,7 @@
                                                 <Binding Path="NameOfBreathe"/>
                                                 <Binding Path="LoopDuration"/>
                                                 <Binding Path="Guide"/>
+                                                <Binding Path="IsFavourite"/>
                                             </MultiBinding>
                                         </TapGestureRecognizer.CommandParameter>
                                     </TapGestureRecognizer>

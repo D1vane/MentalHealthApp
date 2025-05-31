@@ -47,6 +47,13 @@ namespace MentalHealthApp.ViewModels
             BreatheID = (int)id;
 
         }
+
+        [RelayCommand]
+        void GetFavouriteStatus(object id)
+        {
+            BreatheID = (int)id;
+            BreatheFavouriteStatusUpdate();
+        }
         [RelayCommand]
         void GoToBreathe(object parameter)
         {
@@ -55,6 +62,7 @@ namespace MentalHealthApp.ViewModels
             var nameOfBreathe = param[0];
             var loopDuration = param[1];
             var guideText = param[2];
+            var favourite = param[3];
 
             Shell.Current.GoToAsync($"Breathe", new Dictionary<string, object>
             {
@@ -62,7 +70,8 @@ namespace MentalHealthApp.ViewModels
                 ["loopDuration"] = loopDuration,
                 ["minutes"] = new TimeSpan(0, 0, (int)loopDuration).Multiply(10).Minutes,
                 ["seconds"] = new TimeSpan(0, 0, (int)loopDuration).Multiply(10).Seconds,
-                ["guide"] = guideText
+                ["guide"] = guideText,
+                ["favourite"] = favourite
             });
         }
 
@@ -73,6 +82,16 @@ namespace MentalHealthApp.ViewModels
             BreatheModel breatheModel = Breathes.Where(x => x.BreatheID == BreatheID).First();
             today.Breathes.Add(breatheModel);
             await App.Database.Connection.UpdateWithChildrenAsync(today);
+        }
+
+        public async void BreatheFavouriteStatusUpdate()
+        {
+            BreatheModel breatheModel = Breathes.Where(x => x.BreatheID == BreatheID).First();
+            int index = Breathes.IndexOf(breatheModel);
+            breatheModel.IsFavourite = (breatheModel.IsFavourite == 0) ? 1 : 0;
+            Breathes[index] = breatheModel;
+            await App.Database.Connection.UpdateWithChildrenAsync(breatheModel);
+
         }
     }
 }
