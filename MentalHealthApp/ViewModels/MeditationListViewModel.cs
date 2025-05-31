@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty ("FromFavourite","IsFavourite")]
     public partial class MeditationListViewModel : ObservableObject
     {
         [ObservableProperty]
@@ -20,21 +21,38 @@ namespace MentalHealthApp.ViewModels
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         int meditationID;
+        [ObservableProperty]
+        int fromFavourite;
 
         public MeditationListViewModel()
         {
             LoadMeditations();
         }
 
+        partial void OnFromFavouriteChanged(int value)
+        {
+            LoadMeditations();
+        }
         [RelayCommand]
         private async void LoadMeditations()
         {
-
-            var meditationsTemp = await App.Database.GetListOfMeditations();
-            if (meditationsTemp.Any())
+            if (FromFavourite == 0)
             {
-                MList = new ObservableCollection<MeditationModel>(meditationsTemp);
+                var meditationsTemp = await App.Database.GetListOfMeditations();
+                if (meditationsTemp.Any())
+                {
+                    MList = new ObservableCollection<MeditationModel>(meditationsTemp);
+                }
             }
+            else
+            {
+                var meditationsTemp = await App.Database.Connection.Table<MeditationModel>().Where(x=>x.IsFavourite==FromFavourite).ToListAsync();
+                if (meditationsTemp.Any())
+                {
+                    MList = new ObservableCollection<MeditationModel>(meditationsTemp);
+                }
+            }
+            
         }
         [RelayCommand]
         void GetMeditationID(object id)

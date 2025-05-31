@@ -11,6 +11,7 @@ namespace MentalHealthApp.ViewModels
 {
     [QueryProperty("STName", "subTopicName")]
     [QueryProperty("TName","topicName")]
+    [QueryProperty("FromFavourite", "IsFavourite")]
     public partial class CardsThinksViewModel : ObservableObject
     {
         [ObservableProperty]
@@ -19,9 +20,17 @@ namespace MentalHealthApp.ViewModels
         private string tName;
 
         [ObservableProperty]
+        int fromFavourite;
+
+        [ObservableProperty]
         private ObservableCollection<PosThModel> thCards;
 
         partial void OnSTNameChanged(string value)
+        {
+            if (FromFavourite == 0)
+                LoadThinks();
+        }
+        partial void OnFromFavouriteChanged(int value)
         {
             LoadThinks();
         }
@@ -30,7 +39,15 @@ namespace MentalHealthApp.ViewModels
         private async void LoadThinks()
         {
             var cards = await App.Database.GetListOfThinks(STName);
-            ThCards = new ObservableCollection<PosThModel>(cards.Thinks);
+            if (FromFavourite == 0)
+            {
+                
+                ThCards = new ObservableCollection<PosThModel>(cards.Thinks);
+            }
+            else
+            {
+                ThCards = new ObservableCollection<PosThModel>(cards.Thinks.Where(x=>x.isFavourite == 1));
+            }
 
         }
 

@@ -5,11 +5,12 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty("FromFavourite", "IsFavourite")]
     public partial class ForReadingViewModel : ObservableObject
     {
 
         [ObservableProperty]
-        private ObservableCollection<CategoryModel> cats;
+        private ObservableCollection<CategoryModel> cats = new();
 
         [ObservableProperty]
         private ObservableCollection<ForReadingModel> work;
@@ -23,6 +24,16 @@ namespace MentalHealthApp.ViewModels
         [ObservableProperty]
         private ObservableCollection<ForReadingModel> life;
 
+        [ObservableProperty]
+        int fromFavourite;
+        [ObservableProperty]
+        bool isAddedTextWork = false;
+        [ObservableProperty]
+        bool isAddedTextStudy = false;
+        [ObservableProperty]
+        bool isAddedTextLife = false;
+        [ObservableProperty]
+        bool isAddedTextHealth = false;
 
 
         public ForReadingViewModel()
@@ -30,32 +41,78 @@ namespace MentalHealthApp.ViewModels
             LoadReadings();
         }
 
-
-     
+        partial void OnFromFavouriteChanged(int value)
+        {
+            LoadReadings();
+        }
         [RelayCommand]
         private async void LoadReadings()
         {
-            
             var cats = await App.Database.GetListOfCats();
+            Cats = new ObservableCollection<CategoryModel>(cats);
             if (cats.Any())
             {
-                Cats = new ObservableCollection<CategoryModel>(cats);
 
-                var work = await App.Database.GetListOfReading(1);
-                //await App.Database.Connection.DeleteAsync<ForReadingModel>(49);
-                Work = new ObservableCollection<ForReadingModel>(work.Readings);
 
-                var study = await App.Database.GetListOfReading(2);
-                Study = new ObservableCollection<ForReadingModel>(study.Readings);
+                if (FromFavourite == 0)
+                {
+                    
 
-                var health = await App.Database.GetListOfReading(3);
-                Health = new ObservableCollection<ForReadingModel>(health.Readings);
+                    var work = await App.Database.GetListOfReading(1);
+                    Work = new ObservableCollection<ForReadingModel>(work.Readings);
 
-                var life = await App.Database.GetListOfReading(4);
-                Life = new ObservableCollection<ForReadingModel>(life.Readings);
+                    var study = await App.Database.GetListOfReading(2);
+                    Study = new ObservableCollection<ForReadingModel>(study.Readings);
+
+                    var health = await App.Database.GetListOfReading(3);
+                    Health = new ObservableCollection<ForReadingModel>(health.Readings);
+
+                    var life = await App.Database.GetListOfReading(4);
+                    Life = new ObservableCollection<ForReadingModel>(life.Readings);
+
+                }
+                else
+                {
+                    var work = await App.Database.GetListOfReading(1);
+                    var listOfWorks = work.Readings.Where(x => x.isFavourite == 1).ToList();
+                    Work = new ObservableCollection<ForReadingModel>(listOfWorks);
+                    if (Work.Count == 0)
+                    {
+                        Work = null;
+                        IsAddedTextWork = true;
+                    }
+                        
+
+                    var study = await App.Database.GetListOfReading(2);
+                    Study = new ObservableCollection<ForReadingModel>(study.Readings.Where(x => x.isFavourite == 1).ToList());
+                    if (Study.Count == 0)
+                    {
+                        Study = null;
+                        IsAddedTextStudy = true;
+                    }
+                        
+                        
+                    var health = await App.Database.GetListOfReading(3);
+                    Health = new ObservableCollection<ForReadingModel>(health.Readings.Where(x => x.isFavourite == 1).ToList());
+                    if (Health.Count == 0)
+                    {
+                        Health = null;
+                        IsAddedTextHealth = true;
+                    }
+                        
+                    var life = await App.Database.GetListOfReading(4);
+                    Life = new ObservableCollection<ForReadingModel>(life.Readings.Where(x => x.isFavourite == 1).ToList());
+                    if (Life.Count == 0)
+                    {
+                        Life = null;
+                        IsAddedTextLife = true;
+                    }
+                        
+
+                }
+
             }
 
-            
         }
 
         [RelayCommand]

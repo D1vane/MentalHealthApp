@@ -82,6 +82,9 @@ Grid.Column="1" Margin="0,4,8,0"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Работа&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path = IsAddedTextWork}"/>
             </Grid>
 
             <!--Учеба-->
@@ -119,6 +122,9 @@ Grid.Column="1" Margin="0,4,8,0"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Учеба&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path = IsAddedTextStudy}"/>
             </Grid>
 
             <!--Здоровье-->
@@ -156,6 +162,9 @@ Grid.Column="1" Margin="0,4,8,0"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Здоровье&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path = IsAddedTextHealth}"/>
             </Grid>
 
             <!--Быт-->
@@ -193,6 +202,9 @@ Grid.Column="1" Margin="0,4,8,0"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Быт&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:SubTopicsViewModel}}, Path = IsAddedTextLife}"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

@@ -50,9 +50,13 @@
                         <Grid  Style="{StaticResource InnerGridStyle}" >
                             <Label Text="{Binding NameOfFav}" Style="{StaticResource CategoriesStyle}" Grid.Row="0"/>
 
-                            <Label Text="{Binding Description,StringFormat='Добавлено: {0}'}" Style="{StaticResource NubmerOfCategoriesStyle}" 
+                            <Label Text="{Binding Description}" Style="{StaticResource NubmerOfCategoriesStyle}" 
                                    Grid.Row="1" HorizontalOptions="End"/>
-
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FavouritesViewModel}}, Path=FromFavouriteToPageCommand}"
+                                                      CommandParameter="{Binding NameOfFav}">
+                                </TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
                         </Grid>
                     </Border>
                 </DataTemplate>

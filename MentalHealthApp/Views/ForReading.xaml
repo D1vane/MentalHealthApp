@@ -108,7 +108,6 @@
        HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                
                                 <Label x:Name="subTopicLabel" Style="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -119,6 +118,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Работа&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextWork}"/>
             </Grid>
 
             <!--Учеба-->
@@ -147,6 +149,7 @@
                                                     <Binding Path="ImagePath"/>
                                                     <Binding Path="Theme"/>
                                                     <Binding Path="Content"/>
+                                                    <Binding Path="isFavourite"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
@@ -156,7 +159,6 @@
        Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -166,6 +168,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Учеба&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextStudy}"/>
             </Grid>
 
             <!--Здоровье-->
@@ -194,6 +199,7 @@
                                                     <Binding Path="ImagePath"/>
                                                     <Binding Path="Theme"/>
                                                     <Binding Path="Content"/>
+                                                    <Binding Path="isFavourite"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
@@ -202,7 +208,6 @@
        VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -212,6 +217,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Здоровье&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextHealth}"/>
             </Grid>
 
             <!--Быт-->
@@ -240,6 +248,7 @@
                                                     <Binding Path="ImagePath"/>
                                                     <Binding Path="Theme"/>
                                                     <Binding Path="Content"/>
+                                                    <Binding Path="isFavourite"/>
                                                 </MultiBinding>
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
@@ -248,7 +257,6 @@
        VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
        Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-                                
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" />
@@ -258,6 +266,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="Вы ничего не добавляли из раздела &quot;Быт&quot;"  VerticalOptions="Center" 
+HorizontalOptions="Center" Grid.Row="3"
+Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:ForReadingViewModel}}, Path = IsAddedTextLife}"/>
             </Grid>
 
 

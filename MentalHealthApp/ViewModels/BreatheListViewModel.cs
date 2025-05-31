@@ -13,10 +13,9 @@ using System.Threading.Tasks;
 
 namespace MentalHealthApp.ViewModels
 {
+    [QueryProperty("FromFavourite", "IsFavourite")]
     public partial class BreatheListViewModel : ObservableObject
     {
-        
-        
         [ObservableProperty]
         ObservableCollection<BreatheModel> breathes;
         [ObservableProperty]
@@ -25,20 +24,36 @@ namespace MentalHealthApp.ViewModels
         string selectedDate = DateTime.Now.ToString("MM/dd/yyyy");
         [ObservableProperty]
         int breatheID;
+        [ObservableProperty]
+        int fromFavourite;
         public BreatheListViewModel()
         {
             LoadBreathes();
         }
-
+        partial void OnFromFavouriteChanged(int value)
+        {
+            LoadBreathes();
+        }
         [RelayCommand]
         private async void LoadBreathes()
         {
-
-            var breathesTemp = await App.Database.GetListOfBreathes();
-            if (breathesTemp.Any())
+            if (FromFavourite == 0)
             {
-                Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
+                var breathesTemp = await App.Database.GetListOfBreathes();
+                if (breathesTemp.Any())
+                {
+                    Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
+                }
             }
+            else
+            {
+                var breathesTemp = await App.Database.Connection.Table<BreatheModel>().Where(x => x.IsFavourite == FromFavourite).ToListAsync();
+                if (breathesTemp.Any())
+                {
+                    Breathes = new ObservableCollection<BreatheModel>(breathesTemp);
+                }
+            }
+            
         }
 
         [RelayCommand]
