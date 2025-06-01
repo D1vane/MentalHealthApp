@@ -29,14 +29,19 @@
         <Label Text="Избранные практики и материалы" FontSize="20" HorizontalOptions="Center" />
 
         <CollectionView ItemsSource="{Binding Favs}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:FavouriteModel}">
-                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Margin="8">
+                    <Border StrokeShape="RoundRectangle 15,15,15,15" Grid.Row="0" Margin="8"
+                            HeightRequest="212">
                         <Grid Style="{StaticResource InnerGridStyle}" >
                             <Label Text="{Binding NameOfFav}"  Grid.Row="0"/>
 
                             <Label Text="{Binding Description}" 
-                                   Grid.Row="1" HorizontalOptions="End"/>
+                                   Grid.Row="1" HorizontalOptions="End" VerticalOptions="End"/>
+                            <Image Source="{Binding ImagePath}" Grid.RowSpan="2" Margin="0,24,0,24"/>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FavouritesViewModel}}, Path=FromFavouriteToPageCommand}"
                                                       CommandParameter="{Binding NameOfFav}">

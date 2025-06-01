@@ -20,7 +20,7 @@
                HorizontalOptions="Center" Margin="0,-32,0,0"/>
 
         <Slider x:Name="sliderEmoji" Maximum="10" Minimum="1" ValueChanged="sliderEmoji_ValueChanged" Margin="0,-32,0,0"/>
-        <HorizontalStackLayout Margin="12,-48,0,0" Spacing="39">
+        <HorizontalStackLayout Margin="18,-48,0,0" Spacing="39">
             <Label Text="1" Style="{StaticResource ContentStyle}"/>
             <Label Text="2" Style="{StaticResource ContentStyle}"/>
             <Label Text="3" Style="{StaticResource ContentStyle}"/>

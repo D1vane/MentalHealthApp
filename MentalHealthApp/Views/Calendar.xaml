@@ -105,8 +105,8 @@
                         <Border WidthRequest="57" HeightRequest="67" AbsoluteLayout.LayoutFlags="All">
                             <VerticalStackLayout>
                                 <Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>
-                                <Ellipse WidthRequest="14" HeightRequest="14" IsVisible="{Binding IsHasTasks}"
-                                     HorizontalOptions="Center"/>
+                                <Ellipse WidthRequest="12" HeightRequest="12" IsVisible="{Binding IsHasTasks}"
+                                     HorizontalOptions="Center" Opacity="0.7"/>
                                 <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=GetListOfTasksCommand}"
                       CommandParameter="{Binding CurrentDay}"/>
@@ -134,7 +134,7 @@
                                 <Grid  RowDefinitions="1*,1*" ColumnDefinitions="*" >
                                     <Label Text="{Binding NameOfFav}" Style="{StaticResource EventsCountersStyle}" Grid.Row="0" Margin="8,4,0,0"/>
                                     <Label Text="{Binding Description}" Style="{StaticResource EventsCountersStyle}" Grid.Row="1" HorizontalOptions="End"
-                                              Margin="0,0,8,4" FontSize="12"/>
+                                              Margin="0,0,8,8" FontSize="12" VerticalOptions="End"/>
                                 </Grid>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=FromCalendarToPageCommand}">

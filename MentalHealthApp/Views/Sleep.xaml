@@ -4,6 +4,7 @@
              x:Class="MentalHealthApp.Views.Sleep"
              xmlns:vm="clr-namespace:MentalHealthApp.ViewModels"
              xmlns:models="clr-namespace:MentalHealthApp.Models"
+             xmlns:justify="clr-namespace:JustifyLabel;assembly=JustifyLabel"
              Title="Sleep"
              Shell.NavBarIsVisible="False">
 
@@ -61,13 +62,13 @@
     <ScrollView>
 
         <VerticalStackLayout Margin="8,24,8,8" Spacing="48" AbsoluteLayout.LayoutFlags="All">
-            
-            <Label Text="Оценка сна"  FontSize="32" TextColor="{StaticResource SecondaryLight}" />
 
-            <VerticalStackLayout IsVisible="{Binding AlreadyMarkedVisibility}" Margin="0,0,0,0" Spacing="32">
+            <Label Text="Оценка сна"  FontSize="32" TextColor="{StaticResource SecondaryLight}" IsVisible="{Binding AllVisibility }"/>
+
+            <VerticalStackLayout IsVisible="{Binding AlreadyMarkedVisibility}" Spacing="32">
                 <Label Text="{Binding AlreadyMarkedText}"  FontSize="32" HorizontalOptions="Center"
 VerticalOptions="Center" HorizontalTextAlignment="Center"  TextColor="{StaticResource SecondaryLight}"/>
-                <HorizontalStackLayout Spacing="12" Margin="0,8,0,0">
+                <HorizontalStackLayout Spacing="12" Margin="0,8,0,0" HorizontalOptions="Center">
                     <Label Text="{Binding TodayOrAnotherDaySleep}" FontSize="20" TextColor="{StaticResource SecondaryLight}"/>
                     <Label Text="{Binding SleepTime[0], StringFormat='{0} часов'}" FontSize="20" TextColor="{StaticResource SecondaryLight}"/>
                     <Label Text="{Binding SleepTime[1], StringFormat='{0} минут'}"  FontSize="20" TextColor="{StaticResource SecondaryLight}"/>
@@ -92,7 +93,8 @@ VerticalOptions="Center" HorizontalTextAlignment="Center"  TextColor="{StaticRes
                 </CollectionView>
                 <Label Text="Добавленное описание" 
                        HorizontalOptions="Center" FontSize="24" TextColor="{StaticResource SecondaryLight}"/>
-                <Label Text="{Binding SleepDescription}" FontSize="16" TextColor="{StaticResource SecondaryLight}"/>
+                <Label justify:Label.JustifyText="True" Text="{Binding SleepDescription}" FontSize="16" TextColor="{StaticResource SecondaryLight}"
+                       HorizontalOptions="Center"/>
             </VerticalStackLayout>
             
 
@@ -286,7 +288,8 @@ VerticalOptions="Center" HorizontalTextAlignment="Center"  TextColor="{StaticRes
 
             <Button Text="Сохранить"  HorizontalOptions="Center" Clicked="Button_Clicked"
                     IsVisible="{Binding AllVisibility}"/>
-            <Button Text="Редактировать" HorizontalOptions="Center" IsVisible="{Binding AlreadyMarkedVisibility}"/>
+            <Button Text="Редактировать" HorizontalOptions="Center" IsVisible="{Binding AlreadyMarkedVisibility}"
+                    Margin="0,48,0,0"/>
 
         </VerticalStackLayout>
 

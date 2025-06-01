@@ -7,5 +7,6 @@ namespace MentalHealthApp.Models
     {
         public string NameOfFav { get; set; }
         public string Description { get; set; }
+        public string ImagePath { get; set; }
     }
 }

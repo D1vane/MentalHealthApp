@@ -9,13 +9,16 @@
             CanBeDismissedByTappingOutsideOfPopup="False">
 
 
-    <VerticalStackLayout Margin="8,24,8,8" Spacing="24">
-        <Label Text="Выберите дату для планирования" HorizontalOptions="Center"/>
+    <VerticalStackLayout Margin="8,24,8,8" Spacing="24" BackgroundColor="{StaticResource MainLight}"
+                         WidthRequest="256" HeightRequest="256">
+        <Label Text="Выберите дату для планирования" HorizontalOptions="Center" Margin="0,4,0,0"/>
         <DatePicker MinimumDate="{Binding MinDate}" Date="{Binding SelectedDate,Mode=TwoWay}" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <Button Text="Ок" Grid.Column="1" HorizontalOptions="Fill" Clicked="Button_Clicked"/>
         
         <Button Text="Отмена" HorizontalOptions="Fill" Clicked="Cancel_Clicked"/>
 
-        <Button Text="Ок" Grid.Column="1" HorizontalOptions="Fill" Clicked="Button_Clicked"/>
+        
         
     </VerticalStackLayout>
     

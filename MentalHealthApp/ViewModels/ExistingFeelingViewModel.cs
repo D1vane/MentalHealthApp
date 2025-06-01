@@ -24,6 +24,8 @@ namespace MentalHealthApp.ViewModels
 
         [ObservableProperty]
         string monthAndYear;
+        [ObservableProperty]
+        string fullDate;
 
         partial void OnCurrentDayChanged(int value)
         {
@@ -39,14 +41,15 @@ namespace MentalHealthApp.ViewModels
         async void LoadFeelings(string fullDate)
         {
             var date = await App.Database.GetCurrentDay(fullDate.Split('/'));
-            var additionalInfo = await App.Database.Connection.Table<FeelingToCalendar>().Where(x => x.DayID == date.DayID).ToListAsync();
-            for (int i = 0; i < additionalInfo.Count; i++)
+                var feelings = await App.Database.Connection.Table<FeelingToCalendar>().Where(x => x.DayID == date.DayID).ToListAsync();
+            for (int i = 0; i < feelings.Count; i++)
             {
-                FeelingToCalendar tempInfo = additionalInfo[i];
-                FeelingModel tempModel = date.Feelings.Where(x=>x.FeelingID==tempInfo.FeelingID).First();
-                ExistingFeelings.Add(new FeelingAllInfo { Feeling = tempModel, FeelingInfo = tempInfo});
+                    FeelingToCalendar tempInfo = feelings[i];
+                    var tempModel = await App.Database.Connection.Table<FeelingModel>().Where(x=>x.FeelingID == tempInfo.FeelingID).FirstOrDefaultAsync();
+                    ExistingFeelings.Add(new FeelingAllInfo { Feeling = tempModel, FeelingInfo = tempInfo });
             }
-            
+
+            FullDate = fullDate;
         }
     }
 }

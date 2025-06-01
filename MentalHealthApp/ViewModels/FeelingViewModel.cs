@@ -59,6 +59,7 @@ namespace MentalHealthApp.ViewModels
 
             string currentTime = dateTimeNow.ToString("HH:mm");
 
+            Description = (Description == "" || Description== null) ? "Описание отсутсвует" : Description;
             var feelingToCalendar = await App.Database.WriteFeelingsToDB(currentDate, currentTime, EmojiStatus,Description);
 
             EmojiStatus = 0;

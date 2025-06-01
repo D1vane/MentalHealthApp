@@ -45,13 +45,13 @@ namespace MentalHealthApp.ViewModels
             }
 
             if (Meditations.Count > 0)
-                Favs.Add(new() { NameOfFav = "Медитации", Description = $"Сохранено медитаций: {Meditations.Count}" });
+                Favs.Add(new() { NameOfFav = "Медитации", Description = $"Сохранено медитаций: {Meditations.Count}", ImagePath = "meditations_mainpage.jpg" });
             if (Breathes.Count > 0)
-                Favs.Add(new() { NameOfFav = "Дыхательные техники", Description = $"Сохранено техник: {Breathes.Count}" });
+                Favs.Add(new() { NameOfFav = "Дыхательные техники", Description = $"Сохранено техник: {Breathes.Count}", ImagePath = "breathes_mainpage.jpg" });
             if (Readings.Count > 0)
-                Favs.Add(new() { NameOfFav = "Статьи для чтения", Description = $"Сохранено статей: {Readings.Count}" });
+                Favs.Add(new() { NameOfFav = "Статьи для чтения", Description = $"Сохранено статей: {Readings.Count}", ImagePath = "reading_mainpage.jpg" });
             if (Thinks.Count > 0)
-                Favs.Add(new() { NameOfFav = "Позитивное мышление", Description = $"Сохранено мыслей: {Thinks.Count}" });
+                Favs.Add(new() { NameOfFav = "Позитивное мышление", Description = $"Сохранено мыслей: {Thinks.Count}", ImagePath = "thinking_mainpage.jpg" });
         }
 
         [RelayCommand]

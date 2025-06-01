@@ -259,10 +259,11 @@ namespace MentalHealthApp.ViewModels
                         }
                         if (dayWithChildren.Feelings.Count != 0)
                         {
+                            var allFeelings = await App.Database.Connection.Table<FeelingToCalendar>().Where(x => x.DayID == getFullDate.DayID).ToListAsync();
                             if (dayAtCalendar.ListOfEvents == null)
-                                dayAtCalendar.ListOfEvents = new List<FavouriteModel>() { new() { NameOfFav = "Отмеченные самочувствия", Description = $"Отмечено самочувствий: {dayWithChildren.Feelings.Count}" } };
+                                dayAtCalendar.ListOfEvents = new List<FavouriteModel>() { new() { NameOfFav = "Отмеченные самочувствия", Description = $"Отмечено самочувствий: {allFeelings.Count}" } };
                             else
-                                dayAtCalendar.ListOfEvents.Add(new FavouriteModel { NameOfFav = "Отмеченные самочувствия", Description = $"Отмечено самочувствий: {dayWithChildren.Feelings.Count}" });
+                                dayAtCalendar.ListOfEvents.Add(new FavouriteModel { NameOfFav = "Отмеченные самочувствия", Description = $"Отмечено самочувствий: {allFeelings.Count}" });
                             dayAtCalendar.IsHasTasks = true;
                         }
                         if (dayWithChildren.Tasks.Count != 0)

@@ -310,34 +310,32 @@ namespace MentalHealthApp
             var currentDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == textDate).FirstOrDefaultAsync();
 
             var feeling = await _connection.Table<FeelingModel>().Where(x => x.FeelingID == feelingMark).FirstOrDefaultAsync();
-            CalendarModel fullDay;
 
             if (currentDate != null)
             {
-                fullDay = await _connection.GetWithChildrenAsync<CalendarModel>(currentDate.DayID);
-                if (fullDay.Feelings != null)
-                    fullDay.Feelings.Add(feeling);
-                else
-                    fullDay.Feelings = new List<FeelingModel>() { feeling };
-                await _connection.UpdateWithChildrenAsync(fullDay);
+                await App.Database.Connection.InsertWithChildrenAsync(new FeelingToCalendar()
+                {
+                    FeelingID = feelingMark,
+                    DayID = currentDate.DayID
+                ,
+                    Description = descr,
+                    Time = textTime
+                });
             }
             else
             {
                 await _connection.InsertAsync(new CalendarModel() { FullDate = textDate });
                 currentDate = await _connection.Table<CalendarModel>().Where(x => x.FullDate == textDate).FirstOrDefaultAsync();
-                fullDay = await _connection.GetWithChildrenAsync<CalendarModel>(currentDate.DayID);
-                fullDay.Feelings = new List<FeelingModel>() { feeling };
-                await _connection.UpdateWithChildrenAsync(fullDay);
+                await App.Database.Connection.InsertWithChildrenAsync(new FeelingToCalendar()
+                {
+                    FeelingID = feelingMark,
+                    DayID = currentDate.DayID
+                                ,
+                    Description = descr,
+                    Time = textTime
+                });
             }
-
-            var feelsToCalendar = await _connection.Table<FeelingToCalendar>().Where(x => x.DayID == fullDay.DayID).ToListAsync();
-            var lastFeel = feelsToCalendar.Last();
-            var additionalInfo = await _connection.GetWithChildrenAsync<FeelingToCalendar>(lastFeel.RelationID);
-            additionalInfo.Time = textTime;
-            if (descr != null)
-                additionalInfo.Description = descr;
-            await _connection.InsertWithChildrenAsync(additionalInfo);
-            return additionalInfo;
+            return null;
         }
         /// <summary>
         /// Получение списка факторов сна

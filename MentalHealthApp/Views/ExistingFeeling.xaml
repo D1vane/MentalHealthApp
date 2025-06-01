@@ -7,22 +7,38 @@
              Title="ExistingFeeling"
              Shell.NavBarIsVisible="False">
 
-    
-    <CollectionView VerticalScrollBarVisibility="Never" Margin="8,24,8,8" ItemsSource="{Binding ExistingFeelings}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="{x:Type models:FeelingAllInfo}">
-                <VerticalStackLayout Spacing="12">
-                    <HorizontalStackLayout Spacing="4">
-                        <Label Text="{Binding Feeling.FeelingMark}"/>
-                        <Label Text="{Binding Feeling.FeelingName}"/>
-                        <Image Source="{Binding Feeling.FeelingMark,StringFormat='emojifeeling{0}.png'}"/>
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding FeelingInfo.Description}"/>
-                    <Label Text="{Binding FeelingInfo.Time}"/>
-                </VerticalStackLayout>
-            </DataTemplate>
+    <ScrollView>
+        
+        <VerticalStackLayout Spacing="24" Margin="8,24,8,8" AbsoluteLayout.LayoutFlags="All">
+            <Label Text="Отмеченные самочувствия" FontSize="32"/>
+            <Label Text="{Binding FullDate}" FontSize="24" />
+            <CollectionView VerticalScrollBarVisibility="Never" Margin="8,24,8,8" ItemsSource="{Binding ExistingFeelings}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:FeelingAllInfo}">
+                        <Grid ColumnDefinitions="132,*" RowDefinitions="84" Margin="0,48,0,0">
+                            <Border Grid.RowSpan="2" HorizontalOptions="FillAndExpand"
+                                     HeightRequest="84" VerticalOptions="Start" StrokeShape="RoundRectangle 10,0,10,0"/>
+                            <Border Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="FillAndExpand"
+         HeightRequest="84" VerticalOptions="Start" StrokeShape="RoundRectangle 0,10,0,10" Margin="-2,0,0,0"/>
+                            <Image Source="{Binding Feeling.FeelingMark,StringFormat='emojifeeling{0}.png'}" HorizontalOptions="Center" 
+                                   VerticalOptions="Start"/>
+                            <HorizontalStackLayout Spacing="8" VerticalOptions="End" Grid.Column="0" 
+                                                   HorizontalOptions="Center" Margin="0,0,0,4">
+                                <Label Text="{Binding Feeling.FeelingMark,StringFormat='{0}.'}"/>
+                                <Label Text="{Binding Feeling.FeelingName}"/>
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding FeelingInfo.Description}" Grid.Column="1" HorizontalOptions="Start"
+                                   VerticalOptions="Start" Margin="4,4,0,0"/>
+                            <Label Text="{Binding FeelingInfo.Time}" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End"
+                                   Margin="0,0,4,4"/>
+                        </Grid>
+                    </DataTemplate>
 
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+        
+    </ScrollView>
+    
 
 </ContentPage>
