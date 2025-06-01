@@ -8,7 +8,7 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MentalHealthApp">
 
-    <TabBar Shell.TabBarUnselectedColor="Gray" Shell.TabBarTitleColor="Black" Shell.TabBarForegroundColor="Black">
+    <TabBar >
 
         <Tab Title="Избранное" Icon="favourites_icon_navbar.png" >
             <ShellContent ContentTemplate="{DataTemplate local:Favourites}"/>

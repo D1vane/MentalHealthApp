@@ -13,6 +13,10 @@
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
 
+    <Color x:Key="MainLight">#FEFAEA</Color>
+    <Color x:Key="SecondaryLight">#655D8D</Color>
+    <Color x:Key="ThirdLight">#A6A4B0</Color>
+    <Color x:Key="FourthLight">#FEF7EA</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Magenta">#D600AA</Color>

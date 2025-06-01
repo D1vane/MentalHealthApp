@@ -34,7 +34,7 @@
         HorizontalOptions="Start" VerticalOptions="Start">
 
                                 <Grid RowDefinitions="*" ColumnDefinitions="94,94">
-                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="160" HeightRequest="160"
+                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2"
                                            VerticalOptions="Center"/>
                                     <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
                WidthRequest="20" HeightRequest="20">

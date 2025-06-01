@@ -20,7 +20,7 @@
             <Label Text="Позитивное мышление" FontFamily="Roboto" FontSize="32"/>
 
             <!--Работа-->
-            <Grid Style="{StaticResource GridCategoryStyle}">
+            <Grid Style="{StaticResource GridCategoryStyle}" RowDefinitions="24,24,208">
                 <Label x:Name="topicLabel" Text="Работа" FontSize="20"/>
                 <Label Text="{Binding Work.Count, StringFormat='Количество разделов: {0}'}" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -28,7 +28,7 @@
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:ThemeModel}">
-                            <Grid Style="{StaticResource GridSubTopicStyle}">
+                            <Grid Style="{StaticResource GridSubTopicStyle}" RowDefinitions="136,72" ColumnDefinitions="122,12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
@@ -41,12 +41,10 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
-HorizontalOptions="Center" Grid.RowSpan="2"
-Grid.ColumnSpan="2" Opacity="0.3"  />
                                 </Border>
-
-                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" FontSize="16" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,8,0,0"
+       Grid.ColumnSpan="2" Grid.Row="0"/>
+                                <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -57,7 +55,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
             </Grid>
 
             <!--Учеба-->
-            <Grid Style="{StaticResource GridCategoryStyle}">
+            <Grid Style="{StaticResource GridCategoryStyle}" RowDefinitions="24,24,208">
                 <Label Text="Учеба"  FontSize="20"/>
                 <Label Text="{Binding Study.Count, StringFormat='Количество разделов: {0}'}" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -65,7 +63,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:ThemeModel}">
-                            <Grid Style="{StaticResource GridSubTopicStyle}">
+                            <Grid Style="{StaticResource GridSubTopicStyle}" RowDefinitions="136,72" ColumnDefinitions="122,12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
@@ -78,11 +76,9 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
-HorizontalOptions="Center" Grid.RowSpan="2"
-Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,8,0,0"
+       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap"  Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                                 
                             </Grid>
@@ -95,7 +91,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
             </Grid>
 
             <!--Здоровье-->
-            <Grid Style="{StaticResource GridCategoryStyle}">
+            <Grid Style="{StaticResource GridCategoryStyle}" RowDefinitions="24,24,208">
                 <Label Text="Здоровье" FontSize="20"/>
                 <Label Text="{Binding Health.Count, StringFormat='Количество разделов: {0}'}" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -103,7 +99,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:ThemeModel}">
-                            <Grid Style="{StaticResource GridSubTopicStyle}">
+                            <Grid Style="{StaticResource GridSubTopicStyle}" RowDefinitions="136,72" ColumnDefinitions="122,12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
@@ -116,11 +112,9 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" VerticalOptions="Center" 
-HorizontalOptions="Center" Grid.RowSpan="2"
-Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,8,0,0"
+       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                             </Grid>
                         </DataTemplate>
@@ -132,7 +126,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
             </Grid>
 
             <!--Быт-->
-            <Grid Style="{StaticResource GridCategoryStyle}">
+            <Grid Style="{StaticResource GridCategoryStyle}" RowDefinitions="24,24,208">
                 <Label Text="Быт" FontSize="20"/>
                 <Label Text="{Binding Life.Count, StringFormat='Количество разделов: {0}'}" Opacity="0.7" Grid.Row="1"/>
                 <CollectionView ItemsLayout="HorizontalGrid" SelectionMode="None" 
@@ -140,7 +134,7 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                                         Background="Transparent" Grid.Row="3" Margin="0,-12,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type models:ThemeModel}">
-                            <Grid Style="{StaticResource GridSubTopicStyle}">
+                            <Grid Style="{StaticResource GridSubTopicStyle}" RowDefinitions="136,72" ColumnDefinitions="122,12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" AbsoluteLayout.LayoutFlags="All" Grid.RowSpan="2" Grid.ColumnSpan="2">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer  
@@ -153,11 +147,9 @@ Grid.ColumnSpan="2" Opacity="0.6" FontFamily="Roboto" FontSize="20" IsVisible="{
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" VerticalOptions="Center" 
-HorizontalOptions="Center" Grid.RowSpan="2"
-Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
-
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,8,0,0"
+       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Text="{Binding ThemeName}" LineBreakMode="WordWrap" Grid.Row="1" VerticalOptions="End" Margin="8,0,0,12"/>
                             </Grid>
                         </DataTemplate>

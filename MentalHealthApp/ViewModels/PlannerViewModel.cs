@@ -34,7 +34,7 @@ namespace MentalHealthApp.ViewModels
 
         public PlannerViewModel()
         {
-            //GetListOfTasks();
+            GetListOfTasks();
         }
         partial void OnCurrentDayChanged(int value)
         {
@@ -133,11 +133,6 @@ namespace MentalHealthApp.ViewModels
 
                     }
                 }
-            }
-            else
-            {
-                GetNewTask();
-                AllTasksCount++;
             }
         }
         async void GetNewTask()

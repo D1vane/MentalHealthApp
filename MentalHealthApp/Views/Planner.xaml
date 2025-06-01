@@ -38,13 +38,13 @@
                             <VerticalStackLayout Padding="12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
                                     <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
-                                        <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
+                                        <Ellipse WidthRequest="12" HeightRequest="12" Grid.Row="0" Grid.Column="0" 
                                                          HorizontalOptions="Start"/>
                                         <Entry Text="{Binding TaskText, Mode=TwoWay}" VerticalOptions="End" Grid.Column="1" 
                                                        IsTextPredictionEnabled="True" 
                                                        Keyboard="Text" Placeholder="Новая задача" Completed="Entry_Completed">
                                         </Entry>
-                                        <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
+                                        <Image Source="crossplanner_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveTaskCommand}" 
                                                                               CommandParameter="{Binding TaskID}"/>
@@ -80,10 +80,10 @@
                             <VerticalStackLayout Padding="12">
                                 <Border StrokeShape="RoundRectangle 15,15,15,15" HeightRequest="64">
                                     <Grid Margin="16,4,12,6" ColumnSpacing="12" RowDefinitions="1*,0.5*" ColumnDefinitions="0.075*,0.7*,0.075*,0.075*,0.075*">
-                                        <Ellipse WidthRequest="12" HeightRequest="12" Fill="Gray" Grid.Row="0" Grid.Column="0" 
+                                        <Ellipse WidthRequest="12" HeightRequest="12" Grid.Row="0" Grid.Column="0" 
                                                   HorizontalOptions="Start"/>
                                         <Label Margin="0,0,0,8" Text="{Binding TaskText}" VerticalOptions="End" Grid.Column="1" LineBreakMode="TailTruncation" TextDecorations="Strikethrough"/>
-                                        <Image Source="cross_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
+                                        <Image Source="crossplanner_icon.png" Grid.Column="3" WidthRequest="12" HeightRequest="12" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PlannerViewModel}}, Path=RemoveCompletedTaskCommand}"
                                                                               CommandParameter="{Binding TaskID}"/>

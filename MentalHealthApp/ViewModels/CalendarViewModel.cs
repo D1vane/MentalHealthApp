@@ -53,6 +53,7 @@ namespace MentalHealthApp.ViewModels
             StartDate = StartDate.AddMonths(-1);
             EndDate = EndDate.AddMonths(-1);
             ArrStartDateToString = StartDate.ToString("MM/yyyy").Split('/');
+            StartDateToString = StartDate.ToString("MM/yyyy");
             NumOfDayWeek = (int)(StartDate.DayOfWeek + 6) % 7;
             FIllTheList();
         }
@@ -62,6 +63,7 @@ namespace MentalHealthApp.ViewModels
             StartDate = StartDate.AddMonths(1);
             EndDate = EndDate.AddMonths(1);
             ArrStartDateToString = StartDate.ToString("MM/yyyy").Split('/');
+            StartDateToString = StartDate.ToString("MM/yyyy");
             NumOfDayWeek = (int)(StartDate.DayOfWeek + 6) % 7;
             FIllTheList();
         }

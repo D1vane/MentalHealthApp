@@ -21,6 +21,7 @@
                 <Setter Property="Grid.Row" Value="1"/>
                 <Setter Property="VerticalOptions" Value="End"/>
                 <Setter Property="Margin" Value="8,0,0,12"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
             <!--Стиль для количества минут на чтение-->
@@ -30,6 +31,7 @@
                 <Setter Property="Margin" Value="0,4,8,0"/>
                 <Setter Property="Spacing" Value="8"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
             </Style>
             
             <!--Стиль для количества минут на чтение-->
@@ -78,10 +80,9 @@
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}"  VerticalOptions="Center" 
-       HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
                                 </Border>
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,24,0,0" 
+                                       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Style="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -128,11 +129,10 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" 
-       VerticalOptions="Center" HorizontalOptions="Center"
-       Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                    
                                 </Border>
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,24,0,0" 
+                                       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -178,10 +178,10 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" 
-       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                   
                                 </Border>
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,24,0,0" 
+                                       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" x:Name="minutesLabel"/>
@@ -227,10 +227,10 @@ Grid.ColumnSpan="2" Opacity="0.6" FontSize="20" IsVisible="{Binding Source={Rela
                                             </TapGestureRecognizer.CommandParameter>
                                         </TapGestureRecognizer>
                                     </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}"  
-       VerticalOptions="Center" HorizontalOptions="Center" Grid.RowSpan="2"
-       Grid.ColumnSpan="2" Opacity="0.3"/>
+                                    
                                 </Border>
+                                <Image VerticalOptions="Start" Source="{Binding ImagePath}" Margin="0,24,0,0" 
+                                       Grid.ColumnSpan="2" Grid.Row="0"/>
                                 <Label x:Name="subTopicLabel" Style ="{StaticResource SubTopics}"/>
                                 <HorizontalStackLayout Style="{StaticResource MinutesStack}">
                                     <Label Style="{StaticResource Minutes}" />

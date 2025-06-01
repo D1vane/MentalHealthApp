@@ -105,7 +105,7 @@
                         <Border WidthRequest="57" HeightRequest="67" AbsoluteLayout.LayoutFlags="All">
                             <VerticalStackLayout>
                                 <Label Text="{Binding CurrentDay}" Style="{StaticResource NumbersStyle}"/>
-                                <Ellipse WidthRequest="14" HeightRequest="14" BackgroundColor="LightGray" IsVisible="{Binding IsHasTasks}"
+                                <Ellipse WidthRequest="14" HeightRequest="14" IsVisible="{Binding IsHasTasks}"
                                      HorizontalOptions="Center"/>
                                 <VerticalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CalendarViewModel}}, Path=GetListOfTasksCommand}"

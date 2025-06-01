@@ -23,14 +23,10 @@
         <HorizontalStackLayout>
             <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="270"/>
             <VerticalStackLayout HorizontalOptions="Center" WidthRequest="240" HeightRequest="240">
-                <ProgressBar  WidthRequest="240" Progress="{Binding ProgressBarTop}" 
-                  ProgressColor="Black"/>
-                <ProgressBar  Rotation="180" WidthRequest="240"  Margin="0,220,0,0" Progress="{Binding ProgressBarBot}"
-                  ProgressColor="Black"/>
-                <ProgressBar WidthRequest="240" Rotation="270"  Margin="-240,-134,0,0" Progress="{Binding ProgressBarLeft}"
-                 ProgressColor="Black"/>
-                <ProgressBar  Margin="240,-16,0,0" WidthRequest="240"  Rotation="90" Progress="{Binding ProgressBarRight}"
-                  ProgressColor="Black"/>
+                <ProgressBar  WidthRequest="240" Progress="{Binding ProgressBarTop}"/>
+                <ProgressBar  Rotation="180" WidthRequest="240"  Margin="0,220,0,0" Progress="{Binding ProgressBarBot}"/>
+                <ProgressBar WidthRequest="240" Rotation="270"  Margin="-240,-134,0,0" Progress="{Binding ProgressBarLeft}"/>
+                <ProgressBar  Margin="240,-16,0,0" WidthRequest="240"  Rotation="90" Progress="{Binding ProgressBarRight}"/>
             </VerticalStackLayout>
             <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="90"/>
         </HorizontalStackLayout>

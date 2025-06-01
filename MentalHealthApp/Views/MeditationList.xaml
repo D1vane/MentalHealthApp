@@ -36,7 +36,7 @@
                                     HorizontalOptions="Start" VerticalOptions="Start" Stroke="Black">
 
                                 <Grid RowDefinitions="*" ColumnDefinitions="69,69">
-                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" WidthRequest="120" HeightRequest="120"/>
+                                    <Image Source="{Binding ImagePath}" Grid.ColumnSpan="2" Margin="8,8,8,8"/>
                                     <Image Source="calendar_icon.png" HorizontalOptions="Start" VerticalOptions="Start" Margin="8,8,0,0"
                                            WidthRequest="20" HeightRequest="20">
                                         <Image.GestureRecognizers>
