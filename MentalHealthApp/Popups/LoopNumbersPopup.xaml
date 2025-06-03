@@ -18,12 +18,12 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="Gray"/>
+                                    <Setter Property="TextColor" Value="{StaticResource Gray200}"/>
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="Black"/>
+                                    <Setter Property="TextColor" Value="{StaticResource SecondaryLight}"/>
                                     <Setter Property="FontSize" Value="64"/>
                                     <Setter Property="BackgroundColor" Value="Transparent"/>
                                 </VisualState.Setters>
@@ -36,11 +36,11 @@
         </ResourceDictionary>
         
     </mct:Popup.Resources>
-    
-    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All">
+
+    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="{StaticResource MainLight}" AbsoluteLayout.LayoutFlags="All">
 
         <Label Text="Количество циклов" HorizontalOptions="Center" VerticalOptions="End" FontSize="24" Margin="24" 
-               Grid.Row="0"/>
+               Grid.Row="0" TextColor="{StaticResource SecondaryLight}"/>
         
         <CollectionView x:Name="numbersCollView" Grid.Row="1" Scrolled="CollectionView_Scrolled"
                         Loaded="numbersCollView_Loaded" SelectionMode="Single" VerticalOptions="End">
@@ -156,9 +156,9 @@
 
         <Grid RowDefinitions="*" ColumnDefinitions="*,*" Grid.Row="2" ColumnSpacing="24" Margin="12">
             
-            <Button Text="Отмена"  HorizontalOptions="Fill" Clicked="Cancel_Clicked"/>
+            <Button Text="Отмена" WidthRequest="156" Clicked="Cancel_Clicked"/>
 
-            <Button Text="Ок" Grid.Column="1" HorizontalOptions="Fill" Clicked="Button_Clicked"/>
+            <Button Text="Ок" Grid.Column="1"  WidthRequest="156" Clicked="Button_Clicked"/>
 
 
         </Grid>

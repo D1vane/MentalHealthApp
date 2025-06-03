@@ -15,7 +15,7 @@
             <CollectionView VerticalScrollBarVisibility="Never" Margin="8,24,8,8" ItemsSource="{Binding ExistingFeelings}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type models:FeelingAllInfo}">
-                        <Grid ColumnDefinitions="132,*" RowDefinitions="84" Margin="0,48,0,0">
+                        <Grid ColumnDefinitions="144,*" RowDefinitions="84" Margin="0,48,0,0">
                             <Border Grid.RowSpan="2" HorizontalOptions="FillAndExpand"
                                      HeightRequest="84" VerticalOptions="Start" StrokeShape="RoundRectangle 10,0,10,0"/>
                             <Border Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="FillAndExpand"
@@ -23,7 +23,7 @@
                             <Image Source="{Binding Feeling.FeelingMark,StringFormat='emojifeeling{0}.png'}" HorizontalOptions="Center" 
                                    VerticalOptions="Start"/>
                             <HorizontalStackLayout Spacing="8" VerticalOptions="End" Grid.Column="0" 
-                                                   HorizontalOptions="Center" Margin="0,0,0,4">
+                                                   HorizontalOptions="Center" Margin="4,0,4,4">
                                 <Label Text="{Binding Feeling.FeelingMark,StringFormat='{0}.'}"/>
                                 <Label Text="{Binding Feeling.FeelingName}"/>
                             </HorizontalStackLayout>

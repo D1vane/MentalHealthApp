@@ -9,8 +9,8 @@
                 CanBeDismissedByTappingOutsideOfPopup="False">
 
 
-    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" BackgroundColor="Transparent" 
-          AbsoluteLayout.LayoutFlags="All">
+    <Grid RowDefinitions="76,*,64" WidthRequest="343" HeightRequest="343" 
+          AbsoluteLayout.LayoutFlags="All" BackgroundColor="{StaticResource MainLight}">
 
         
             <Label Text="Руководство к выполнению:" HorizontalOptions="Center" VerticalOptions="End" FontSize="20" Margin="24" 

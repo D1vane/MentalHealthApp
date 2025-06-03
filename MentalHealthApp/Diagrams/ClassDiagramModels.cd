@@ -1,94 +1,143 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MentalHealthApp.Models.BreatheListModel">
-    <Position X="4.25" Y="1" Width="1.5" />
+  <Class Name="MentalHealthApp.Models.BreatheModel">
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAgAAAAIAAAAAAJAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\BreatheListModel.cs</FileName>
+      <HashCode>AACAAAAIAEAAAAIAAAAAAIAAAAAAAAAAQAAAgAAAAAA=</HashCode>
+      <FileName>Models\BreatheModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.BreatheToCalendar">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BreatheToCalendar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MentalHealthApp.Models.CalendarModel">
-    <Position X="6.5" Y="2.25" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAACAAAAAABAARIgAAAAQA=</HashCode>
       <FileName>Models\CalendarModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MentalHealthApp.Models.CategoryModel">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAAABQAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Models\CategoryModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.FavouriteModel">
-    <Position X="6.5" Y="4.25" Width="1.5" />
+  <Class Name="MentalHealthApp.Models.DayAtCalendarModel">
+    <Position X="12.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAgAAAAAAAAABAA=</HashCode>
+      <FileName>Models\DayAtCalendarModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.FavouriteModel">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAQAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\FavouriteModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.ForReadingModel">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+  <Class Name="MentalHealthApp.Models.FeelingAllInfo">
+    <Position X="14.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAABQAAAAgIAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\FeelingAllInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.FeelingModel">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAABAAA=</HashCode>
+      <FileName>Models\FeelingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.FeelingToCalendar">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAgAAAAAAAAAAAAAAAAAAABAAAAAAABAQA=</HashCode>
+      <FileName>Models\FeelingToCalendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.ForReadingModel">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAACAgAAAAAACAAAAIQBAAAAAAAAQEAAAAAAAIA=</HashCode>
       <FileName>Models\ForReadingModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.ForReadingSelectedModel">
-    <Position X="10" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\ForReadingSelectedModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="MentalHealthApp.Models.MainPageModel">
-    <Position X="2.5" Y="3.25" Width="1.5" />
+    <Position X="6.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\MainPageModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.MeditationListModel">
-    <Position X="2.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAAAAAAAgAAAAIQAAAAAIAAAAAAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>Models\MeditationListModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="MentalHealthApp.Models.MeditationModel">
-    <Position X="0.5" Y="1" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAQAAEAAIAAAAAAgAAAQAAAgAKgAAA=</HashCode>
       <FileName>Models\MeditationModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.PlannerTaskModel">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+  <Class Name="MentalHealthApp.Models.MeditationToCalendar">
+    <Position X="2.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>Models\PlannerTaskModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MentalHealthApp.Models.PosThCardsModel">
-    <Position X="8.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAABAAAAABgEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\PosThCardsModel.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAABAAAAAAIAAAA=</HashCode>
+      <FileName>Models\MeditationToCalendar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MentalHealthApp.Models.PosThModel">
-    <Position X="10" Y="2.25" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAgIAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAEAAAACAAAAAAAAAgAAgAAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>Models\PosThModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MentalHealthApp.Models.SleepModel">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+  <Class Name="MentalHealthApp.Models.ReadingToCalendar">
+    <Position X="6.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAIAAAAgAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ReadingToCalendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.SleepFactorsModel">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAEAAAIAAEAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SleepFactorsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.SleepModel">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAIAAAAAAAAAAAAAAABAAAQAEAAAQA=</HashCode>
       <FileName>Models\SleepModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.SleepToSleepFactors">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\SleepToSleepFactors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.TaskModel">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAABAAAAAAAAAAAAAAAAAAgAAAABAAQAAAAAAAA=</HashCode>
+      <FileName>Models\TaskModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MentalHealthApp.Models.ThemeModel">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAECAAAAAAAAAABAAIAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\ThemeModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

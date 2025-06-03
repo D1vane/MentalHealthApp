@@ -98,38 +98,6 @@ namespace MentalHealthApp.ViewModels
                             Study = curDay.Readings.Where(x => x.CategoryID == 2).ToList().ToObservableCollection();
                             Health = curDay.Readings.Where(x => x.CategoryID == 3).ToList().ToObservableCollection();
                             Life = curDay.Readings.Where(x => x.CategoryID == 4).ToList().ToObservableCollection();
-                            //foreach (var item in curDay.Readings)
-                            //{
-                            //    switch (item.CategoryID)
-                            //    {
-                            //        case 1:
-                            //            if (Work == null)
-                            //                Work = new ObservableCollection<ForReadingModel>() { item };
-                            //            else
-                            //                Work.Add(item);
-                            //            break;
-                            //        case 2:
-                            //            if (Study == null)
-                            //                Study = new ObservableCollection<ForReadingModel>() { item };
-                            //            else
-                            //                Study.Add(item);
-                            //            break;
-                            //        case 3:
-                            //            if (Health == null)
-                            //                Health = new ObservableCollection<ForReadingModel>() { item };
-                            //            else
-                            //                Health.Add(item);
-                            //            break;
-                            //        case 4:
-                            //            if (Life == null)
-                            //                Life = new ObservableCollection<ForReadingModel>() { item };
-                            //            else
-                            //                Life.Add(item);
-                            //            break;
-                            //        default:
-                            //            break;
-                            //    }
-                            //}
                             CheckCatsFill();
                         }
                     }
