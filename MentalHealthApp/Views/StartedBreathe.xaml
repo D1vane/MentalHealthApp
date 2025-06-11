@@ -23,10 +23,10 @@
         <HorizontalStackLayout>
             <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="270"/>
             <VerticalStackLayout HorizontalOptions="Center" WidthRequest="240" HeightRequest="240">
-                <ProgressBar  WidthRequest="240" Progress="{Binding ProgressBarTop}"/>
-                <ProgressBar  Rotation="180" WidthRequest="240"  Margin="0,220,0,0" Progress="{Binding ProgressBarBot}"/>
-                <ProgressBar WidthRequest="240" Rotation="270"  Margin="-240,-134,0,0" Progress="{Binding ProgressBarLeft}"/>
-                <ProgressBar  Margin="240,-16,0,0" WidthRequest="240"  Rotation="90" Progress="{Binding ProgressBarRight}"/>
+                <ProgressBar x:Name="progressBarTop" WidthRequest="240"/>
+                <ProgressBar x:Name="progressBarBot" Rotation="180" WidthRequest="240"  Margin="0,220,0,0"/>
+                <ProgressBar x:Name="progressBarLeft" WidthRequest="240" Rotation="270"  Margin="-240,-134,0,0"/>
+                <ProgressBar x:Name="progressBarRight" Margin="240,-16,0,0" WidthRequest="240"  Rotation="90"/>
             </VerticalStackLayout>
             <Label  Text="Задержка" FontSize="24"  VerticalOptions="Center" Rotation="90"/>
         </HorizontalStackLayout>
@@ -34,7 +34,7 @@
 
         <Label  Text="Выдох" FontSize="24" HorizontalOptions="Center"/>
 
-        <Label Text="{Binding LoopCount,StringFormat='Осталось циклов: {0}'}" FontSize="16" HorizontalOptions="Center"/>
+        <Label x:Name="labelLoops" Text="{Binding LoopCount,StringFormat='Осталось циклов: {0}'}" FontSize="16" HorizontalOptions="Center"/>
 
 
 
@@ -42,9 +42,9 @@
         <Label Text="Осталось времени:" HorizontalOptions="Center" FontSize="20"/>
 
         <HorizontalStackLayout Margin="0,0,0,0" HorizontalOptions="Center" Spacing="8">
-            <Label Text="{Binding Minutes}" FontSize="64"/>
+            <Label x:Name="labelMinutes" Text="{Binding Minutes}" FontSize="64"/>
             <Label Text=":" FontSize="64"/>
-            <Label Text="{Binding Seconds}" FontSize="64"/>
+            <Label x:Name="labelSeconds" Text="{Binding Seconds}" FontSize="64"/>
         </HorizontalStackLayout>
 
 
